@@ -8,13 +8,20 @@ import StatefulRequestImage from "@/public/blog/sanctum-auth-guide/stateful-requ
 import CorsErrorImage from "@/public/blog/sanctum-auth-guide/cors-error.png";
 import FrontendUrlImage from "@/public/blog/sanctum-auth-guide/frontend-url.png";
 import AuthStatusReceivedImage from "@/public/blog/sanctum-auth-guide/auth-status.png";
-import Devtools401Image from "@/public/blog/sanctum-auth-guide/devtools-network.png";
 import WrongFormImage from "@/public/blog/sanctum-auth-guide/wrong-state.png";
-import LoginDebugImage from "@/public/blog/sanctum-auth-guide/login-debug.png";
-import XsrfUndefinedImage from "@/public/blog/sanctum-auth-guide/xsrf-undefined.png";
-import MissingXsrfImage from "@/public/blog/sanctum-auth-guide/missing-xsrf.png";
-import ServerAddressImage from "@/public/blog/sanctum-auth-guide/server-address.png";
 import Error401 from "@/public/blog/sanctum-auth-guide/401-error.png";
+import ErrorMessageImage from "@/public/blog/sanctum-auth-guide/error-messages.png";
+import FirstAuthenticatedImage from "@/public/blog/sanctum-auth-guide/authenticated.png";
+import RefreshAuthImage from "@/public/blog/sanctum-auth-guide/refresh-error.png";
+import StatefulDomainsImage from "@/public/blog/sanctum-auth-guide/stateful-domains.png";
+import PersistentAuthImage from "@/public/blog/sanctum-auth-guide/persistent-auth.png";
+import LogoutImage from "@/public/blog/sanctum-auth-guide/logout.png";
+import NewCollectionImage from "@/public/blog/sanctum-auth-guide/postman-collection.png";
+import CollectionVariableImage from "@/public/blog/sanctum-auth-guide/collection-variable.png";
+import PreRequestScriptImage from "@/public/blog/sanctum-auth-guide/pre-request-script.png";
+import PostmanHeadersImage from "@/public/blog/sanctum-auth-guide/postman-headers.png";
+import PostmanUserRouteImage from "@/public/blog/sanctum-auth-guide/postman-user-route.png";
+import SSRDiagramImage from "@/public/blog/sanctum-auth-guide/ssr-flow.png";
 
 const Page = () => {
   const blog = blogData[1];
@@ -53,10 +60,22 @@ const Page = () => {
         <CheckingAuth />
         <br />
         <br />
-        <AttemptingLoggingInAsDummyUser />
+        <MakingLoginRequests />
         <br />
         <br />
-        <LocalhostVs127 />
+        <SanctumStatefulDomains />
+        <br />
+        <br />
+        <LoggingOutTheUser />
+        <br />
+        <br />
+        <PostmanSetup />
+        <br />
+        <br />
+        <NoteAboutSSR />
+        <br />
+        <br />
+        <Conclusion />
       </article>
     </div>
   );
@@ -135,13 +154,28 @@ const TableOfContents = () => {
           </a>
         </li>
         <li>
-          <a href="#attempt-logging-in" className="underline">
-            Attempting to Log in as the Dummy User
+          <a href="#logging-in" className="underline">
+            Making Login Requests
           </a>
         </li>
         <li>
-          <a href="#localhost-vs-127" className="underline">
-            Localhost vs 127.0.0.1
+          <a href="#configure-stateful-domains" className="underline">
+            Configuring Sanctum Stateful Domains
+          </a>
+        </li>
+        <li>
+          <a href="#logging-out" className="underline">
+            Logging Out the User
+          </a>
+        </li>
+        <li>
+          <a href="#postman-setup" className="underline">
+            Setting up Postman for Laravel with Cookie Authentication
+          </a>
+        </li>
+        <li>
+          <a href="#about-ssr" className="underline">
+            A Note About SSR
           </a>
         </li>
       </ol>
@@ -156,7 +190,7 @@ const Requirements = () => {
         <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Requirements</h2>
       </a>
       <br />
-      <ul className="ml-12">
+      <ul className="ml-12 [&>li]:my-2">
         <li>Your frontend & backend must share the same top level domain. Subdomains are OK. localhost is OK.</li>
         <li>Familiarity with Laravel and a JavaScript framework. My example will use React, but it's fairly vanilla.</li>
       </ul>
@@ -353,7 +387,6 @@ function App() {
       </form>
     </>
   );
-  }
 }
 
 export default App;
@@ -475,7 +508,7 @@ async function fetchWithXsrfToken(url, opts) {
         every call to the native <span className="bg-gray-400 font-mono dark:bg-slate-700">fetch</span> function has the{" "}
         <span className="bg-gray-400 font-mono dark:bg-slate-700">credentials</span> option set to{" "}
         <span className="bg-gray-400 font-mono dark:bg-slate-700">"include"</span>. This is extremely important because it allows our
-        JavaScript requests to send & receive cookies <code>&#8212;</code> just like a regular browser navigation.
+        JavaScript requests to send & receive cookies <code>&#8212;</code> just like a regular browser navigation would.
         <br /> <br />
         <br />
         <br />
@@ -530,11 +563,13 @@ const CheckingAuth = () => {
         Here is my implementation:
       </p>
       <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`useEffect(() => {
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   fetchWithXsrfToken("http://localhost:8000/api/user", { signal })
     .then((response) => {
-
       setIsLoading(false);
-                
+
       if (response.ok) {
         setIsAuthenticated(true);
       } else {
@@ -551,11 +586,16 @@ const CheckingAuth = () => {
       <p>
         OK the request to check the User's auth status is ready! <br />
         <br />
-        Our frontend will receive the auth status, and stop showing the loading state right?...
+        Let's save & reload the frontend, and it will stop showing the loading state right?...
         <br />
         <br />
-        <strong>Nope!</strong> If you're following along using Vite, you are likely facing the same CORS error!
+        <strong>Nope!</strong> If you're following along using Vite, you are likely facing a CORS error!
         <br />
+        (If you didn't use Vite and don't have a CORS error, you can{" "}
+        <a className="underline" href="#logging-in">
+          skip to the next section.
+        </a>
+        )
       </p>
       <br />
       <img loading="lazy" className="mx-auto rounded-lg" src={CorsErrorImage.src} height="708" width="1481" />
@@ -573,13 +613,18 @@ const CheckingAuth = () => {
         <br />
         To fix this I will update the <span className="bg-gray-400 font-mono dark:bg-slate-700">FRONTEND_URL</span> variable in Laravel's{" "}
         <span className="bg-gray-400 font-mono dark:bg-slate-700">.env</span> to match Vite's server at{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">localhost:5173</span> :
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">http://localhost:5173</span> :
       </p>
       <br />
       <img loading="lazy" className="mx-auto rounded-lg" src={FrontendUrlImage.src} height="33" width="393" />
       <br />
       <br />
+
       <p>
+        This should fix the CORS error. <br />
+        * Note that if you don't provide the protocol (http://) or the correct port for Vite, you will have issues.
+        <br />
+        <br />
         Save all changes, refresh your frontend and you should receive a response.
         <br />
         The server responds with the auth state, and the form is shown because we are not authenticated!
@@ -596,24 +641,24 @@ const CheckingAuth = () => {
       <img loading="lazy" className="mx-auto rounded-lg" src={Error401.src} height="112" width="1471" />
       <br />
       <p>
-        This is great because it means our frontend and backend are communicating successfully! <br />
+        This is great! It means our frontend and backend are communicating successfully! <br />
         We have not yet logged in, so it is expected to receive a 401. <br />
         <br />
-        Let's submit the form in the next section.
+        Let's try logging in <code>&#8212;</code> in the next section.
       </p>
     </section>
   );
 };
 
-const AttemptingLoggingInAsDummyUser = () => {
+const MakingLoginRequests = () => {
   return (
     <section>
-      <a id="attempting-logging-in" href="#attempting-logging-in">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Attempting to Log in as the Dummy User</h2>
+      <a id="logging-in" href="#logging-in">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Making Login Requests</h2>
       </a>
       <br />
       <p>
-        Hope you wrote down the dummy User's email address from{" "}
+        I hope you wrote down the dummy User's email address from{" "}
         <a href="#make-dummy-user" className="underline">
           section 4
         </a>
@@ -632,16 +677,7 @@ const AttemptingLoggingInAsDummyUser = () => {
         <li>Prevent the default page refresh when the form is submitted.</li>
         <li>
           Send a POST request to the <span className="bg-gray-400 font-mono dark:bg-slate-700">/login</span> endpoint with the
-          email/password payload <em>and cookies</em>. <br />
-          To include cookies when using JavaScript's <span className="bg-gray-400 font-mono dark:bg-slate-700">fetch</span>, we can set the{" "}
-          <span className="bg-gray-400 font-mono dark:bg-slate-700">credentials</span> option to{" "}
-          <span className="bg-gray-400 font-mono dark:bg-slate-700">"include"</span>.<br />
-          <br />
-          (*We didn't <em>need</em> to do this with the requests to{" "}
-          <span className="bg-gray-400 font-mono dark:bg-slate-700">/api/user</span> and{" "}
-          <span className="bg-gray-400 font-mono dark:bg-slate-700">/sanctum/csrf-cookie</span> because they were{" "}
-          <span className="bg-gray-400 font-mono dark:bg-slate-700">GET</span> requests. But it's a good idea to always include cookies to
-          avoid unexpected errors.)
+          email/password payload. <br />
         </li>
         <li>
           If the response is a success: <br />
@@ -668,7 +704,8 @@ const AttemptingLoggingInAsDummyUser = () => {
       <p>
         <br />
         Here is my <span className="bg-gray-400 font-mono dark:bg-slate-700">handleLogin</span> function:
-        <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`async function handleLogin(submitEvent) {
+      </p>
+      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`async function handleLogin(submitEvent) {
   submitEvent.preventDefault();
 
   const payload = {};
@@ -681,7 +718,6 @@ const AttemptingLoggingInAsDummyUser = () => {
   await fetchWithXsrfToken("http://localhost:8000/login", {
     method: "POST",
     body: JSON.stringify(payload),
-    credentials: "include",
   }).then((res) => {
     if (res.ok) {
       setIsAuthenticated(true);
@@ -692,6 +728,7 @@ const AttemptingLoggingInAsDummyUser = () => {
   });
 }
 `}</pre>
+      <p>
         <br />
         Don't forget to set it as a <span className="bg-gray-400 font-mono dark:bg-slate-700">submit</span> event handler for the login
         form! I will leave that to you.
@@ -704,125 +741,314 @@ const AttemptingLoggingInAsDummyUser = () => {
         <span className="bg-gray-400 font-mono dark:bg-slate-700">/login</span> route, and update the states accordingly.
         <br />
         <br />
-        My dummy user's email was <span className="bg-gray-400 font-mono dark:bg-slate-700">alycia96@example.net</span> and the password, by
-        default, is <span className="bg-gray-400 font-mono dark:bg-slate-700">password</span>.
+        First, let's try to login as the dummy user with an <em>invalid</em> password: <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={WrongFormImage.src} height="339" width="1143" />
+        <br />
+        The <span className="bg-gray-400 font-mono dark:bg-slate-700">isWrong</span> state becomes{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">true</span> and we see the error state!
         <br />
         <br />
-        Try to sign is as your dummy user with the login form and....................... WRONG! The{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">isWrong</span> state is visible!
+        * As a side note, the validation error message from the server is available in the response. <br />
+        &nbsp; (I kept my code simple for demonstration.)
         <br />
         <br />
-        <img loading="lazy" className="mx-auto rounded-lg" src={WrongFormImage.src} height="379" width="1458" />
+        <img loading="lazy" className="mx-auto rounded-lg" src={ErrorMessageImage.src} height="317" width="1033" />
         <br />
-        I've put in the correct email / password, what do you mean it's wrong??? <br />
-        Let's use the Chrome DevTools to debug this request.
-        <br />
-        <br />
-        Open the DevTools, go to the <b>Network</b> tab, and click on the <b>login</b> request to see its details:
-        <img loading="lazy" className="mx-auto rounded-lg" src={LoginDebugImage.src} height="1002" width="1434" />
-        <br />
-        It shows that I got a 419 response.
-        <br />
-        Laravel uses 419 responses when a CSRF token is invalid or not provided... but our{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">fetchWithXsrfToken</span> helper should from{" "}
-        <a className="underline" href="#laravel-stateful-requests">
-          section 6
-        </a>{" "}
-        be adding that to our requests, right?
-        <br /> You can even see multiple requests for <span className="bg-gray-400 font-mono dark:bg-slate-700">csrf-cookie</span> in the
-        screenshot above. Why am I getting a 419 error?
+        The server recognized that there is no user with the invalid credentials we provided! <br />
         <br />
         <br />
         <br />
-        Let's check the request headers and verify that the <span className="bg-gray-400 font-mono dark:bg-slate-700">X-XSRF-TOKEN</span> is
-        there:
+        Let's try sending the correct email / password this time.
         <br />
-        <img loading="lazy" className="mx-auto rounded-lg" src={XsrfUndefinedImage.src} height="258" width="876" />
-        <br />
-        <br />
-        Welp, it says the header is <span className="bg-gray-400 font-mono dark:bg-slate-700">undefined</span>. No wonder I got a 419
-        response back.
-        <br />
-        But why?? I hit the <span className="bg-gray-400 font-mono dark:bg-slate-700">/sanctum/csrf-cookie</span> route, so I should have
-        the <span className="bg-gray-400 font-mono dark:bg-slate-700">XSRF-TOKEN</span> in my browser's cookies.
-        <br />
-        <br /> Well, let's check that we are really getting an <span className="bg-gray-400 font-mono dark:bg-slate-700">
-          XSRF-TOKEN
-        </span>{" "}
-        in the browser.
+        <br /> I am logging in as my dummy user <span className="bg-gray-400 font-mono dark:bg-slate-700">alycia96@example.net</span> with
+        the default password, <span className="bg-gray-400 font-mono dark:bg-slate-700">password</span>:
         <br />
         <br />
-        We can do that in the DevTools's <b>Application</b> tab:
+        <img loading="lazy" className="mx-auto rounded-lg" src={FirstAuthenticatedImage.src} height="265" width="779" />
         <br />
-        <img loading="lazy" className="mx-auto rounded-lg" src={MissingXsrfImage.src} height="1561" width="593" />
-        <br />I have a <span className="bg-gray-400 font-mono dark:bg-slate-700">laravel_session</span> cookie, but I don't have a{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">XSRF-TOKEN</span> cookie!
-        <br />
-        This all explains why the request fails with a 419 error, but why am I not getting an{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">XSRF-TOKEN</span> from Sanctum?
+        And we get a successful response! <br />
+        High 5s all around! We can go home now.... RIGHT?
         <br />
         <br />
-        That was a lot to digest, and it's still unclear what's happening. <br />
         <br />
-        Let's fix this in the next section.
+        Not quite, but we're getting close! <br />
+        <br />
+        We still have one more issue.
+        <br />
+        <br />
+        <br />
+        Try refreshing the page and the user is....... unauthenticated!? <br />
+        Why am I receiving a 401 error if I authenticated a moment ago?
+        <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={RefreshAuthImage.src} height="1028" width="1505" />
+        <br />
+        <br />
+        This is really simple to fix, let's do it in the next section.
       </p>
     </section>
   );
 };
 
-const LocalhostVs127 = () => {
+const SanctumStatefulDomains = () => {
   return (
     <section>
-      <a id="localhost-vs-127" href="#localhost-vs-127">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Localhost vs 127.0.0.1</h2>
+      <a id="configure-stateful-domains" href="#configure-stateful-domains">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Configuring Sanctum Stateful Domains</h2>
+      </a>
+      <p>
+        <br />
+        So far, our frontend and backend are communicating successfully, but we have one problem.
+        <br />
+        The user's session is not persisting when the page is reloaded.
+        <br />
+        <br />
+        To solve this we need to add one more env variable called{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">SANCTUM_STATEFUL_DOMAINS</span> in Laravel's{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">.env</span> file.
+        <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={StatefulDomainsImage.src} height="42" width="577" /> <br />
+        The value should be similar to the <span className="bg-gray-400 font-mono dark:bg-slate-700">FRONTEND_URL</span> variable we set
+        earlier, <em>but without the protocol</em> (http://).
+        <br />
+        <br />
+        Minor errors like adding the protocol or forgetting the port will cause issues so make sure you get it right!
+        <br />
+        <br />
+        With that set, save all changes & refresh your frontend.
+        <br />
+        And this time.... the session persists successfully!
+        <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={PersistentAuthImage.src} height="1348" width="1027" /> <br />
+        <br />
+        Wer're almost done! Let's wrap this up and implement the Logout functionality.
+      </p>
+    </section>
+  );
+};
+
+const LoggingOutTheUser = () => {
+  return (
+    <section>
+      <a id="logging-out" href="#logging-out">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Logging Out the User</h2>
       </a>
       <br />
       <p>
-        To recap, we are sending an email / password as JSON when the form is submitted. But we are getting a 419 error response because,{" "}
-        <em>for some reason,</em> we are never receiving an <span className="bg-gray-400 font-mono dark:bg-slate-700">XSRF-TOKEN</span> from
-        Laravel's Sanctum route. We verified this by looking at the <b>Network</b> and <b>Application</b> tabs in the DevTools.
+        Logging out the user is simple as there is no JSON payload. <br />
+        All we need to do is send a POST request to the <span className="bg-gray-400 font-mono dark:bg-slate-700">/logout</span> route and
+        Laravel will invalidate the session.
+        <br /> <br />
+        One thing to note, by default, Laravel's session cookies have the{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">http-only</span> attribute for extra protection against XSS attacks. This
+        means that we can't delete the session purely from the client-side using JavaScript.
         <br />
         <br />
-        There's not a lot of context to solve this problem, so I will give you the solution:
+        (i.e. <span className="bg-gray-400 font-mono dark:bg-slate-700">document.cookie = null</span> will not delete{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">http-only</span> cookies)
         <br />
         <br />
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">localhost</span> and{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">127.0.0.1</span> are different domains.
+        <br />
+        That said, let's implement the <span className="bg-gray-400 font-mono dark:bg-slate-700">handleLogout</span> function to call when
+        the Logout button is clicked. <br />
+        It will simply send a POST request to the <span className="bg-gray-400 font-mono dark:bg-slate-700">/logout</span> route and update
+        the UI state:
+      </p>
+      <br />
+      <br />
+      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`async function handleLogout(submitEvent) {
+  submitEvent.preventDefault();
+
+  await fetchWithXsrfToken("http://localhost:8000/logout", {
+    method: "POST",
+  }).then((res) => {
+    if (res.ok) {
+      setIsAuthenticated(false);
+    }
+  });
+}
+`}</pre>
+      <p>
+        <br />
+        Don't forget to wire up the <span className="bg-gray-400 font-mono dark:bg-slate-700">handleLogout</span> function to the logout
+        form's <span className="bg-gray-400 font-mono dark:bg-slate-700">submit</span> event!
         <br />
         <br />
-        If you are using Laravel's built-in PHP server, the server is actually serving on{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">127.0.0.1:8000</span>.<br /> This can be verified by looking at the Remote
-        Address in the DevTools <b>Network</b> tab.
-        <img loading="lazy" className="mx-auto rounded-lg" src={ServerAddressImage.src} width="959" height="527" />
+        Fairly simple yea? OK let's give it a try.
         <br />
         <br />
-        As a special case, browsers will allow cross-origin servers to send <em>session</em> cookies via the{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">localhost</span> domain.
+        <img loading="lazy" className="mx-auto rounded-lg" src={LogoutImage.src} height="951" width="1341" />
         <br />
-        This is why my DevTools showed that I had a <span className="bg-gray-400 font-mono dark:bg-slate-700">laravel_session</span> cookie
-        in the previous section.
+        And there we have it! The logout was successful with a 204 response, and the UI was updated.
         <br />
-        <br />
-        But my server (127.0.0.1) and browser (localhost) are currently on different domains.
-        <br /> The <span className="bg-gray-400 font-mono dark:bg-slate-700">XSRF-TOKEN</span> cookie was not set by the browser because
-        it's a <em>persistent</em> cookie from a different domain!
+        Of course, try refreshing and verify that the user is truly unauthenticated.
         <br />
         <br />
-        We can solve this by running a reverse proxy like Nginx on{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">localhost</span> so the browser and server are both on the same{" "}
-        <span className="bg-gray-400 font-mono dark:bg-slate-700">localhost</span> domain, albeit different ports. <br />
-        (This works fine and is what I usually use.)
+        Congrats if you made it here!
+        <br /> You should now have a good understanding of how to use Laravel Sanctum to authenticate your SPAs.
         <br />
         <br />
-        But to keep it simple, we can also point the browser <span className="bg-gray-400 font-mono dark:bg-slate-700">127.0.0.1</span> and
-        all requests in our JavaScript code to <span className="bg-gray-400 font-mono dark:bg-slate-700">127.0.0.1</span>.
         <br />
         <br />
-        This will let our server and browser pass cookies between each other.
+        The following sections will have some additional information about authenticating clients that are <em>not</em> web browsers.
+        <br />
+      </p>
+    </section>
+  );
+};
+
+const PostmanSetup = () => {
+  return (
+    <section>
+      <a id="postman-setup" href="#postman-setup">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Setting Up Postman for Laravel with Cookie Authentication</h2>
+      </a>
+      <p>
+        <br />A tool like Postman is virtually a must-have while developing an API. <br />
+        You can test out your API routes without writing hefty lines of JavaScript to call your server.
         <br />
         <br />
-        Let's not forget to change the <span className="bg-gray-400 font-mono dark:bg-slate-700"></span>env variable
+        However, it is important to note that Postman and similar clients are <b>not</b> web browsers, so some default browser behaviors may
+        need to be explicitly configured.
         <br />
+        <br />
+        <br />
+        It's simpler if I show you, so open up Postman and create a new Collection for our API.
+        <br />I also created 3 new requests for demonstration later: <span className="bg-gray-400 font-mono dark:bg-slate-700">
+          login
+        </span>, <span className="bg-gray-400 font-mono dark:bg-slate-700">user</span>,{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">logout</span>.
+        <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={NewCollectionImage.src} height="362" width="258" />
+        <br />
+        In the Collection settings, we need to define a <em>collection variable</em>.<br /> I'll call it{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">csrf-token</span>, and the value can be empty.
+        <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={CollectionVariableImage.src} height="687" width="1381" />
+        <br />
+        This is a variable that Postman will manage, and we'll use it to supply our requests with the{" "}
+        <span className="bg-gray-400 font-mono dark:bg-slate-700">X-XSRF-TOKEN</span> header.
+        <br />
+        <br />
+        <br />
+        Next, click on the Collection's <span className="bg-gray-400 font-mono dark:bg-slate-700">Pre-request Script</span> tab, and add
+        this script like so:
+      </p>
+      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">
+        {`pm.sendRequest({
+    url: "http://localhost:8000/sanctum/csrf-cookie",
+    method: "GET",
+}, function(error, response, {cookies}){
+    pm.collectionVariables.set("csrf-token", cookies.get("XSRF-TOKEN"))
+});`}
+      </pre>
+      <p>
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={PreRequestScriptImage.src} height="857" width="1380" />
+        <br />
+        <br />
+        This configures Postman to fetch a new <span className="bg-gray-400 font-mono dark:bg-slate-700">XSRF-TOKEN</span> cookie before
+        requests <code>&#8212;</code> similar to what I did with the React app.
+        <br />
+        <br />
+        <br />
+        <br />
+        When you make requests, supply your request with the headers:
+        <br />
+      </p>
+      <ul className="ml-12 leading-relaxed">
+        <li>
+          <span className="bg-gray-400 font-mono dark:bg-slate-700">Accept: application/json</span>
+        </li>
+        <li>
+          <span className="bg-gray-400 font-mono dark:bg-slate-700">Content-Type: application/json</span>
+        </li>
+      </ul>
+      <p>
+        <br />
+        Additionally, we need to add the <span className="bg-gray-400 font-mono dark:bg-slate-700">X-XSRF-TOKEN</span> header, and we should
+        add a <span className="bg-gray-400 font-mono dark:bg-slate-700">Referer</span> header as well.
+        <br />
+        <br />
+        If you aren't familiar with the <span className="bg-gray-400 font-mono dark:bg-slate-700">Referer</span> header, it is a default
+        header that web browsers send. <br />
+        But since we're using Postman, it isn't sent automatically. We want to <em>emulate</em> the browser behavior by setting this header
+        manually.
+        <br />
+        <br />
+        In conclusion, <em>all</em> your Postman API requests should have these headers added. <br />
+        I've blurred out some other headers that Postman provides as they are not important:
+        <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={PostmanHeadersImage.src} height="534" width="922" />
+        <br />
+        The value for the <span className="bg-gray-400 font-mono dark:bg-slate-700">Referer</span> header is the same as the value for
+        Laravel's <span className="bg-gray-400 font-mono dark:bg-slate-700">FRONTEND_URL</span> env variable.
+        <br />
+        And we provide the <span className="bg-gray-400 font-mono dark:bg-slate-700">X-XSRF-TOKEN</span> header by referencing the
+        collection variable <span className="bg-gray-400 font-mono dark:bg-slate-700">{"{{csrf-token}}"}</span>.
+        <br />
+        <br />
+        <br />
+        OK that's all we need to set up Postman for Laravel Sanctum!
+        <br />
+        Here's an example of receiving a successful response:
+        <br />
+        <br />
+        <img loading="lazy" className="mx-auto rounded-lg" src={PostmanUserRouteImage.src} height="732" width="1413" />
+      </p>
+    </section>
+  );
+};
+
+const NoteAboutSSR = () => {
+  return (
+    <section>
+      <a id="about-ssr" href="#about-ssr">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">A Note About Server-Side Rendering (SSR)</h2>
+      </a>
+      <br />
+      <p>Up until this point, our focus was on client-side rendering (CSR) and fetching from the browser.</p>
+      And for good reason! If you want to server render your UI, the concepts are almost the same!
+      <br />
+      <br />
+      The only difference is that you have <em>another</em> server between the browser and your Laravel server.
+      <br />
+      <br />
+      If there is enough demand maybe I will write an article specifically on SSR.
+      <br />
+      But for now, I will leave you with this diagram to figure it out:
+      <br />
+      <br />
+      <img loading="lazy" className="mx-auto rounded-lg" src={SSRDiagramImage.src} height="563" width="1856" />
+      <br />
+      <br />
+    </section>
+  );
+};
+
+const Conclusion = () => {
+  return (
+    <section>
+      <a id="about-ssr" href="#about-ssr">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-blue-400">Conclusion</h2>
+      </a>
+      <br />
+      <p>
+        Whew that was lot!
+        <br />
+        <br />
+        We learned how to troubleshoot CORS, 419 CSRF errors, we implemented some authentication features, and looked at how to manage
+        cookies & authentication in non-browser clients.
+        <br />
+        <br />
+        This is information that I wish I had when I was starting with Laravel API development, and I hope it has helped you! Leave a
+        comment if you have any questions or feedback!{" "}
       </p>
     </section>
   );
