@@ -1,3 +1,4 @@
+import Giscus from "@giscus/react";
 import { blogData } from "@/data/blogs";
 import CoverImage from "@/public/blog/sanctum-auth-guide/cover.png";
 import LetsStartImage from "@/public/blog/sanctum-auth-guide/letsstart.png";
@@ -76,6 +77,27 @@ const Page = () => {
         <br />
         <br />
         <Conclusion />
+        <br />
+        <br />
+        <br />
+        <br />
+        <hr />
+        <br />
+        <Giscus
+          id="comments"
+          repo="BoilingSoup/blogfolio"
+          repoId="R_kgDOKvJjow"
+          category="Announcements"
+          categoryId="DIC_kwDOKvJjo84CbFAu"
+          mapping="pathname"
+          // term="Welcome to @giscus/react component!"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="light_high_contrast"
+          lang="en"
+          loading="eager"
+        />
       </article>
     </div>
   );
@@ -1054,4 +1076,8 @@ const Conclusion = () => {
   );
 };
 
+// export default function MyApp() {
+//   return (
+//   );
+// }
 export default Page;
