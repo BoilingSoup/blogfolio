@@ -17,7 +17,7 @@ type WrapperProps = {
 
 const HeaderWrapper = (props: WrapperProps) => {
   return (
-    <header className="fixed z-10 flex h-14 w-full animate-fade-in-up items-center border-b border-gray-400/20 bg-slate-200 transition ease-in-out dark:border-slate-400/20 dark:bg-slate-900 md:justify-between">
+    <header className="fixed z-10 flex h-14 w-full animate-fade-in-up items-center border-b border-gray-400/20 transition ease-in-out dark:border-slate-400/20 md:justify-between">
       {props.children}
     </header>
   );

@@ -36,3 +36,17 @@
     list-style: revert;
   }
 }
+
+html {
+  background-color: #e8e8e8;
+  opacity: 1;
+  background-image: radial-gradient(#5c5c5c 2px, #e8e8e8 2px);
+  background-size: 40px 40px;
+}
+
+html[class~="dark"] {
+  background-color: #0e0e0e;
+  opacity: 1;
+  background-image: radial-gradient(#5c5c5c 2px, #0e0e0e 2px);
+  background-size: 40px 40px;
+}

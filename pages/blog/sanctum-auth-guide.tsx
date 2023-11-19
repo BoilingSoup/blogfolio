@@ -23,9 +23,13 @@ import PreRequestScriptImage from "@/public/blog/sanctum-auth-guide/pre-request-
 import PostmanHeadersImage from "@/public/blog/sanctum-auth-guide/postman-headers.png";
 import PostmanUserRouteImage from "@/public/blog/sanctum-auth-guide/postman-user-route.png";
 import SSRDiagramImage from "@/public/blog/sanctum-auth-guide/ssr-flow.png";
+import { useDarkModeProvider } from "@/contexts/DarkModeProvider";
 
 const Page = () => {
   const blog = blogData[1];
+
+  const { isDarkMode } = useDarkModeProvider();
+  const giscusTheme = isDarkMode ? "dark_high_contrast" : "light_high_contrast";
 
   return (
     <div className="mx-auto mt-8 rounded-md bg-gray-300 text-xl leading-10 tracking-wide lg:container dark:bg-slate-800 dark:text-white md:text-2xl md:tracking-wider">
@@ -94,7 +98,7 @@ const Page = () => {
           reactionsEnabled="1"
           emitMetadata="0"
           inputPosition="top"
-          theme="light_high_contrast"
+          theme={giscusTheme}
           lang="en"
           loading="eager"
         />
