@@ -377,41 +377,42 @@ const CreateFrontend = () => {
         <br />
       </p>
       <CodeWithSyntaxHighlight>{`import { useState } from "react";
+
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isWrong, setIsWrong] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isWrong, setIsWrong] = useState(false);
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
+    if (isLoading) {
+        return <h1>Loading...</h1>;
+    }
 
-  if (!isAuthenticated) {
+    if (!isAuthenticated) {
+        return (
+            <form>
+              <label htmlFor="email">email</label>
+              <input required id="email" name="email" type="email" />
+              &emsp;
+              <label htmlFor="password">password</label>
+              <input required id="password" name="password" type="password" />
+              &emsp;
+              <button>Login</button>
+
+              {isWrong && <h1>WRONG!</h1>}
+
+           </form>
+        );
+    } 
+
     return (
-      <form>
-        <label htmlFor="email">email</label>
-        <input required id="email" name="email" type="email" />
-        &emsp;
-        <label htmlFor="password">password</label>
-        <input required id="password" name="password" type="password" />
-        &emsp;
-        <button>Login</button>
-
-        {isWrong && <h1>WRONG!</h1>}
-
-      </form>
+        <>
+          <h1>Congrats, you have authenticated!</h1>
+          <br />
+          <form>
+            <button>Logout</button>
+          </form>
+        </>
     );
-  } 
-
-  return (
-    <>
-      <h1>Congrats, you have authenticated!</h1>
-      <br />
-      <form>
-        <button>Logout</button>
-      </form>
-    </>
-  );
 }
 
 export default App;

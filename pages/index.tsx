@@ -12,6 +12,7 @@ export default function Home() {
       </Head>
       <MainContainer>
         <>
+          <TechStackPreview />
           <div className="lg:flex">
             <ProjectsPreview />
             <BlogPreview />
