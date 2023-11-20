@@ -2,13 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  ol,
+  ul {
+    list-style: revert;
+  }
+}
+
+html,
+.header {
+  background-color: #e8e8e8;
+  opacity: 1;
+  background-image: radial-gradient(#5c5c5c 2px, #e8e8e8 2px);
+  background-size: 40px 40px;
+}
+
+html[class~="dark"],
+html[class~="dark"] .header {
+  background-color: #0e0e0e;
+  opacity: 1;
+  background-image: radial-gradient(#333333 2px, #0e0e0e 2px);
+  background-size: 40px 40px;
+}
+
 /* ===== Scrollbar CSS ===== */
 
 :root {
-  --scroll-border-color: #477ed7;
-  --scroll-thumb-bg: #367196;
-  --scroll-track-bg: #1e293b;
+  --scroll-border-color: #1c1c1c;
+  --scroll-thumb-bg: #6b6b6b;
+  --scroll-track-bg: #1c1c1c;
 }
+
+/* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
   scrollbar-width: auto;
@@ -30,23 +55,8 @@
   border: 3px solid var(--scroll-border-color);
 }
 
-@layer base {
-  ol,
-  ul {
-    list-style: revert;
-  }
-}
-
-html {
-  background-color: #e8e8e8;
+/* adds effect when hovering over logo */
+#hover-effect.hover-effect:before {
+  height: 4px;
   opacity: 1;
-  background-image: radial-gradient(#5c5c5c 2px, #e8e8e8 2px);
-  background-size: 40px 40px;
-}
-
-html[class~="dark"] {
-  background-color: #0e0e0e;
-  opacity: 1;
-  background-image: radial-gradient(#5c5c5c 2px, #0e0e0e 2px);
-  background-size: 40px 40px;
 }

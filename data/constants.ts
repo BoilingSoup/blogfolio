@@ -8,6 +8,6 @@ export const scrollBorderLight = "#52525b";
 export const scrollThumbBgLight = "#e2e8f0";
 export const scrollTrackBgLight = "#27272a";
 
-export const scrollBorderDark = "#477ed7";
-export const scrollThumbBgDark = "#367196";
-export const scrollTrackBgDark = "#1e293b";
+export const scrollBorderDark = "#1c1c1c";
+export const scrollThumbBgDark = "#6b6b6b";
+export const scrollTrackBgDark = "#1c1c1c";

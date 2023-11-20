@@ -1,4 +1,5 @@
 import Giscus from "@giscus/react";
+
 import { blogData } from "@/data/blogs";
 import CoverImage from "@/public/blog/sanctum-auth-guide/cover.png";
 import LetsStartImage from "@/public/blog/sanctum-auth-guide/letsstart.png";
@@ -24,6 +25,7 @@ import PostmanHeadersImage from "@/public/blog/sanctum-auth-guide/postman-header
 import PostmanUserRouteImage from "@/public/blog/sanctum-auth-guide/postman-user-route.png";
 import SSRDiagramImage from "@/public/blog/sanctum-auth-guide/ssr-flow.png";
 import { useDarkModeProvider } from "@/contexts/DarkModeProvider";
+import { CodeWithSyntaxHighlight } from "@/components/CodeWithSyntaxHighlight";
 
 const Page = () => {
   const blog = blogData[1];
@@ -32,7 +34,7 @@ const Page = () => {
   const giscusTheme = isDarkMode ? "dark_high_contrast" : "light_high_contrast";
 
   return (
-    <div className="mx-auto mt-8 rounded-md bg-gray-300 text-xl leading-10 tracking-wide lg:container dark:bg-slate-800 dark:text-white md:text-2xl md:tracking-wider">
+    <div className="mx-auto mt-8 rounded-md bg-slate-300 text-xl leading-10 tracking-wide lg:container dark:bg-zinc-900 dark:text-white md:text-2xl md:tracking-wider">
       <article className="container mx-auto px-0 py-4 sm:px-8 lg:px-20 lg:py-10">
         <p className="text-right">{blog.date}</p>
         <h1 className="mt-8 text-center text-4xl font-extrabold lg:text-5xl">{blog.title}</h1>
@@ -308,7 +310,7 @@ const MakeDummyUser = () => {
       <p>
         To sign in as a User, we'll need a User (duh). So let's make one! <br />
         <br />
-        Run the default Laravel database migrations (if you haven't)
+        Run the default Laravel database migrations (if you haven't):
       </p>
       <pre className="overflow-x-auto bg-gray-400 dark:bg-slate-700">php artisan migrate</pre>
       <br />
@@ -367,17 +369,14 @@ const CreateFrontend = () => {
       <p>
         <br />
         <br />
-        Now let's create a minimal frontend skeleton.
+        Now let's create a minimal frontend skeleton. No network requests will be implemented yet.
         <br />
         <br />
         If you want to copy my React example:
         <br />
-        Notice that no network requests are implemented yet.
-        <br />
         <br />
       </p>
-      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`import { useState } from "react";
-
+      <CodeWithSyntaxHighlight>{`import { useState } from "react";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -416,10 +415,10 @@ function App() {
 }
 
 export default App;
-`}</pre>
+`}</CodeWithSyntaxHighlight>
       <p>
         <br />
-        With that, the frontend will show the loading state, as it should!
+        With that, the frontend will show the loading state <code>&#8212;</code> as it should!
         <br />
         <br />
         <img loading="lazy" className="mx-auto rounded-lg" src={LoadingFrontendImage.src} height="276" width="754" />
@@ -468,60 +467,59 @@ const LaravelStatefulRequests = () => {
         cookie and update request headers, we should make a wrapper around the{" "}
         <span className="bg-gray-400 font-mono dark:bg-slate-700">fetch</span> function to simplify this:
       </p>
-      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`const baseUrl = "http://localhost:8000";
+      <CodeWithSyntaxHighlight>{`const baseUrl = "http://localhost:8000";
 
 function getCookies() {
-  return document.cookie.split(";").reduce((res, c) => {
-    const [key, val] = c.trim().split("=").map(decodeURIComponent);
-    try {
-      return Object.assign(res, { [key]: JSON.parse(val) });
-    } catch (e) {
-      return Object.assign(res, { [key]: val });
-    }
-  }, {});
+    return document.cookie.split(";").reduce((res, c) => {
+        const [key, val] = c.trim().split("=").map(decodeURIComponent);
+        try {
+            return Object.assign(res, { [key]: JSON.parse(val) });
+        } catch (e) {
+            return Object.assign(res, { [key]: val });
+        }
+    }, {});
 }
 
 async function fetchWithXsrfToken(url, opts) {
-  let cookies = getCookies();
-  let xsrfToken = cookies["XSRF-TOKEN"];
+    let cookies = getCookies();
+    let xsrfToken = cookies["XSRF-TOKEN"];
 
-  if (!xsrfToken) {
-    const response = await fetch(baseUrl + "/sanctum/csrf-cookie", { credentials: "include" });
+    if (!xsrfToken) {
+        const response = await fetch(baseUrl + "/sanctum/csrf-cookie", { credentials: "include" });
 
-    if (!response.ok) {
-      throw new Error("Failed to get a new csrf cookie.");
+        if (!response.ok) {
+            throw new Error("Failed to get a new csrf cookie.");
+        }
+
+        cookies = getCookies();
+        xsrfToken = cookies["XSRF-TOKEN"];
     }
 
-    cookies = getCookies();
-    xsrfToken = cookies["XSRF-TOKEN"];
-  }
+    if (opts === undefined) {
+      opts = {};
+    }
 
-  if (opts === undefined) {
-    opts = {};
-  }
+    if (opts.headers === undefined) {
+        opts.headers = {
+            "X-XSRF-TOKEN": xsrfToken,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        };
+    } else {
+        opts.headers["X-XSRF-TOKEN"] = xsrfToken;
 
-  if (opts.headers === undefined) {
-    opts.headers = {
-      "X-XSRF-TOKEN": xsrfToken,
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
-  } else {
-    opts.headers["X-XSRF-TOKEN"] = xsrfToken;
+        opts.headers["Accept"] = "application/json";
+        opts.headers["Content-Type"] = "application/json";
+    }
 
-    opts.headers["Accept"] = "application/json";
-    opts.headers["Content-Type"] = "application/json";
-  }
+    if (opts.credentials !== "include") {
+        opts.credentials = "include";
+    }
 
-  if (opts.credentials !== "include") {
-    opts.credentials = "include";
-  }
-
-  return fetch(url, opts);
+    return fetch(url, opts);
 }
-`}</pre>
+`}</CodeWithSyntaxHighlight>
       <p>
-        <br />
         Cool! We can use the <span className="bg-gray-400 font-mono dark:bg-slate-700">fetchWithXsrfToken</span> function and it will
         automatically attach a valid <span className="bg-gray-400 font-mono dark:bg-slate-700">X-XSRF-TOKEN</span> header to our requests.
         <br />
@@ -588,25 +586,25 @@ const CheckingAuth = () => {
         <br />
         Here is my implementation:
       </p>
-      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`useEffect(() => {
-  const controller = new AbortController();
-  const signal = controller.signal;
+      <CodeWithSyntaxHighlight>{`useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
 
-  fetchWithXsrfToken("http://localhost:8000/api/user", { signal })
-    .then((response) => {
-      setIsLoading(false);
+    fetchWithXsrfToken("http://localhost:8000/api/user", { signal })
+        .then((response) => {
+            setIsLoading(false);
 
-      if (response.ok) {
-        setIsAuthenticated(true);
-      } else {
-        // isAuthenticated is false by default, do nothing.
-      }
-    })
-    .catch((err) => console.error(err));
+            if (response.ok) {
+                setIsAuthenticated(true);
+            } else {
+                // isAuthenticated is false by default, do nothing.
+            }
+        })
+        .catch((err) => console.error(err));
 
-  return () => controller.abort();
+    return () => controller.abort();
 }, []);
-`}</pre>
+`}</CodeWithSyntaxHighlight>
       <br />
       <br />
       <p>
@@ -731,29 +729,29 @@ const MakingLoginRequests = () => {
         <br />
         Here is my <span className="bg-gray-400 font-mono dark:bg-slate-700">handleLogin</span> function:
       </p>
-      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`async function handleLogin(submitEvent) {
-  submitEvent.preventDefault();
+      <CodeWithSyntaxHighlight>{`async function handleLogin(submitEvent) {
+    submitEvent.preventDefault();
 
-  const payload = {};
+    const payload = {};
 
-  const allInputs = document.querySelectorAll("input");
-  for (let input of allInputs) {
-    payload[input.name] = input.value;
-  }
-
-  await fetchWithXsrfToken("http://localhost:8000/login", {
-    method: "POST",
-    body: JSON.stringify(payload),
-  }).then((res) => {
-    if (res.ok) {
-      setIsAuthenticated(true);
-      setIsWrong(false);
-    } else {
-      setIsWrong(true);
+    const allInputs = document.querySelectorAll("input");
+    for (let input of allInputs) {
+        payload[input.name] = input.value;
     }
-  });
+
+    await fetchWithXsrfToken("http://localhost:8000/login", {
+        method: "POST",
+        body: JSON.stringify(payload),
+    }).then((response) => {
+        if (response.ok) {
+            setIsAuthenticated(true);
+            setIsWrong(false);
+        } else {
+            setIsWrong(true);
+        }
+    });
 }
-`}</pre>
+`}</CodeWithSyntaxHighlight>
       <p>
         <br />
         Don't forget to set it as a <span className="bg-gray-400 font-mono dark:bg-slate-700">submit</span> event handler for the login
@@ -840,7 +838,7 @@ const SanctumStatefulDomains = () => {
         earlier, <em>but without the protocol</em> (http://).
         <br />
         <br />
-        Minor errors like adding the protocol or forgetting the port will cause issues so make sure you get it right!
+        Small errors like adding the protocol or forgetting the port will cause issues so make sure you get it right!
         <br />
         <br />
         With that set, save all changes & refresh your frontend.
@@ -885,18 +883,18 @@ const LoggingOutTheUser = () => {
       </p>
       <br />
       <br />
-      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">{`async function handleLogout(submitEvent) {
-  submitEvent.preventDefault();
+      <CodeWithSyntaxHighlight>{`async function handleLogout(submitEvent) {
+    submitEvent.preventDefault();
 
-  await fetchWithXsrfToken("http://localhost:8000/logout", {
-    method: "POST",
-  }).then((res) => {
-    if (res.ok) {
-      setIsAuthenticated(false);
-    }
-  });
+    await fetchWithXsrfToken("http://localhost:8000/logout", {
+        method: "POST",
+    }).then((response) => {
+        if (response.ok) {
+            setIsAuthenticated(false);
+        }
+    });
 }
-`}</pre>
+`}</CodeWithSyntaxHighlight>
       <p>
         <br />
         Don't forget to wire up the <span className="bg-gray-400 font-mono dark:bg-slate-700">handleLogout</span> function to the logout
@@ -965,14 +963,14 @@ const PostmanSetup = () => {
         Next, click on the Collection's <span className="bg-gray-400 font-mono dark:bg-slate-700">Pre-request Script</span> tab, and add
         this script like so:
       </p>
-      <pre className="overflow-x-auto bg-gray-400 p-4 text-lg dark:bg-black">
+      <CodeWithSyntaxHighlight>
         {`pm.sendRequest({
     url: "http://localhost:8000/sanctum/csrf-cookie",
     method: "GET",
 }, function(error, response, {cookies}){
     pm.collectionVariables.set("csrf-token", cookies.get("XSRF-TOKEN"))
 });`}
-      </pre>
+      </CodeWithSyntaxHighlight>
       <p>
         <br />
         <img loading="lazy" className="mx-auto rounded-lg" src={PreRequestScriptImage.src} height="857" width="1380" />
@@ -1046,7 +1044,7 @@ const NoteAboutSSR = () => {
       The only difference is that you have <em>another</em> server between the browser and your Laravel server.
       <br />
       <br />
-      If there is enough demand maybe I will write an article specifically on SSR.
+      If there is enough interest maybe I will write an article specifically on SSR.
       <br />
       But for now, I will leave you with this diagram to figure it out:
       <br />
@@ -1069,8 +1067,8 @@ const Conclusion = () => {
         Whew that was lot!
         <br />
         <br />
-        We learned how to troubleshoot CORS, 419 CSRF errors, we implemented some authentication features, and looked at how to manage
-        cookies & authentication in non-browser clients.
+        We learned how to troubleshoot CORS, 419 CSRF errors, implemented some authentication features, and learned how to manage cookies &
+        authentication in non-browser clients.
         <br />
         <br />
         This is information that I wish I had when I was starting with Laravel API development, and I hope it has helped you! Leave a

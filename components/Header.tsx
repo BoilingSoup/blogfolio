@@ -1,6 +1,6 @@
 import Link from "next/link";
-import GithubDark from "../public/icons/github-dark.png";
-import GithubLight from "../public/icons/github-light.png";
+// import GithubDark from "../public/icons/github-dark.png";
+// import GithubLight from "../public/icons/github-light.png";
 import TwitterDark from "../public/icons/twitter-dark.png";
 import TwitterLight from "../public/icons/twitter-light.png";
 import Moon from "../public/icons/moon.png";
@@ -10,6 +10,8 @@ import BSoupLight from "../public/icons/bsoup/bsoup.svg";
 import { StaticImageData } from "next/image";
 import { useDarkModeProvider } from "@/contexts/DarkModeProvider";
 import { smallIcon } from "@/data/constants";
+import { useEffect, useRef, useState } from "react";
+import { useHoverLogo } from "./hooks/useHoverLogo";
 
 type WrapperProps = {
   children?: JSX.Element;
@@ -17,7 +19,7 @@ type WrapperProps = {
 
 const HeaderWrapper = (props: WrapperProps) => {
   return (
-    <header className="fixed z-10 flex h-14 w-full animate-fade-in-up items-center border-b border-gray-400/20 transition ease-in-out dark:border-slate-400/20 md:justify-between">
+    <header className="header fixed z-10 flex h-14 w-full animate-fade-in-up items-center border-b border-dotted border-gray-500 transition ease-in-out dark:border-slate-400/20 md:justify-between">
       {props.children}
     </header>
   );
@@ -25,14 +27,23 @@ const HeaderWrapper = (props: WrapperProps) => {
 
 const BSoupIcon = () => {
   const { isDarkMode } = useDarkModeProvider();
+  const { hoverAreaRef, hoverEffectRef } = useHoverLogo();
+
   return (
-    <img
-      className="m-2 hidden h-[30px] w-[30px] animate-fade-in-up transition ease-in-out 2xs:inline md:m-2 lg:ml-8"
-      src={isDarkMode ? BSoupDark.src : BSoupLight.src}
-      width={smallIcon}
-      height={smallIcon}
-      alt="www.boilingsoup.dev icon"
-    />
+    <Link href="/" ref={hoverAreaRef}>
+      <img
+        className={"m-2 hidden h-[30px] w-[30px] animate-fade-in-up transition ease-in-out 2xs:inline md:m-2 lg:ml-8"}
+        src={isDarkMode ? BSoupDark.src : BSoupLight.src}
+        width={smallIcon}
+        height={smallIcon}
+        alt="www.boilingsoup.dev icon"
+      />
+      <div
+        ref={hoverEffectRef}
+        id="hover-effect"
+        className="absolute bottom-0 left-7 h-6 w-[40px] before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:transition-all before:content-[''] before:dark:bg-slate-50"
+      />
+    </Link>
   );
 };
 
@@ -45,7 +56,7 @@ const HeaderTitle = (props: WrapperProps) => {
 };
 
 const LinksWrapper = (props: WrapperProps) => {
-  return <div className="hidden h-full w-40 transition ease-in-out dark:text-white sm:flex">{props.children}</div>;
+  return <div className="mr-2 hidden h-full transition ease-in-out dark:text-white sm:flex">{props.children}</div>;
 };
 
 type NavLinkProps = {
@@ -112,7 +123,7 @@ const DarkModeButton = () => {
     <button
       aria-label="Dark Mode Toggle"
       onClick={toggleDarkMode}
-      className="my-auto mr-2 rounded p-2 transition ease-in-out hover:bg-slate-500 dark:hover:bg-gray-500 lg:mx-8"
+      className="rounded-3xl p-2 transition ease-in-out hover:bg-slate-500 dark:hover:bg-gray-500 lg:mx-8"
     >
       {isDarkMode ? (
         <img src={Sun.src} width={smallIcon} height={smallIcon} alt="dark mode icon" />
@@ -129,38 +140,44 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <>
+        {/* <div className="flex h-full items-center"> */}
         <BSoupIcon />
-        <HeaderTitle />
-        <LinksWrapper>
-          <>
-            <NavLink href="/" text="Home" />
-            <NavLink href="/projects" text="Projects" />
-            <NavLink href="/blog" text="Blog" />
-          </>
-        </LinksWrapper>
-        <ButtonsWrapper>
-          <>
-            <IconButton
-              image={isDarkMode ? GithubDark : GithubLight}
-              size={smallIcon}
-              link
-              href="https://github.com/boilingsoup"
-              newTab
-              text={"GitHub"}
-              alt="Open my Github on a new tab"
-            />
-            <IconButton
-              image={isDarkMode ? TwitterDark : TwitterLight}
-              size={smallIcon}
-              link
-              href="https://twitter.com/boilingsoupdev"
-              newTab
-              text={"Twitter"}
-              alt="Open my Twitter on a new tab"
-            />
-          </>
-        </ButtonsWrapper>
-        <DarkModeButton />
+        {/* <HeaderTitle /> */}
+        <div className="flex h-full items-center">
+          <LinksWrapper>
+            <>
+              {/* <NavLink href="/" text="Home" /> */}
+              <NavLink href="/blog" text="Blog" />
+              <NavLink href="/projects" text="Projects" />
+              <NavLink href="/blog" text="Demos" />
+              <NavLink href="/blog" text="Contact" />
+            </>
+          </LinksWrapper>
+          {/* </div> */}
+          {/* <ButtonsWrapper> */}
+          {/*   <> */}
+          {/*     <IconButton */}
+          {/*       image={isDarkMode ? GithubDark : GithubLight} */}
+          {/*       size={smallIcon} */}
+          {/*       link */}
+          {/*       href="https://github.com/boilingsoup" */}
+          {/*       newTab */}
+          {/*       text={"GitHub"} */}
+          {/*       alt="Open my Github on a new tab" */}
+          {/*     /> */}
+          {/*     <IconButton */}
+          {/*       image={isDarkMode ? TwitterDark : TwitterLight} */}
+          {/*       size={smallIcon} */}
+          {/*       link */}
+          {/*       href="https://twitter.com/boilingsoupdev" */}
+          {/*       newTab */}
+          {/*       text={"Twitter"} */}
+          {/*       alt="Open my Twitter on a new tab" */}
+          {/*     /> */}
+          {/*   </> */}
+          {/* </ButtonsWrapper> */}
+          <DarkModeButton />
+        </div>
       </>
     </HeaderWrapper>
   );
