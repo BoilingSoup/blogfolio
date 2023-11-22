@@ -12,8 +12,7 @@
   $: if ($page.url.pathname.split("/").length >= 2) {
     const subPage = $page.url.pathname.split("/")[1];
     if (subPage.toLowerCase() === text.toLowerCase()) {
-      activeRouteStyle = " before:h-[4px] before:opacity-100";
-      console.log(activeRouteStyle);
+      activeRouteStyle = " before:h-[4px] before:!opacity-100";
     } else {
       activeRouteStyle = "";
     }

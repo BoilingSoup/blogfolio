@@ -25,6 +25,13 @@
       <br />
       <br />
       <slot />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <hr />
+      <br />
       <giscus-widget
         id="comments"
         repo="BoilingSoup/blogfolio"

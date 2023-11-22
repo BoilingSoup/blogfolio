@@ -672,10 +672,3 @@ authentication in non-browser clients.
 <br />
 This is information that I wish I had when I was starting with Laravel API development, and I hope it has helped you! Leave a
 comment if you have any questions or feedback!
-<br />
-<br />
-<br />
-<br />
-<br />
-<hr />
-<br />
