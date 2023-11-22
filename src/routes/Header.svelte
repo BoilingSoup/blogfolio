@@ -14,22 +14,34 @@
   };
 </script>
 
+<div id="light-bg" />
+<div id="dark-bg" />
+
 <header
   class="header fixed z-10 flex h-14 w-full animate-fade-in-up items-center border-b border-dotted border-gray-500 transition ease-in-out dark:border-slate-400/20 md:justify-between"
 >
-  <a href="/" on:mouseover={addHoverEffect} on:mouseleave={removeHoverEffect} on:focus={addHoverEffect} on:blur={removeHoverEffect}>
+  <div id="header-light-bg" />
+  <div id="header-dark-bg" />
+  <a
+    class="z-10"
+    href="/"
+    on:mouseover={addHoverEffect}
+    on:mouseleave={removeHoverEffect}
+    on:focus={addHoverEffect}
+    on:blur={removeHoverEffect}
+  >
     <div
-      class="[&>svg]:m-2 [&>svg]:hidden [&>svg]:h-[30px] [&>svg]:w-[30px] [&>svg]:animate-fade-in-up [&>svg]:transition [&>svg]:ease-in-out [&>svg]:2xs:inline [&>svg]:md:m-2 [&>svg]:lg:ml-8"
+      class="absolute left-1 top-1 lg:left-1 [&>svg]:m-2 [&>svg]:hidden [&>svg]:h-[30px] [&>svg]:w-[30px] [&>svg]:animate-fade-in-up [&>svg]:transition [&>svg]:ease-in-out [&>svg]:2xs:inline [&>svg]:md:m-2 [&>svg]:lg:ml-8"
     >
       <BSoupFrog />
-      <div
-        bind:this={hoverEffect}
-        id="hover-effect"
-        class="absolute bottom-0 left-1 h-6 w-[40px] before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:transition-all before:content-[''] before:dark:bg-slate-50 lg:left-7"
-      />
     </div>
+    <div
+      bind:this={hoverEffect}
+      id="hover-effect"
+      class="absolute bottom-0 left-1 z-10 h-6 w-[40px] before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:transition-all before:content-[''] before:dark:bg-slate-50 md:left-2 lg:left-8"
+    />
   </a>
-  <div class="flex h-full items-center">
+  <div class="z-10 flex h-full items-center">
     <div class="mr-2 hidden h-full transition ease-in-out dark:text-white sm:flex">
       <NavLink href="/blog" text="Blog" />
       <NavLink href="/projects" text="Projects" />
@@ -39,4 +51,5 @@
     <DarkModeButton />
   </div>
 </header>
-<div class="h-14" />
+
+<div class="z-0 h-14" />

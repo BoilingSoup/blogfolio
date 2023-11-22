@@ -25,7 +25,11 @@ export default {
       animation: {
         "fade-in-up": "fade-in-up 0.2s"
       }
+    },
+    transitionDuration: {
+      DEFAULT: "550ms"
     }
   },
+
   plugins: []
 };

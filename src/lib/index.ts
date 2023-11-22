@@ -20,12 +20,16 @@ function createDarkModeStore() {
           localStorage.setItem("dark", "false");
           document.documentElement.classList.remove("dark");
           (document.querySelector('meta[name="theme-color"]') as any).content = "#e2e8f0";
+          document.getElementById("dark-bg")!.style.opacity = "0";
+          document.getElementById("header-dark-bg")!.style.opacity = "0";
           setDarkScrollBar(false);
         } else {
           _darkModeStore.set(true);
           localStorage.setItem("dark", "true");
           document.documentElement.classList.add("dark");
           (document.querySelector('meta[name="theme-color"]') as any).content = "#0f172a";
+          document.getElementById("dark-bg")!.style.opacity = "1";
+          document.getElementById("header-dark-bg")!.style.opacity = "1";
           setDarkScrollBar(true);
         }
       }

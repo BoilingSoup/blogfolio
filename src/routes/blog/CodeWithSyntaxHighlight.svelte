@@ -12,4 +12,8 @@
 
 <svelte:head>{@html syntaxHighlightCss}</svelte:head>
 
-<Highlight {language} {code} class="overflow-x-auto border-4 border-zinc-600 text-lg dark:border-black dark:bg-black" />
+<Highlight
+  {language}
+  {code}
+  class="overflow-x-auto border-4 border-zinc-600 text-lg transition ease-in-out dark:border-black dark:bg-black"
+/>

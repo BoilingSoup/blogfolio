@@ -9,20 +9,58 @@
   }
 }
 
+:root {
+  --delay: 550ms;
+}
+
 html,
 .header {
-  background-color: #e8e8e8;
   opacity: 1;
-  background-image: radial-gradient(#5c5c5c 2px, #e8e8e8 2px);
-  background-size: 40px 40px;
 }
 
 html[class~="dark"],
 html[class~="dark"] .header {
-  background-color: #0e0e0e;
+  opacity: 1;
+}
+
+#light-bg {
+  opacity: 1;
+  background-image: radial-gradient(#5c5c5c 2px, #e8e8e8 2px);
+  background-size: 40px 40px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+#dark-bg {
   opacity: 1;
   background-image: radial-gradient(#333333 2px, #0e0e0e 2px);
   background-size: 40px 40px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  transition: opacity var(--delay) ease-in-out;
+}
+
+#header-light-bg {
+  opacity: 1;
+  background-image: radial-gradient(#5c5c5c 2px, #e8e8e8 2px);
+  background-size: 40px 40px;
+  width: 100%;
+  height: 55px;
+  position: fixed;
+}
+
+#header-dark-bg {
+  opacity: 1;
+  background-image: radial-gradient(#333333 2px, #0e0e0e 2px);
+  background-size: 40px 40px;
+  width: 100%;
+  height: 55px;
+  position: fixed;
+  transition: opacity var(--delay) ease-in-out;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -31,6 +69,11 @@ html[class~="dark"] .header {
   --scroll-border-color: #1c1c1c;
   --scroll-thumb-bg: #6b6b6b;
   --scroll-track-bg: #1c1c1c;
+}
+
+main {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== Scrollbar CSS ===== */

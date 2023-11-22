@@ -8,7 +8,7 @@
 <section
   class="mx-8 hidden h-[calc(180px_-_theme(space.14))] flex-col items-center justify-center transition ease-in-out dark:text-white dark:ease-in-out sm:flex sm:h-[calc(500px_-_theme(space.14))] lg:ml-0 lg:h-[calc(100vh_-_theme(space.14))] lg:w-5/12"
 >
-  <div class="flex h-[90%] w-full flex-col rounded-xl bg-gray-300 transition ease-in-out dark:bg-slate-800">
+  <div class="flex h-[90%] w-full flex-col rounded-xl bg-gray-300/70 transition ease-in-out dark:bg-slate-800/30">
     {#each recentBlogPosts as post, i}
       <BlogLink {i} date={post.date} icon={post.icon} title={post.title} href={`/blog/${post.slug}`} />
     {/each}
