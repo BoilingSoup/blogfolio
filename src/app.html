@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" class="polka dark h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#0f172a" />
+    <script>
+      let d = localStorage.getItem("dark");
+      if (d !== null && d.trim() === "false") {
+        document.documentElement.classList.remove("dark");
+        document.querySelector('meta[name="theme-color"]').content = "#e2e8f0";
+        document.documentElement.style.setProperty("--scroll-border-color", "#52525b");
+        document.documentElement.style.setProperty("--scroll-thumb-bg", "#e2e8f0");
+        document.documentElement.style.setProperty("--scroll-track-bg", "#27272a");
+      }
+    </script>
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover" class="h-full antialiased transition ease-in-out">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>
