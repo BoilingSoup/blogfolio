@@ -17,7 +17,7 @@
 
 <a {href}>
   <div
-    class={"flex h-[150px] w-full border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500" +
+    class={"flex h-[150px] w-full overflow-hidden overflow-ellipsis whitespace-normal border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500" +
       topRadius +
       topBorder +
       " " +
@@ -28,7 +28,7 @@
     </div>
     <div class="flex w-full animate-fade-in-up flex-col justify-center">
       <p>{date}</p>
-      <h2 class="text-2xl">{title}</h2>
+      <h2 class="text-md sm:text-xl md:text-2xl">{title}</h2>
     </div>
   </div>
 </a>

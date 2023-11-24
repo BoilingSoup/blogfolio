@@ -18,7 +18,7 @@
 <div id="dark-bg" />
 
 <header
-  class="header fixed z-10 flex h-14 w-full animate-fade-in-up items-center border-b border-dotted border-gray-500 transition ease-in-out dark:border-slate-400/20 md:justify-between"
+  class="header fixed z-10 flex h-14 w-full animate-fade-in-up items-center justify-end border-b border-dotted border-gray-500 dark:border-slate-400/20 md:justify-between"
 >
   <div id="header-light-bg" />
   <div id="header-dark-bg" />
@@ -38,11 +38,11 @@
     <div
       bind:this={hoverEffect}
       id="hover-effect"
-      class="absolute bottom-0 left-1 z-10 h-6 w-[40px] before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:transition-all before:content-[''] before:dark:bg-slate-50 md:left-2 lg:left-8"
+      class="absolute bottom-0 left-1 z-10 h-6 w-[40px] before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:transition-all before:duration-200 before:content-[''] before:dark:bg-slate-50 md:left-2 lg:left-8"
     />
   </a>
   <div class="z-10 flex h-full items-center">
-    <div class="mr-2 hidden h-full transition ease-in-out dark:text-white sm:flex">
+    <div class="mr-2 hidden h-full dark:text-white lg:flex">
       <NavLink href="/blog" text="Blog" />
       <NavLink href="/projects" text="Projects" />
       <NavLink href="/demos" text="Demos" />

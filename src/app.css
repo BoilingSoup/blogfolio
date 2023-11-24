@@ -9,6 +9,11 @@
   }
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 400ms;
+}
+
 :root {
   --delay: 550ms;
 }
@@ -63,17 +68,23 @@ html[class~="dark"] .header {
   transition: opacity var(--delay) ease-in-out;
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* adds effect when hovering over logo */
+#hover-effect.hover-effect:before {
+  height: 4px;
+  opacity: 1;
+}
+
 /* ===== Scrollbar CSS ===== */
 
 :root {
   --scroll-border-color: #1c1c1c;
   --scroll-thumb-bg: #6b6b6b;
   --scroll-track-bg: #1c1c1c;
-}
-
-main {
-  position: relative;
-  z-index: 1;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -96,10 +107,4 @@ main {
   background-color: var(--scroll-thumb-bg);
   border-radius: 10px;
   border: 3px solid var(--scroll-border-color);
-}
-
-/* adds effect when hovering over logo */
-#hover-effect.hover-effect:before {
-  height: 4px;
-  opacity: 1;
 }

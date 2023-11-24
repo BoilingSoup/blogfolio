@@ -111,7 +111,7 @@ And install SolidStart:
 Select the <InlineCode>bare</InlineCode> template, and make sure to say <b>"Yes"</b> to Server Side Rendering!
 <br/>
 <br/>
-<img class="mx-auto rounded-lg" alt="answer yes to SolidStart server side rendering installation prompt" src={InstallPromptImage} height="73" width="498" />
+<img loading="lazy" class="mx-auto rounded-lg" alt="answer yes to SolidStart server side rendering installation prompt" src={InstallPromptImage} height="73" width="498" />
 <br/>
 And then install dependencies:
 <BlockCode>npm install</BlockCode>
@@ -119,7 +119,7 @@ And then install dependencies:
 Great! You should now have a project structure that looks like this:
 <br/>
 <br/>
-<img class="mx-auto rounded-lg" alt="project structure of a newly installed SolidStart project" src={ProjectStructureImage} height="512" width="343" />
+<img loading="lazy" class="mx-auto rounded-lg" alt="project structure of a newly installed SolidStart project" src={ProjectStructureImage} height="512" width="343" />
 
 <br/> 
 <br/> 
@@ -180,6 +180,6 @@ Static elements in your Solid components were built as HTML.
 The files inside the <InlineCode>/dist/public</InlineCode> are all your statically generated assets.
 <br/> 
 <br/> 
-<img class="mx-auto rounded-lg" alt="static rendering clipart" src={DistImage} height="330" width="328" />
+<img loading="lazy" class="mx-auto rounded-lg" alt="static rendering clipart" src={DistImage} height="330" width="328" />
 <br/> 
 You can upload the <InlineCode>public</InlineCode> folder to a CDN like Github Pages, Cloudflare, etc to host your project! 

@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[[redirects]]
+  from = "https://boinlingsoup.netlify.app/*"
+  to = "https://boilingsoup.xyz/:splat"
+  status = 301
+  force = true

@@ -14,7 +14,7 @@
   <div
     class="flex h-[90%] w-full flex-col items-center justify-center rounded-xl border-2 border-gray-400 transition ease-in-out dark:border-slate-800"
   >
-    tech stack
+    coming soon...
   </div>
 </a>
 <div class="hidden sm:block sm:h-[calc((500px_-_theme(space.14))_*_0.05)] lg:hidden" />
