@@ -18,7 +18,7 @@
 <div id="dark-bg" />
 
 <header
-  class="header fixed z-10 flex h-14 w-full animate-fade-in-up items-center justify-end border-b border-dotted border-gray-500 dark:border-slate-400/20 md:justify-between"
+  class="header fixed z-10 flex h-14 w-full animate-fade-in-up items-center justify-end border-b border-dotted border-gray-500 transition ease-in-out dark:border-slate-400/20 md:justify-between"
 >
   <div id="header-light-bg" />
   <div id="header-dark-bg" />

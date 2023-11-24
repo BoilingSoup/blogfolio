@@ -1,0 +1,7 @@
+.radio-input:checked + label {
+  background: rgba(100 116 139 / 1); /* same as slate-400 */
+}
+
+html[class~="dark"] .radio-input:checked + label {
+  background: rgba(148 163 184 / 1); /* same as slate-400 */
+}

@@ -28,8 +28,13 @@
   a,
   a::before {
     transition:
-      color 500ms ease-in-out,
-      background 5000ms ease-in-out,
-      height 200ms ease-in-out;
+      /*
+       * dark mode transition, 550ms
+       */
+      color 550ms ease-in-out,
+      background 550ms ease-in-out,
+      /*
+       * hover underline effect, 200ms
+       */ height 200ms ease-in-out;
   }
 </style>
