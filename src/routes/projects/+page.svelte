@@ -70,10 +70,9 @@
   let arrow: HTMLImageElement;
 </script>
 
-<main class="max-w-8xl mx-auto h-full w-[90%] transition ease-in-out dark:text-white dark:ease-in-out">
+<main class="max-w-8xl mx-auto h-[calc(100%-theme(space.14))] w-[90%] transition ease-in-out dark:text-white dark:ease-in-out">
   <!-- <p class="my-5 text-center text-xl font-bold text-black transition ease-in-out dark:text-white">Showing 3 of 3 Projects:</p> -->
   <div class="flex h-full w-full flex-col-reverse items-center transition ease-in-out lg:flex-row">
-    <!-- <p>{selectedIndex}</p> -->
     <form class="relative flex flex-col gap-[12px] lg:w-1/2">
       <img
         bind:this={arrow}
@@ -85,6 +84,9 @@
         <ProjectRadioInput on:change={handleChange} {i} title={post.title} />
       {/each}
     </form>
-    <Carousel classes="lg:w-1/2" loop={true} autoplay={true} delay={5000} data={projectData[0].carousel} />
+    <div class="flex h-full w-full flex-col items-center justify-center">
+      <p>wefawf</p>
+      <Carousel classes="h-3/4 lg:w-1/2" loop={true} autoplay={true} delay={5000} data={projectData[0].carousel} />
+    </div>
   </div>
 </main>

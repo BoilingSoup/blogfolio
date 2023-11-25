@@ -2,7 +2,6 @@
   import emblaCarouselSvelte from "embla-carousel-svelte";
   import Autoplay from "embla-carousel-autoplay";
   import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
-  import AutoHeight from "embla-carousel-auto-height";
   import type { ProjectData } from "$lib/projectData";
 
   export let autoplay: boolean = false;
@@ -25,9 +24,6 @@
     {#each data as slide}
       <img class="embla__slide" alt={slide.alt} src={slide.src} width={slide.width} height={slide.height} />
     {/each}
-    <!-- <div class="embla__slide flex h-full w-full items-center justify-center bg-green-500">Slide 1</div> -->
-    <!-- <div class="embla__slide flex h-full w-full items-center justify-center bg-orange-200">Slide 2</div> -->
-    <!-- <div class="embla__slide flex h-full w-full items-center justify-center bg-gray-500">Slide 3</div> -->
   </div>
 </div>
 
@@ -36,7 +32,9 @@
     overflow: hidden;
   }
   .embla__container {
+    height: 100%;
     display: flex;
+    align-items: center;
   }
   .embla__slide {
     flex: 0 0 100%;
