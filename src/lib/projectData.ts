@@ -23,7 +23,7 @@ export const projectData: ProjectData = [
       { type: PICTURE, src: Flowtoolz1, width: 1920, height: 974, alt: "" },
       { type: PICTURE, src: Flowtoolz2, width: 1920, height: 977, alt: "" }
     ],
-    title: "flowtoolz",
+    title: "Flowtoolz",
     url: "https://flowtoolz.xyz",
     description: "..",
     languages: ["TypeScript"],
@@ -31,7 +31,7 @@ export const projectData: ProjectData = [
   },
   {
     carousel: [{ type: PICTURE, src: LaravelCookiesThumbnail, width: 80, height: 80, alt: "" }],
-    title: "dockfiles",
+    title: "Dockfiles",
     url: "https://dockfiles.xyz",
     description: "..",
     languages: ["TypeScript", "PHP"],
@@ -39,7 +39,7 @@ export const projectData: ProjectData = [
   },
   {
     carousel: [{ type: PICTURE, src: LaravelCookiesThumbnail, width: 80, height: 80, alt: "" }],
-    title: "tierlist.lol",
+    title: "Tierlist.lol",
     url: "https://tierlist.lol",
     description: "...",
     languages: ["TypeScript", "PHP"],

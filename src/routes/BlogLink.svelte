@@ -17,13 +17,13 @@
 
 <a {href}>
   <div
-    class={"flex h-[150px] w-full overflow-hidden overflow-ellipsis whitespace-normal border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500" +
+    class={"flex h-[100px] w-full overflow-hidden overflow-ellipsis whitespace-normal border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500 lg:h-[150px]" +
       topRadius +
       topBorder +
       " " +
       classes}
   >
-    <div class="flex h-[150px] w-[150px] items-center justify-center">
+    <div class="flex h-[100px] items-center justify-center lg:h-[150px] lg:w-[150px]">
       <img class="m-auto w-[50%] animate-fade-in-up" src={icon} width="80" height="80" alt="blog thumbnail" />
     </div>
     <div class="flex w-full animate-fade-in-up flex-col justify-center">
