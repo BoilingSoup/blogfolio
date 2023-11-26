@@ -20,10 +20,19 @@ export default {
             transform: "translateY(0px)",
             opacity: "100%"
           }
+        },
+        fade: {
+          "0%": {
+            opacity: "0"
+          },
+          "100%": {
+            opacity: "100%"
+          }
         }
       },
       animation: {
-        "fade-in-up": "fade-in-up 0.2s"
+        "fade-in-up": "fade-in-up 0.2s",
+        fade: "fade 550ms"
       },
       transitionDuration: {
         DEFAULT: "550ms"

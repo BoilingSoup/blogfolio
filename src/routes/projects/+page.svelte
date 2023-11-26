@@ -5,6 +5,8 @@
   import type { IndexData } from "./types";
   import SelectArrow from "$lib/assets/select-arrow.png";
   import { onMount } from "svelte";
+  import { fade } from "svelte/transition";
+  import Badge from "./Badge.svelte";
 
   let selectedIndex: number = 0;
   let isDesktop: boolean | undefined = undefined;
@@ -92,20 +94,20 @@
     </div>
     <div class="h-full w-full rounded-xl dark:bg-zinc-900/70">
       {#key selectedProject}
-        <h1 class="m-6 text-2xl">
+        <h1 class="m-6 text-2xl" in:fade={{ duration: 500 }}>
           {selectedProject.title}
         </h1>
-        <h2 class="mx-6 text-gray-600">
-          Languages: {#each selectedProject.languages as lang}<span
-              class="mx-1 rounded p-1 text-xs font-bold tracking-wide text-white {lang.color}">{lang.name}</span
-            >{/each}
-        </h2>
-        <h2 class="mx-6 text-gray-600">
-          Frameworks: {#each selectedProject.frameworks as framework}<span
-              class="mx-1 rounded p-1 text-xs font-bold tracking-wide text-white {framework.color}">{framework.name}</span
-            >{/each}
-        </h2>
       {/key}
+      <h2 class="mx-6 text-gray-600">
+        {#key selectedProject}
+          Languages: {#each selectedProject.languages as lang}<Badge color={lang.color}>{lang.name}</Badge>{/each}
+        {/key}
+      </h2>
+      <h2 class="mx-6 text-gray-600">
+        {#key selectedProject}
+          Frameworks: {#each selectedProject.frameworks as framework}<Badge color={framework.color}>{framework.name}</Badge>{/each}
+        {/key}
+      </h2>
       <Carousel loop={true} data={selectedProject.carousel} dots={true} delay={5000} classes="m-4 rounded" autoplay={true} />
     </div>
   </div>
