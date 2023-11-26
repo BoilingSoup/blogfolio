@@ -9,41 +9,57 @@
   import Badge from "./Badge.svelte";
 
   let selectedIndex: number = 0;
-  let isDesktop: boolean | undefined = undefined;
+  let breakpoint: "xs" | "lg" | "xl" | undefined = undefined;
 
   $: selectedProject = projectData[selectedIndex];
 
   onMount(() => {
     if (window.innerWidth >= 1024) {
-      isDesktop = true;
+      breakpoint = "xl";
+    } else if (window.innerWidth >= 640) {
+      breakpoint = "lg";
     } else {
-      isDesktop = false;
+      breakpoint = "xs";
     }
 
     const handleResize = function () {
-      const isLargeScreen = window.innerWidth >= 1024;
+      const isXL = window.innerWidth >= 1024;
 
-      const isResizeToDesktop = isLargeScreen && isDesktop === false;
-      if (isResizeToDesktop) {
+      const isResizeToXL = isXL && breakpoint !== "xl";
+      if (isResizeToXL) {
         const gapHeight = 12;
         const optionsHeight = 64;
 
         const pxPerIndex = gapHeight + optionsHeight;
 
         arrow.style.transform = `translateY(${pxPerIndex * selectedIndex}px)`;
-        isDesktop = true;
+        breakpoint = "xl";
         return;
       }
 
-      const isResizeToMobile = !isLargeScreen && isDesktop === true;
-      if (isResizeToMobile) {
+      const isLG = window.innerWidth >= 640 && window.innerWidth < 1024;
+      const isResizeToLG = isLG && breakpoint !== "lg";
+      if (isResizeToLG) {
         const gapHeight = 12;
         const optionsHeight = 36;
 
         const pxPerIndex = gapHeight + optionsHeight;
 
         arrow.style.transform = `translateY(${pxPerIndex * selectedIndex}px)`;
-        isDesktop = false;
+        breakpoint = "lg";
+        return;
+      }
+
+      const isXS = window.innerWidth < 640;
+      const isResizeToXS = isXS && breakpoint !== "xs";
+      if (isResizeToXS) {
+        const gapHeight = 12;
+        const optionsHeight = 24;
+
+        const pxPerIndex = gapHeight + optionsHeight;
+
+        arrow.style.transform = `translateY(${pxPerIndex * selectedIndex}px)`;
+        breakpoint = "xs";
         return;
       }
     };
@@ -61,9 +77,13 @@
     let gapHeight = 12;
     let optionsHeight = 36;
 
-    const isDesktop = window.innerWidth >= 1024;
-    if (isDesktop) {
+    const isXL = window.innerWidth >= 1024;
+    const isXS = window.innerWidth < 640;
+
+    if (isXL) {
       optionsHeight = 64;
+    } else if (isXS) {
+      optionsHeight = 24;
     }
 
     const pxPerIndex = gapHeight + optionsHeight;
@@ -78,12 +98,12 @@
 
 <main class="max-w-8xl mx-auto h-[calc(100%-theme(space.14))] transition ease-in-out dark:text-white dark:ease-in-out">
   <div class="flex h-full w-full flex-col-reverse items-center transition ease-in-out lg:flex-row">
-    <div class="mx-auto h-72 w-full items-center justify-center bg-slate-300 pb-4 dark:bg-zinc-700/70">
-      <p class="my-4 text-center font-bold">Select a project to view its details:</p>
-      <form class="relative mx-auto flex w-3/4 flex-col justify-center gap-[12px] lg:w-1/2">
+    <div class="mx-auto flex h-60 w-full flex-col items-center justify-center bg-slate-300 pb-4 dark:bg-zinc-700/70">
+      <p class="my-4 text-center font-bold text-black transition ease-in-out dark:text-white">Select a project to view its details:</p>
+      <form class="max-w-8 relative mx-auto flex h-full w-1/2 flex-col gap-[12px] lg:w-1/2">
         <img
           bind:this={arrow}
-          class="duration-400 absolute left-[-41px] top-0 h-9 transition lg:top-[13px]"
+          class="duration-400 absolute left-[-41px] top-[-7px] h-9 transition md:top-0 lg:top-[13px]"
           alt="arrow currently selecting {projectData[selectedIndex].title}"
           src={SelectArrow}
         />
@@ -92,8 +112,7 @@
         {/each}
       </form>
     </div>
-    <div class="mx-4 mt-4 h-full">
-      <Carousel loop={true} data={selectedProject.carousel} dots={true} delay={5000} classes="m-4 rounded" autoplay={true} />
+    <div class="mx-1 mt-1 flex h-full flex-col">
       <div class="rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900/80 dark:text-white">
         {#key selectedProject}
           <h1 class="text-2xl" in:fade={{ duration: 500 }}>
@@ -111,9 +130,11 @@
           {/key}
         </h2>
       </div>
+      <Carousel loop={true} data={selectedProject.carousel} dots={true} delay={5000} classes="m-1 rounded" autoplay={true} />
       {#key selectedProject}
         <div
-          class="animate-fade h-60 overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
+          id="about"
+          class="animate-fade h-8 overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
         >
           <h2 class="mb-4 text-xl font-bold">About</h2>
           {@html selectedProject.description}
