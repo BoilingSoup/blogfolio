@@ -92,23 +92,33 @@
         {/each}
       </form>
     </div>
-    <div class="h-full w-full rounded-xl dark:bg-zinc-900/70">
-      {#key selectedProject}
-        <h1 class="m-6 text-2xl" in:fade={{ duration: 500 }}>
-          {selectedProject.title}
-        </h1>
-      {/key}
-      <h2 class="mx-6 text-gray-600">
-        {#key selectedProject}
-          Languages: {#each selectedProject.languages as lang}<Badge color={lang.color}>{lang.name}</Badge>{/each}
-        {/key}
-      </h2>
-      <h2 class="mx-6 text-gray-600">
-        {#key selectedProject}
-          Frameworks: {#each selectedProject.frameworks as framework}<Badge color={framework.color}>{framework.name}</Badge>{/each}
-        {/key}
-      </h2>
+    <div class="mx-4 mt-4 h-full">
       <Carousel loop={true} data={selectedProject.carousel} dots={true} delay={5000} classes="m-4 rounded" autoplay={true} />
+      <div class="rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900/80 dark:text-white">
+        {#key selectedProject}
+          <h1 class="text-2xl" in:fade={{ duration: 500 }}>
+            {selectedProject.title}
+          </h1>
+        {/key}
+        <h2 class="mt-2 text-gray-600">
+          {#key selectedProject}
+            Languages: {#each selectedProject.languages as lang}<Badge color={lang.color}>{lang.name}</Badge>{/each}
+          {/key}
+        </h2>
+        <h2 class="text-gray-600">
+          {#key selectedProject}
+            Frameworks: {#each selectedProject.frameworks as framework}<Badge color={framework.color}>{framework.name}</Badge>{/each}
+          {/key}
+        </h2>
+      </div>
+      {#key selectedProject}
+        <div
+          class="animate-fade h-60 overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
+        >
+          <h2 class="mb-4 text-xl font-bold">About</h2>
+          {@html selectedProject.description}
+        </div>
+      {/key}
     </div>
   </div>
 </main>

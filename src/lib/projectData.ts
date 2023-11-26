@@ -57,7 +57,19 @@ export const projectData: ProjectData = [
     ],
     title: "Flowtoolz",
     url: "https://flowtoolz.xyz",
-    description: "..",
+    description: `
+Flowtoolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
+<br/>
+<br/>
+The data is sourced from public crypto WebSocket APIs.
+Charts can be aggregated by both X-axis (time) and Y-axis (price).
+<br/>
+<br/>
+Web Workers were used for multi-threading. This allow users to subscribe and aggregate multiple WebSocket feeds, and the data is temporarily persisted in IndexedDB.
+<br/>
+<br/>
+The UI elements were made with vanilla HTML/CSS/TypeScript, and the visualization was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a low-level wrapper around the WebGL API.
+`,
     languages: [LANGUAGES.typescript],
     frameworks: [FRAMEWORKS.none]
   },
