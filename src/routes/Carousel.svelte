@@ -4,6 +4,7 @@
   import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
   import type { ProjectData } from "$lib/projectData";
   import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
 
   export let autoplay: boolean = false;
   export let loop: boolean = false;
@@ -36,9 +37,23 @@
 
     onEmblaInit(event);
   }
+
+  export let height: number = 0;
+
+  onMount(() => {
+    const resizeObserver = new ResizeObserver((entries) => {
+      height = entries[0].contentBoxSize[0].blockSize;
+    });
+
+    resizeObserver.observe(carouselRef);
+
+    return () => resizeObserver.unobserve(carouselRef);
+  });
+
+  let carouselRef: HTMLDivElement;
 </script>
 
-<div class="embla {classes}" use:emblaCarouselSvelte={{ options, plugins }} on:emblaInit={onInit}>
+<div bind:this={carouselRef} class="embla {classes}" use:emblaCarouselSvelte={{ options, plugins }} on:emblaInit={onInit}>
   <div class="embla__container">
     {#each data as slide}
       {#key slide}

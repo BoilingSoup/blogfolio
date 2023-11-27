@@ -8,102 +8,96 @@
   import { fade } from "svelte/transition";
   import Badge from "./Badge.svelte";
 
-  let selectedIndex: number = 0;
-  let breakpoint: "xs" | "lg" | "xl" | undefined = undefined;
+  let arrowRef: HTMLImageElement;
 
+  let aboutRef: HTMLDivElement;
+  let carouselHeight: number = 0;
+  $: if (carouselHeight) {
+    // console.log("hello", carouselHeight);
+    aboutRef.style.height = `250px`;
+    // console.log(aboutRef.style.height);
+  }
+
+  let selectedIndex: number = 0;
   $: selectedProject = projectData[selectedIndex];
 
+  const GAP_HEIGHT = 12;
+  let selectOptionHeight: number | undefined = undefined;
+
   onMount(() => {
-    if (window.innerWidth >= 1024) {
-      breakpoint = "xl";
-    } else if (window.innerWidth >= 640) {
-      breakpoint = "lg";
-    } else {
-      breakpoint = "xs";
-    }
-
-    const handleResize = function () {
-      const isXL = window.innerWidth >= 1024;
-
-      const isResizeToXL = isXL && breakpoint !== "xl";
-      if (isResizeToXL) {
-        const gapHeight = 12;
-        const optionsHeight = 64;
-
-        const pxPerIndex = gapHeight + optionsHeight;
-
-        arrow.style.transform = `translateY(${pxPerIndex * selectedIndex}px)`;
-        breakpoint = "xl";
+    const createRepositionFunc = (gapHeight: number, optionsHeight: number) => (event: MediaQueryListEvent) => {
+      if (!event.matches) {
         return;
       }
 
-      const isLG = window.innerWidth >= 640 && window.innerWidth < 1024;
-      const isResizeToLG = isLG && breakpoint !== "lg";
-      if (isResizeToLG) {
-        const gapHeight = 12;
-        const optionsHeight = 36;
+      selectOptionHeight = optionsHeight;
 
-        const pxPerIndex = gapHeight + optionsHeight;
-
-        arrow.style.transform = `translateY(${pxPerIndex * selectedIndex}px)`;
-        breakpoint = "lg";
-        return;
-      }
-
-      const isXS = window.innerWidth < 640;
-      const isResizeToXS = isXS && breakpoint !== "xs";
-      if (isResizeToXS) {
-        const gapHeight = 12;
-        const optionsHeight = 24;
-
-        const pxPerIndex = gapHeight + optionsHeight;
-
-        arrow.style.transform = `translateY(${pxPerIndex * selectedIndex}px)`;
-        breakpoint = "xs";
-        return;
-      }
+      const pxPerIndex = gapHeight + optionsHeight;
+      arrowRef.style.transform = `translateY(${pxPerIndex * selectedIndex}px)`;
     };
 
-    window.addEventListener("resize", handleResize);
+    const optionHeight = {
+      xl: 64,
+      lg: 36,
+      xs: 24
+    };
+
+    const repositionArrowXL = createRepositionFunc(GAP_HEIGHT, optionHeight.xl);
+    const queryXL = window.matchMedia("(min-width: 1024px)");
+    queryXL.addEventListener("change", repositionArrowXL);
+
+    const repositionArrowLG = createRepositionFunc(GAP_HEIGHT, optionHeight.lg);
+    const queryLG = window.matchMedia("(min-width: 640px) and (max-width: 1023px)");
+    queryLG.addEventListener("change", repositionArrowLG);
+
+    const repositionArrowXS = createRepositionFunc(GAP_HEIGHT, optionHeight.xs);
+    const queryXS = window.matchMedia("(max-width: 639px)");
+    queryXS.addEventListener("change", repositionArrowXS);
+
+    switch (true) {
+      case queryXL.matches:
+        selectOptionHeight = optionHeight.xl;
+        break;
+      case queryLG.matches:
+        selectOptionHeight = optionHeight.lg;
+        break;
+
+      case queryXS.matches:
+        selectOptionHeight = optionHeight.xs;
+        break;
+
+      default:
+        break;
+    }
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      queryXL.removeEventListener("change", repositionArrowXL);
+      queryLG.removeEventListener("change", repositionArrowLG);
+      queryXS.removeEventListener("change", repositionArrowXS);
     };
   });
 
   function handleChange(e: CustomEvent<IndexData>) {
-    const newIndex = e.detail.index;
+    if (typeof selectOptionHeight === "number") {
+      const newIndex = e.detail.index;
 
-    let gapHeight = 12;
-    let optionsHeight = 36;
+      const pxPerIndex = GAP_HEIGHT + selectOptionHeight;
 
-    const isXL = window.innerWidth >= 1024;
-    const isXS = window.innerWidth < 640;
+      arrowRef.style.transform = `translateY(${pxPerIndex * newIndex}px)`;
 
-    if (isXL) {
-      optionsHeight = 64;
-    } else if (isXS) {
-      optionsHeight = 24;
+      selectedIndex = newIndex;
     }
-
-    const pxPerIndex = gapHeight + optionsHeight;
-
-    arrow.style.transform = `translateY(${pxPerIndex * newIndex}px)`;
-
-    selectedIndex = newIndex;
   }
-
-  let arrow: HTMLImageElement;
 </script>
 
 <main class="max-w-8xl mx-auto h-[calc(100%-theme(space.14))] transition ease-in-out dark:text-white dark:ease-in-out">
-  <div class="flex h-full w-full flex-col-reverse items-center transition ease-in-out lg:flex-row">
-    <div class="mx-auto flex h-60 w-full flex-col items-center justify-center bg-slate-300 pb-4 dark:bg-zinc-700/70">
+  <div class="relative flex h-full w-full flex-col-reverse items-center transition ease-in-out lg:flex-row">
+    <div class="mx-auto flex h-60 w-full flex-col items-center justify-center bg-slate-300 pb-4 dark:bg-zinc-700/70 sm:h-72">
       <p class="my-4 text-center font-bold text-black transition ease-in-out dark:text-white">Select a project to view its details:</p>
       <form class="max-w-8 relative mx-auto flex h-full w-1/2 flex-col gap-[12px] lg:w-1/2">
         <img
-          bind:this={arrow}
-          class="duration-400 absolute left-[-41px] top-[-7px] h-9 transition md:top-0 lg:top-[13px]"
+          bind:this={arrowRef}
+          class="duration-400 absolute left-[-41px] top-[-7px] h-9 transition sm:top-0 lg:top-[13px]"
           alt="arrow currently selecting {projectData[selectedIndex].title}"
           src={SelectArrow}
         />
@@ -112,7 +106,7 @@
         {/each}
       </form>
     </div>
-    <div class="mx-1 mt-1 flex h-full flex-col">
+    <div class="mx-1 mt-1 flex h-full w-full flex-col">
       <div class="rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900/80 dark:text-white">
         {#key selectedProject}
           <h1 class="text-2xl" in:fade={{ duration: 500 }}>
@@ -130,14 +124,22 @@
           {/key}
         </h2>
       </div>
-      <Carousel loop={true} data={selectedProject.carousel} dots={true} delay={5000} classes="m-1 rounded" autoplay={true} />
+      <Carousel
+        bind:height={carouselHeight}
+        loop={true}
+        data={selectedProject.carousel}
+        dots={true}
+        delay={5000}
+        classes="m-1 rounded"
+        autoplay={true}
+      />
       {#key selectedProject}
         <div
-          id="about"
-          class="animate-fade h-8 overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
+          bind:this={aboutRef}
+          class="animate-fade relative overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
         >
           <h2 class="mb-4 text-xl font-bold">About</h2>
-          {@html selectedProject.description}
+          <p class="absolute">{@html selectedProject.description}</p>
         </div>
       {/key}
     </div>

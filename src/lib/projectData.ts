@@ -65,7 +65,7 @@ The data is sourced from public crypto WebSocket APIs.
 Charts can be aggregated by both X-axis (time) and Y-axis (price).
 <br/>
 <br/>
-Web Workers were used for multi-threading. This allow users to subscribe and aggregate multiple WebSocket feeds, and the data is temporarily persisted in IndexedDB.
+Web Workers were used for multi-threading. This allows users to subscribe and aggregate multiple WebSocket feeds at the same time.
 <br/>
 <br/>
 The UI elements were made with vanilla HTML/CSS/TypeScript, and the visualization was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a low-level wrapper around the WebGL API.
