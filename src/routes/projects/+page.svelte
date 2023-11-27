@@ -10,13 +10,7 @@
 
   let arrowRef: HTMLImageElement;
 
-  let aboutRef: HTMLDivElement;
-  let carouselHeight: number = 0;
-  $: if (carouselHeight) {
-    // console.log("hello", carouselHeight);
-    aboutRef.style.height = `250px`;
-    // console.log(aboutRef.style.height);
-  }
+  let containerRef: HTMLDivElement;
 
   let selectedIndex: number = 0;
   $: selectedProject = projectData[selectedIndex];
@@ -92,7 +86,7 @@
 
 <main class="max-w-8xl mx-auto h-[calc(100%-theme(space.14))] transition ease-in-out dark:text-white dark:ease-in-out">
   <div class="relative flex h-full w-full flex-col-reverse items-center transition ease-in-out lg:flex-row">
-    <div class="mx-auto flex h-60 w-full flex-col items-center justify-center bg-slate-300 pb-4 dark:bg-zinc-700/70 sm:h-72">
+    <div class="mx-auto flex h-[240px] w-full flex-col items-center justify-center bg-slate-300 pb-4 dark:bg-zinc-700/70 sm:h-72">
       <p class="my-4 text-center font-bold text-black transition ease-in-out dark:text-white">Select a project to view its details:</p>
       <form class="max-w-8 relative mx-auto flex h-full w-1/2 flex-col gap-[12px] lg:w-1/2">
         <img
@@ -106,7 +100,7 @@
         {/each}
       </form>
     </div>
-    <div class="mx-1 mt-1 flex h-full w-full flex-col">
+    <div bind:this={containerRef} class="mx-1 mt-1 flex h-full w-full flex-col justify-evenly">
       <div class="rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900/80 dark:text-white">
         {#key selectedProject}
           <h1 class="text-2xl" in:fade={{ duration: 500 }}>
@@ -124,19 +118,10 @@
           {/key}
         </h2>
       </div>
-      <Carousel
-        bind:height={carouselHeight}
-        loop={true}
-        data={selectedProject.carousel}
-        dots={true}
-        delay={5000}
-        classes="m-1 rounded"
-        autoplay={true}
-      />
+      <Carousel loop={true} data={selectedProject.carousel} dots={true} delay={5000} classes="m-1 rounded" autoplay={true} />
       {#key selectedProject}
         <div
-          bind:this={aboutRef}
-          class="animate-fade relative overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
+          class="animate-fade relative flex-grow overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
         >
           <h2 class="mb-4 text-xl font-bold">About</h2>
           <p class="absolute">{@html selectedProject.description}</p>
