@@ -68,7 +68,7 @@ Charts can be aggregated by both X-axis (time) and Y-axis (price).
 Web Workers were used for multi-threading. This allows users to subscribe and aggregate multiple WebSocket feeds at the same time.
 <br/>
 <br/>
-The UI elements were made with vanilla HTML/CSS/TypeScript, and the visualization was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a low-level wrapper around the WebGL API.
+The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a low-level wrapper around the WebGL API.
 `,
     languages: [LANGUAGES.typescript],
     frameworks: [FRAMEWORKS.none]
@@ -77,7 +77,9 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the visualizatio
     carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
     title: "Dockfiles",
     url: "https://dockfiles.xyz",
-    description: "..",
+    description: `
+Dockfiles is a repository of Docker Compose setups for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users.
+`,
     languages: [LANGUAGES.typescript, LANGUAGES.php],
     frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
   },
