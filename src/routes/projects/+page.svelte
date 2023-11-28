@@ -28,7 +28,9 @@
 
 <main class="mx-auto transition ease-in-out dark:text-white dark:ease-in-out lg:h-[calc(100%-theme(space.14))]">
   <div class="relative flex h-full w-full flex-col-reverse items-center transition ease-in-out lg:flex-row">
-    <div class="mx-auto hidden w-full flex-col items-center justify-center bg-slate-300 p-4 dark:bg-zinc-900/70 lg:flex">
+    <div
+      class="mx-auto hidden w-full flex-col items-center justify-center bg-slate-300 p-4 transition ease-in-out dark:bg-zinc-900/70 lg:flex"
+    >
       <p class="mb-4 text-center text-xl font-bold text-black transition ease-in-out dark:text-white">
         Select a project to view its details:
       </p>
@@ -46,11 +48,11 @@
     </div>
     <div class="mx-1 mt-1 hidden h-full w-full flex-col justify-evenly lg:flex">
       <div class="rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900/80 dark:text-white">
-        <!-- {#key selectedProject} -->
-        <!--   <h1 class="text-2xl" in:fade={{ duration: 500 }}> -->
-        <!--     {selectedProject.title} -->
-        <!--   </h1> -->
-        <!-- {/key} -->
+        {#key selectedProject}
+          <h1 class="animate-fade text-2xl text-black transition ease-in-out dark:text-white">
+            {selectedProject.title}
+          </h1>
+        {/key}
         <h2 class="text-gray-600">
           {#key selectedProject}
             Languages: {#each selectedProject.languages as lang}<Badge color={lang.color}>{lang.name}</Badge>{/each}
@@ -67,8 +69,8 @@
         class="relative flex-grow animate-fade overflow-auto rounded bg-slate-300 p-4 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
       >
         {#key selectedProject}
-          <!-- <h2 class="mb-4 text-xl font-bold">About</h2> -->
-          <p class="absolute animate-fade transition ease-in-out">{@html selectedProject.description}</p>
+          <h2 class="mb-4 text-xl font-bold">About</h2>
+          <p class="absolute animate-fade text-black transition ease-in-out dark:text-white">{@html selectedProject.description}</p>
         {/key}
       </div>
     </div>

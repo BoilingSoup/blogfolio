@@ -51,6 +51,24 @@ const FRAMEWORKS = {
 
 export const projectData: ProjectData = [
   {
+    carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
+    title: "Tierlist.lol",
+    url: "https://tierlist.lol",
+    description: "...",
+    languages: [LANGUAGES.typescript, LANGUAGES.php],
+    frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
+  },
+  {
+    carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
+    title: "Dockfiles",
+    url: "https://dockfiles.xyz",
+    description: `
+Dockfiles is a repository of Docker Compose setups for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users.
+`,
+    languages: [LANGUAGES.typescript, LANGUAGES.php],
+    frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
+  },
+  {
     carousel: [
       { type: PICTURE, src: Flowtoolz1, width: 1920, height: 980, alt: "" },
       { type: PICTURE, src: Flowtoolz2, width: 1920, height: 980, alt: "" }
@@ -72,23 +90,5 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
 `,
     languages: [LANGUAGES.typescript],
     frameworks: [FRAMEWORKS.none]
-  },
-  {
-    carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
-    title: "Dockfiles",
-    url: "https://dockfiles.xyz",
-    description: `
-Dockfiles is a repository of Docker Compose setups for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users.
-`,
-    languages: [LANGUAGES.typescript, LANGUAGES.php],
-    frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
-  },
-  {
-    carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
-    title: "Tierlist.lol",
-    url: "https://tierlist.lol",
-    description: "...",
-    languages: [LANGUAGES.typescript, LANGUAGES.php],
-    frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
   }
 ];
