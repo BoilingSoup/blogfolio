@@ -2,7 +2,7 @@
   export let i: number;
   export let href: string;
   export let icon: any;
-  export let date: string;
+  export let date: string | undefined = undefined;
   export let title: string;
   export let classes: string = "";
 
@@ -24,10 +24,12 @@
       classes}
   >
     <div class="flex h-[100px] items-center justify-center lg:h-[150px] lg:w-[150px]">
-      <img class="m-auto w-[50%] animate-fade-in-up" src={icon} width="80" height="80" alt="blog thumbnail" />
+      <img class="m-auto w-[50%] animate-fade-in-up rounded-xl" src={icon} width="80" height="80" alt="blog thumbnail" />
     </div>
     <div class="flex w-full animate-fade-in-up flex-col justify-center">
-      <p>{date}</p>
+      {#if date}
+        <p>{date}</p>
+      {/if}
       <h2 class="text-md sm:text-xl md:text-2xl">{title}</h2>
     </div>
   </div>

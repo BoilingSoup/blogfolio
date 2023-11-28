@@ -1,6 +1,7 @@
 import { get, writable } from "svelte/store";
 import { setDarkScrollBar } from "./scrollbar/scrollbar";
 import { browser } from "$app/environment";
+import { projectData, type ProjectData } from "./projectData";
 
 function createDarkModeStore() {
   const _darkModeStore = writable(true, function start(set) {
@@ -38,3 +39,14 @@ function createDarkModeStore() {
 }
 
 export const darkModeStore = createDarkModeStore();
+
+function createSelectedProjectStore() {
+  const _selectedProjectStore = writable<ProjectData[number]>(projectData[0]);
+
+  return {
+    subscribe: _selectedProjectStore.subscribe,
+    set: _selectedProjectStore.set
+  };
+}
+
+export const selectedProjectStore = createSelectedProjectStore();

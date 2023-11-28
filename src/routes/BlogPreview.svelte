@@ -1,6 +1,6 @@
 <script lang="ts">
   import { blogData } from "$lib/blogData";
-  import BlogLink from "./BlogLink.svelte";
+  import CardLink from "./CardLink.svelte";
 
   const recentBlogPosts = (JSON.parse(JSON.stringify(blogData)) as typeof blogData).reverse();
 </script>
@@ -10,7 +10,7 @@
 >
   <div class="flex h-[90%] w-full flex-col rounded-xl bg-gray-300/70 transition ease-in-out dark:bg-slate-800/30">
     {#each recentBlogPosts as post, i}
-      <BlogLink {i} date={post.date} icon={post.icon} title={post.title} href={`/blog/${post.slug}`} />
+      <CardLink {i} date={post.date} icon={post.icon} title={post.title} href={`/blog/${post.slug}`} />
     {/each}
     <p class="text-center text-2xl sm:hidden sm:text-5xl lg:text-5xl">Blog ... Coming soon first ...</p>
   </div>

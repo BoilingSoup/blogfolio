@@ -1,6 +1,11 @@
+import FlowtoolzIcon from "$lib/assets/projects/flowtoolz/thumbnail.png";
 import Flowtoolz1 from "$lib/assets/projects/flowtoolz/1.png";
 import Flowtoolz2 from "$lib/assets/projects/flowtoolz/2.png";
+
+import DockfilesIcon from "$lib/assets/projects/dockfiles/thumbnail.png";
 import Dockfiles1 from "$lib/assets/projects/dockfiles/1.png";
+
+import TierlistIcon from "$lib/assets/projects/tierlistlol/thumbnail.png";
 import Tierlist1 from "$lib/assets/projects/tierlistlol/1.png";
 
 export const PICTURE = "p";
@@ -10,6 +15,8 @@ type Picture = typeof PICTURE;
 type Video = typeof VIDEO;
 
 export type ProjectData = Array<{
+  id: string;
+  icon: string;
   carousel: Array<{ type: Picture | Video; src: string; width: number; height: number; alt: string }>;
   title: string;
   url: string;
@@ -51,6 +58,8 @@ const FRAMEWORKS = {
 
 export const projectData: ProjectData = [
   {
+    id: "tierlist",
+    icon: TierlistIcon,
     carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
     title: "Tierlist.lol",
     url: "https://tierlist.lol",
@@ -59,6 +68,8 @@ export const projectData: ProjectData = [
     frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
   },
   {
+    id: "dockfiles",
+    icon: DockfilesIcon,
     carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
     title: "Dockfiles",
     url: "https://dockfiles.xyz",
@@ -69,6 +80,8 @@ Dockfiles is a repository of Docker Compose setups for some commonly used tech s
     frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
   },
   {
+    id: "flowtoolz",
+    icon: FlowtoolzIcon,
     carousel: [
       { type: PICTURE, src: Flowtoolz1, width: 1920, height: 980, alt: "" },
       { type: PICTURE, src: Flowtoolz2, width: 1920, height: 980, alt: "" }
