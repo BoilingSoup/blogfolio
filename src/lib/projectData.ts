@@ -14,16 +14,38 @@ export const VIDEO = "v";
 type Picture = typeof PICTURE;
 type Video = typeof VIDEO;
 
-export type ProjectData = Array<{
-  id: string;
-  icon: string;
-  carousel: Array<{ type: Picture | Video; src: string; width: number; height: number; alt: string }>;
-  title: string;
-  url: string;
-  description: string;
-  languages: Array<TechInfo>;
-  frameworks: Array<TechInfo>;
-}>;
+const TIERLIST = "tierlist";
+const FLOWTOOLZ = "flowtoolz";
+const DOCKFILES = "dockfiles";
+
+const IDs = [TIERLIST, DOCKFILES, FLOWTOOLZ] as const;
+
+export const getProjectIndex = (id: (typeof IDs)[number]): number => {
+  return {
+    [TIERLIST]: 0,
+    [DOCKFILES]: 1,
+    [FLOWTOOLZ]: 2
+  }[id];
+};
+
+export type IDs = typeof IDs;
+
+type ProjectData = {
+  order: typeof IDs;
+} & {
+  [id in (typeof IDs)[number]]: {
+    id: (typeof IDs)[number];
+    icon: string;
+    carousel: Array<{ type: Picture | Video; src: string; width: number; height: number; alt: string }>;
+    title: string;
+    url: string;
+    description: string;
+    languages: Array<TechInfo>;
+    frameworks: Array<TechInfo>;
+  };
+};
+
+export type Project = ProjectData[(typeof IDs)[number]];
 
 type TechInfo = {
   name: string;
@@ -56,8 +78,8 @@ const FRAMEWORKS = {
   }
 } as const;
 
-export const projectData: ProjectData = [
-  {
+export const projectData: ProjectData = {
+  tierlist: {
     id: "tierlist",
     icon: TierlistIcon,
     carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
@@ -67,7 +89,7 @@ export const projectData: ProjectData = [
     languages: [LANGUAGES.typescript, LANGUAGES.php],
     frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
   },
-  {
+  dockfiles: {
     id: "dockfiles",
     icon: DockfilesIcon,
     carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
@@ -79,7 +101,7 @@ Dockfiles is a repository of Docker Compose setups for some commonly used tech s
     languages: [LANGUAGES.typescript, LANGUAGES.php],
     frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
   },
-  {
+  flowtoolz: {
     id: "flowtoolz",
     icon: FlowtoolzIcon,
     carousel: [
@@ -103,5 +125,8 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
 `,
     languages: [LANGUAGES.typescript],
     frameworks: [FRAMEWORKS.none]
-  }
-];
+  },
+  order: IDs
+};
+
+export const projectList = projectData.order.map((id) => projectData[id]);

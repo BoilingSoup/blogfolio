@@ -1,6 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import "./styles.css";
+  import { getProjectIndex } from "$lib/projectData";
+  import { selectedProjectStore } from "$lib";
 
   export let i: number;
   export let title: string;
@@ -28,7 +30,15 @@
   }
 </script>
 
-<input bind:this={ref} class="radio-input hidden" id="radio-{title}" checked={i === 0} name={"projects"} type="radio" value={title} />
+<input
+  bind:this={ref}
+  class="radio-input hidden"
+  id="radio-{title}"
+  checked={i === getProjectIndex($selectedProjectStore.id)}
+  name={"projects"}
+  type="radio"
+  value={title}
+/>
 <label
   class={"flex h-[96px] w-full items-center justify-center overflow-hidden overflow-ellipsis whitespace-normal rounded-xl border border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500"}
   for="radio-{title}"

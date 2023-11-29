@@ -2,13 +2,13 @@
   import emblaCarouselSvelte, { type EmblaCarouselType } from "embla-carousel-svelte";
   import Autoplay from "embla-carousel-autoplay";
   import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
-  import type { ProjectData } from "$lib/projectData";
+  import type { Project } from "$lib/projectData";
   import { fade } from "svelte/transition";
 
   export let autoplay: boolean = false;
   export let loop: boolean = false;
   export let classes: string = "";
-  export let data: ProjectData[number]["carousel"];
+  export let data: Project["carousel"];
   export let delay: number = 2500;
   export let dots: boolean = false;
   export let onEmblaInit: ((e: CustomEvent<EmblaCarouselType>) => void) | undefined = undefined;

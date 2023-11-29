@@ -5,14 +5,10 @@ date: Mar 16, 2023
 ---
 
 <script>
-  import SolidStartImage from "$blog/solidjs-ssg/solid-start.png"
   import CoverImage from "$blog/solidjs-ssg/cover.png"
   import InstallPromptImage from "$blog/solidjs-ssg/install-prompt.png"
   import ProjectStructureImage from "$blog/solidjs-ssg/project-structure.png"
   import DistImage from "$blog/solidjs-ssg/dist.png"
-  // import LetsStartImage from "$blog/sanctum-auth-guide/letsstart.png"
-  // import RoutesImage from "$blog/sanctum-auth-guide/routes.png";
-  // import DummyUserImage from "$blog/sanctum-auth-guide/create-dummy-user.png";
 
   import SectionTitle from "../SectionTitle.svelte";
   import InlineCode from "../InlineCode.svelte";
@@ -29,16 +25,6 @@ date: Mar 16, 2023
       { hash: "install-solid-start-static", title: "Installing the Static Adapter" },
       { hash: "enabling-adapter", title: "Enabling the Static Adapter" },
       { hash: "checking-output", title: "Statically Build the Project" },
-      // { hash: "make-dummy-user", title: "Make a Dummy User" },
-      // { hash: "create-frontend", title: "Create the Frontend" },
-      // { hash: "laravel-stateful-requests", title: "Sending Stateful Requests to a Laravel API" },
-      // { hash: "checking-auth", title: "Checking the User's Auth Status" },
-      // { hash: "logging-in", title: "Making Login Requests" },
-      // { hash: "configure-stateful-domains", title: "Configuring Sanctum Stateful Domains" },
-      // { hash: "logging-out", title: "Logging Out the User" },
-      // { hash: "postman-setup", title: "Setting up Postman for Laravel with Cookie Authentication" },
-      // { hash: "about-ssr", title: "A Note About SSR" },
-      // { hash: "conclusion", title: "Conclusion" },
   ]
 </script>
 

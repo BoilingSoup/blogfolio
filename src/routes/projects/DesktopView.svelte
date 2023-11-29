@@ -1,13 +1,25 @@
 <script lang="ts">
-  import { projectData } from "$lib/projectData";
+  import { getProjectIndex, projectData, projectList } from "$lib/projectData";
   import ProjectRadioInput from "./ProjectRadioInput.svelte";
   import type { IndexData } from "./types";
   import SelectArrow from "$lib/assets/select-arrow.png";
   import { selectedProjectStore } from "$lib";
   import Badge from "./Badge.svelte";
   import Carousel from "../Carousel.svelte";
+  import { onMount } from "svelte";
+
+  export let onchange: () => void;
 
   let arrowRef: HTMLImageElement;
+
+  onMount(() => {
+    const gapHeight = 12;
+    const selectOptionHeight = 96;
+
+    const pxPerIndex = gapHeight + selectOptionHeight;
+
+    arrowRef.style.transform = `translateY(${pxPerIndex * getProjectIndex($selectedProjectStore.id)}px)`;
+  });
 
   function handleChange(e: CustomEvent<IndexData>) {
     const newIndex = e.detail.index;
@@ -19,7 +31,8 @@
 
     arrowRef.style.transform = `translateY(${pxPerIndex * newIndex}px)`;
 
-    $selectedProjectStore = projectData[newIndex];
+    $selectedProjectStore = projectData[projectData.order[newIndex]];
+    onchange();
   }
 </script>
 
@@ -35,7 +48,7 @@
         alt="arrow currently selecting {$selectedProjectStore.title}"
         src={SelectArrow}
       />
-      {#each projectData as post, i}
+      {#each projectList as post, i}
         <ProjectRadioInput on:change={handleChange} {i} title={post.title} />
       {/each}
     </form>

@@ -1,8 +1,8 @@
 <script>
-  import { projectData } from "$lib/projectData";
+  import { projectList } from "$lib/projectData";
   import Carousel from "./Carousel.svelte";
 
-  const projectPreviews = projectData.map((project) => project.carousel[0]);
+  const projectPreviews = projectList.map((project) => project.carousel[0]);
 </script>
 
 <section
