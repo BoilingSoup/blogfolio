@@ -37,7 +37,7 @@
 </script>
 
 <div class="relative hidden h-full w-full flex-col-reverse items-center transition ease-in-out lg:flex lg:flex-row">
-  <div class="mx-auto flex w-full flex-col items-center justify-center bg-slate-300 p-4 transition ease-in-out dark:bg-zinc-900/70">
+  <div class="mx-auto flex w-full flex-col items-center justify-center p-4 transition ease-in-out">
     <p class="mb-4 text-center text-xl font-bold text-black transition ease-in-out dark:text-white">
       Select a project to view its details:
     </p>
