@@ -43,6 +43,7 @@
   </a>
   <div class="z-10 flex h-full items-center">
     <div class="mr-2 hidden h-full dark:text-white lg:flex">
+      <NavLink href="/" text="Home" />
       <NavLink href="/projects" text="Projects" />
       <NavLink href="/blog" text="Blog" />
     </div>

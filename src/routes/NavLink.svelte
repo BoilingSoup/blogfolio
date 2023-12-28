@@ -8,7 +8,7 @@
 
   $: if ($page.url.pathname.split("/").length >= 2) {
     const subPage = $page.url.pathname.split("/")[1];
-    if (subPage.toLowerCase() === text.toLowerCase()) {
+    if (subPage.toLowerCase() === text.toLowerCase() || (subPage === "" && href === "/")) {
       activeRouteStyle = " before:h-[4px] before:!opacity-100";
     } else {
       activeRouteStyle = "";
