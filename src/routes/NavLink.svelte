@@ -2,13 +2,14 @@
   import { page } from "$app/stores";
 
   export let href: string;
+  export let pathName: string;
   export let text: string;
 
   let activeRouteStyle = "";
 
   $: if ($page.url.pathname.split("/").length >= 2) {
-    const subPage = $page.url.pathname.split("/")[1];
-    if (subPage.toLowerCase() === text.toLowerCase() || (subPage === "" && href === "/")) {
+    const subPath = $page.url.pathname.split("/")[1];
+    if (subPath.toLowerCase() === pathName.toLowerCase() || (subPath === "" && pathName === "/")) {
       activeRouteStyle = " before:h-[4px] before:!opacity-100";
     } else {
       activeRouteStyle = "";

@@ -43,9 +43,9 @@
   </a>
   <div class="z-10 flex h-full items-center">
     <div class="mr-2 hidden h-full dark:text-white lg:flex">
-      <NavLink href="/" text="Home" />
-      <NavLink href="/projects" text="Projects" />
-      <NavLink href="/blog" text="Blog" />
+      <NavLink href="/" pathName="/" text="Home" />
+      <NavLink href="/projects" pathName="projects" text="Projects" />
+      <NavLink href="/blog" pathName="blog" text="Blog" />
     </div>
     <DarkModeButton />
   </div>
