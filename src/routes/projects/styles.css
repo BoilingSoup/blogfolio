@@ -1,5 +1,5 @@
 .radio-input:checked + label {
-  background: rgba(163 230 53 / 1); /* same as lime-900 */
+  background: rgba(100 116 139 / 1); /* same as slate-400 */
 }
 
 html[class~="dark"] .radio-input:checked + label {

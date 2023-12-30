@@ -40,7 +40,7 @@
   value={title}
 />
 <label
-  class={"flex h-[96px] w-full cursor-pointer items-center justify-center overflow-hidden overflow-ellipsis whitespace-normal rounded-xl border border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-lime-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500"}
+  class={"flex h-[96px] w-full cursor-pointer items-center justify-center overflow-hidden overflow-ellipsis whitespace-normal rounded-xl border border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500"}
   for="radio-{title}"
   tabindex="0"
   on:click={handleClick}

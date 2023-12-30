@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
-  import { onMount } from "svelte";
+  // import { goto } from "$app/navigation";
+  // import { onMount } from "svelte";
 
   export let data;
 
-  onMount(() => {
-    const handleQueryChange = function (mediaQuery: MediaQueryListEvent | MediaQueryList) {
-      if (mediaQuery.matches) {
-        goto("/projects");
-      }
-    };
+  // onMount(() => {
+  //   const handleQueryChange = function (mediaQuery: MediaQueryListEvent | MediaQueryList) {
+  //     if (mediaQuery.matches) {
+  //       goto("/projects");
+  //     }
+  //   };
 
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+  //   const mediaQuery = window.matchMedia("(min-width: 1024px)");
 
-    handleQueryChange(mediaQuery);
+  //   handleQueryChange(mediaQuery);
 
-    mediaQuery.addEventListener("change", handleQueryChange);
+  //   mediaQuery.addEventListener("change", handleQueryChange);
 
-    return () => mediaQuery.removeEventListener("change", handleQueryChange);
-  });
+  //   return () => mediaQuery.removeEventListener("change", handleQueryChange);
+  // });
 </script>
 
 <main>

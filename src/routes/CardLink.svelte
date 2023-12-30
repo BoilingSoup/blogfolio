@@ -17,7 +17,7 @@
 
 <a {href}>
   <div
-    class={"flex h-[100px] w-full overflow-hidden overflow-ellipsis whitespace-normal border-b border-l border-r border-gray-400 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500 lg:h-[150px]" +
+    class={"flex h-[100px] w-full overflow-hidden overflow-ellipsis whitespace-normal border-b border-l border-r border-gray-900 bg-slate-50 text-black transition ease-in-out hover:bg-slate-400 dark:border-slate-500 dark:bg-slate-600/40 dark:text-white hover:dark:bg-slate-500 lg:h-[150px]" +
       topRadius +
       topBorder +
       " " +
