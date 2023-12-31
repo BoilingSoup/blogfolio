@@ -8,6 +8,8 @@ import Dockfiles1 from "$lib/assets/projects/dockfiles/1.png";
 import TierlistIcon from "$lib/assets/projects/tierlistlol/thumbnail.png";
 import Tierlist1 from "$lib/assets/projects/tierlistlol/1.png";
 
+import RepobulletinIcon from "$lib/assets/projects/repobulletin/thumbnail.png";
+
 export const PICTURE = "p";
 export const VIDEO = "v";
 
@@ -17,14 +19,17 @@ type Video = typeof VIDEO;
 const TIERLIST = "tierlist";
 const FLOWTOOLZ = "flowtoolz";
 const DOCKFILES = "dockfiles";
+const REPOBULLETIN = "repobulletin";
 
-const IDs = [TIERLIST, DOCKFILES, FLOWTOOLZ] as const;
+const IDs = [TIERLIST, DOCKFILES, FLOWTOOLZ, REPOBULLETIN] as const;
 
+// faster than Array.findIndex
 export const getProjectIndex = (id: (typeof IDs)[number]): number => {
   return {
     [TIERLIST]: 0,
     [DOCKFILES]: 1,
-    [FLOWTOOLZ]: 2
+    [FLOWTOOLZ]: 2,
+    [REPOBULLETIN]: 3
   }[id];
 };
 
@@ -60,6 +65,10 @@ const LANGUAGES = {
   php: {
     name: "PHP",
     color: "bg-purple-800"
+  },
+  golang: {
+    name: "GoLang",
+    color: "bg-blue-400"
   }
 } as const;
 
@@ -125,6 +134,16 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
 `,
     languages: [LANGUAGES.typescript],
     frameworks: [FRAMEWORKS.none]
+  },
+  repobulletin: {
+    frameworks: [FRAMEWORKS.nextjs],
+    languages: [LANGUAGES.typescript, LANGUAGES.golang],
+    id: "repobulletin",
+    url: "https://repobullet.in",
+    icon: RepobulletinIcon,
+    title: "Repobulletin",
+    carousel: [],
+    description: "efeffefefe"
   },
   order: IDs
 };

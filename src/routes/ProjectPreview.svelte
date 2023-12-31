@@ -18,7 +18,7 @@
   class="mx-8 flex h-[calc(180px_-_theme(space.14))] flex-col items-center justify-center transition ease-in-out dark:text-white xs:h-[calc(200px_-_theme(space.14))] sm:hidden"
 >
   <div
-    class="flex h-[90%] w-full flex-col items-center justify-center rounded-xl border-2 border-gray-400 transition ease-in-out dark:border-slate-800"
+    class="flex h-[90%] w-full flex-col items-center justify-center rounded-xl border-2 border-gray-400 text-black transition ease-in-out dark:border-slate-800 dark:text-white"
   >
     projects
   </div>
