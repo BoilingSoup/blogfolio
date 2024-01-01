@@ -13,7 +13,7 @@
 </script>
 
 <a
-  class="z-10 hidden md:inline"
+  class="z-10 hidden lg:inline"
   href="/"
   on:mouseover={addHoverEffect}
   on:mouseleave={removeHoverEffect}

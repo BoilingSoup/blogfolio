@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { darkModeStore } from "$lib";
+  import { darkModeStore, mobileMenuStore } from "$lib";
   import NavLink from "./NavLink.svelte";
   import DarkModeButton from "./DarkModeButton.svelte";
   import FroggyIcon from "./FroggyIcon.svelte";
@@ -17,12 +17,12 @@
   <div id="header-dark-bg" />
 
   {#if $darkModeStore}
-    <button class="z-10 inline md:hidden">
-      <img src={HamburgerDark} alt="menu button" />
+    <button on:click={mobileMenuStore.toggle} class="z-10 inline pl-4 lg:hidden">
+      <img src={HamburgerDark} alt="menu button" width="30" height="30" />
     </button>
   {:else}
-    <button class="z-10 inline md:hidden">
-      <img src={HamburgerLight} alt="menu button" />
+    <button on:click={mobileMenuStore.toggle} class="z-10 inline pl-4 lg:hidden">
+      <img src={HamburgerLight} alt="menu button" width="30" height="30" />
     </button>
   {/if}
   <FroggyIcon />

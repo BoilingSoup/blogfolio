@@ -40,6 +40,19 @@ function createDarkModeStore() {
 
 export const darkModeStore = createDarkModeStore();
 
+function createMobileMenuStore() {
+  const _mobileMenuStore = writable(false);
+
+  return {
+    subscribe: _mobileMenuStore.subscribe,
+    toggle() {
+      _mobileMenuStore.update((val) => !val);
+    }
+  };
+}
+
+export const mobileMenuStore = createMobileMenuStore();
+
 function createSelectedProjectStore() {
   const _selectedProjectStore = writable<Project>(projectData[projectData.order[0]]);
 
