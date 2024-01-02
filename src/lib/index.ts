@@ -47,6 +47,9 @@ function createMobileMenuStore() {
     subscribe: _mobileMenuStore.subscribe,
     toggle() {
       _mobileMenuStore.update((val) => !val);
+    },
+    hide() {
+      _mobileMenuStore.set(false);
     }
   };
 }

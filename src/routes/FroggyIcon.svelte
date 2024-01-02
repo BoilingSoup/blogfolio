@@ -13,7 +13,7 @@
 </script>
 
 <a
-  class="z-10 hidden lg:inline"
+  class="z-10"
   href="/"
   on:mouseover={addHoverEffect}
   on:mouseleave={removeHoverEffect}
@@ -28,6 +28,6 @@
   <div
     bind:this={hoverEffect}
     id="hover-effect"
-    class="absolute bottom-0 left-1 z-10 h-6 w-[40px] before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:transition-all before:duration-200 before:content-[''] before:dark:bg-slate-50 md:left-2 lg:left-8"
+    class="absolute bottom-0 left-2 z-10 h-6 w-[40px] before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:transition-all before:duration-200 before:content-[''] before:dark:bg-slate-50 md:left-2 lg:left-8"
   />
 </a>
