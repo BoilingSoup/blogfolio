@@ -2,10 +2,13 @@
   import { darkModeStore } from "$lib";
   import { smallIcon } from "./constants";
 
+  export let width: number = smallIcon;
+  export let height: number = smallIcon;
+
   $: fill = $darkModeStore ? "#fffffe" : "#000000";
 </script>
 
-<svg width={`${smallIcon}`} height={`${smallIcon}`} version="1.1" viewBox="0 0 461.74 458" xmlns="http://www.w3.org/2000/svg">
+<svg width={`${width}`} height={`${height}`} version="1.1" viewBox="0 0 461.74 458" xmlns="http://www.w3.org/2000/svg">
   <g transform="translate(-25.129 -27.001)">
     <g transform="translate(-666.77 -28.693)">
       <g transform="translate(645.88 21.199)">
