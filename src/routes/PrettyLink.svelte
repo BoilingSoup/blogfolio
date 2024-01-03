@@ -8,10 +8,13 @@
   <a
     {href}
     target="_blank"
-    class="w-40 rounded-xl border border-gray-500 text-2xl text-black transition ease-in dark:border-slate-500 dark:text-white">{text}</a
+    class="rounded-xl border-4 border-gray-600 px-8 py-2 text-center text-2xl font-bold text-black transition ease-in dark:border-slate-500 dark:text-white"
+    >{text}</a
   >
 {:else}
-  <a {href} class="w-40 rounded-xl border border-gray-500 text-2xl text-black transition ease-in dark:border-slate-500 dark:text-white"
+  <a
+    {href}
+    class="rounded-xl border-4 border-gray-600 px-8 py-2 text-center text-2xl font-bold text-black transition ease-in dark:border-slate-500 dark:text-white"
     >{text}</a
   >
 {/if}

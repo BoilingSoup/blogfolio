@@ -16,8 +16,8 @@
 
 :root {
   --delay: 550ms;
-  --tw-lime-600-copy: #65a30d;
-  --light-bg-image: radial-gradient(var(--tw-lime-600-copy) 2px, #e8e8e8 2px);
+  /* --tw-lime-600-copy: #65a30d; */
+  --light-bg-image: radial-gradient(#bbbbbb 2px, #e8e8e8 2px);
   --dark-bg-image: radial-gradient(#333333 2px, #0e0e0e 2px);
   --bg-size: 40px 40px;
 }
