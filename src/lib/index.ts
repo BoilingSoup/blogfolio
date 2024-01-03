@@ -55,14 +55,3 @@ function createMobileMenuStore() {
 }
 
 export const mobileMenuStore = createMobileMenuStore();
-
-function createSelectedProjectStore() {
-  const _selectedProjectStore = writable<Project>(projectData[projectData.order[0]]);
-
-  return {
-    subscribe: _selectedProjectStore.subscribe,
-    set: _selectedProjectStore.set
-  };
-}
-
-export const selectedProjectStore = createSelectedProjectStore();
