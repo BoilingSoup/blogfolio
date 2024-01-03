@@ -15,7 +15,7 @@
 
     <div class="flex flex-col gap-5">
       <p class="text-xl text-black transition ease-in dark:text-white">Check out My:</p>
-      <PrettyLink href="https://github.com/boilingsoup" text="GitHub" target="_blank" />
+      <PrettyLink href="https://github.com/boilingsoup" text="GitHub" targetBlank={true} />
       <PrettyLink href="/projects" text="Projects" />
       <PrettyLink href="/blog" text="Blog" />
     </div>
