@@ -46,4 +46,6 @@
   </div>
 </header>
 
-<div class="z-0 h-14" />
+{#if showLinks}
+  <div class="z-0 h-14" />
+{/if}
