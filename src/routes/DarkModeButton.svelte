@@ -9,7 +9,7 @@
 <button
   aria-label="Dark Mode Toggle"
   on:click={darkModeStore.toggle}
-  class="rounded-3xl p-2 transition ease-in-out hover:bg-slate-500 dark:hover:bg-gray-500 lg:mx-8"
+  class="mx-4 rounded-3xl p-2 transition ease-in-out hover:bg-slate-500 dark:hover:bg-gray-500 lg:mx-8"
 >
   {#if $darkModeStore}
     <img src={Sun} width={smallIcon} height={smallIcon} alt="dark mode icon" />
