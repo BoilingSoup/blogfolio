@@ -25,9 +25,9 @@
   });
 </script>
 
-<svelte:head>
-  <link rel="icon" type="image/x-icon" href={Frog} />
-</svelte:head>
+<!-- <svelte:head> -->
+<!--   <link rel="icon" type="image/x-icon" href={Frog} /> -->
+<!-- </svelte:head> -->
 
 <Header />
 <slot />
