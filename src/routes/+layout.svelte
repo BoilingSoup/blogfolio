@@ -4,7 +4,6 @@
   import "../app.css";
   import Header from "./Header.svelte";
   import { darkModeStore } from "$lib";
-  import Frog from "$lib/assets/frog.svg";
 
   onNavigate((navigation) => {
     if (!document.startViewTransition) return;
@@ -24,10 +23,6 @@
     }
   });
 </script>
-
-<!-- <svelte:head> -->
-<!--   <link rel="icon" type="image/x-icon" href={Frog} /> -->
-<!-- </svelte:head> -->
 
 <Header />
 <slot />
