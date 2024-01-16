@@ -13,9 +13,6 @@ import RepobulletinIcon from "$lib/assets/projects/repobulletin/thumbnail.png";
 export const PICTURE = "p";
 export const VIDEO = "v";
 
-type Picture = typeof PICTURE;
-type Video = typeof VIDEO;
-
 const TIERLIST = "tierlist";
 const FLOWTOOLZ = "flowtoolz";
 const DOCKFILES = "dockfiles";
@@ -41,7 +38,7 @@ type ProjectData = {
   [id in (typeof IDs)[number]]: {
     id: (typeof IDs)[number];
     icon: string;
-    carousel: Array<{ type: Picture | Video; src: string; width: number; height: number; alt: string }>;
+    carousel: Array<{ type: typeof PICTURE | typeof VIDEO; src: string; width: number; height: number; alt: string }>;
     title: string;
     url: string;
     description: string;
@@ -92,8 +89,8 @@ export const projectData: ProjectData = {
     id: "tierlist",
     icon: TierlistIcon,
     carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
-    title: "Tierlist.lol",
-    url: "https://tierlist.lol",
+    title: "Tierlist Maker",
+    url: "https://tierlist.fun",
     description: "...",
     languages: [LANGUAGES.typescript, LANGUAGES.php],
     frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
@@ -103,7 +100,7 @@ export const projectData: ProjectData = {
     icon: DockfilesIcon,
     carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
     title: "Dockfiles",
-    url: "https://dockfiles.xyz",
+    url: "https://dockfiles.tech",
     description: `
 Dockfiles is a repository of Docker Compose setups for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users.
 `,
