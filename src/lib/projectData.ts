@@ -1,3 +1,5 @@
+import DemoVideo from "$lib/assets/projects/tierlistlol/demo.mp4";
+
 import FlowtoolzIcon from "$lib/assets/projects/flowtoolz/thumbnail.png";
 import Flowtoolz1 from "$lib/assets/projects/flowtoolz/1.png";
 import Flowtoolz2 from "$lib/assets/projects/flowtoolz/2.png";
@@ -38,7 +40,8 @@ type ProjectData = {
   [id in (typeof IDs)[number]]: {
     id: (typeof IDs)[number];
     icon: string;
-    carousel: Array<{ type: typeof PICTURE | typeof VIDEO; src: string; width: number; height: number; alt: string }>;
+    // carousel: Array<{ type: typeof PICTURE | typeof VIDEO; src: string; width: number; height: number; alt: string }>;
+    video: string;
     title: string;
     url: string;
     description: string;
@@ -88,7 +91,8 @@ export const projectData: ProjectData = {
   tierlist: {
     id: "tierlist",
     icon: TierlistIcon,
-    carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
+    // carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
+    video: DemoVideo,
     title: "Tierlist Maker",
     url: "https://tierlist.fun",
     description: "...",
@@ -98,7 +102,8 @@ export const projectData: ProjectData = {
   dockfiles: {
     id: "dockfiles",
     icon: DockfilesIcon,
-    carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
+    // carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
+    video: DemoVideo,
     title: "Dockfiles",
     url: "https://dockfiles.tech",
     description: `
@@ -110,10 +115,11 @@ Dockfiles is a repository of Docker Compose setups for some commonly used tech s
   flowtoolz: {
     id: "flowtoolz",
     icon: FlowtoolzIcon,
-    carousel: [
-      { type: PICTURE, src: Flowtoolz1, width: 1920, height: 980, alt: "" },
-      { type: PICTURE, src: Flowtoolz2, width: 1920, height: 980, alt: "" }
-    ],
+    // carousel: [
+    //   { type: PICTURE, src: Flowtoolz1, width: 1920, height: 980, alt: "" },
+    //   { type: PICTURE, src: Flowtoolz2, width: 1920, height: 980, alt: "" }
+    // ],
+    video: DemoVideo,
     title: "Flowtoolz",
     url: "https://flowtoolz.xyz",
     description: `
@@ -139,7 +145,8 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     url: "https://repobullet.in",
     icon: RepobulletinIcon,
     title: "Repobulletin",
-    carousel: [],
+    // carousel: [],
+    video: DemoVideo,
     description: "efeffefefe"
   },
   order: IDs

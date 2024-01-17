@@ -1,6 +1,4 @@
 <script lang="ts">
-  import Carousel from "../../Carousel.svelte";
-
   export let data;
 </script>
 
@@ -19,7 +17,18 @@
     </h1>
   </div>
   <div class="flex">
-    <Carousel data={data.carousel} />
+    <!-- svelte-ignore a11y-media-has-caption -->
+    <video class="w-full max-w-4xl" src={data.video} title="demo" autoplay loop controls />
     <div class="bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">fwefwefwef</div>
   </div>
 </main>
+
+<style>
+  video::-webkit-media-controls-volume-slider {
+    display: none;
+  }
+
+  video::-webkit-media-controls-mute-button {
+    display: none;
+  }
+</style>
