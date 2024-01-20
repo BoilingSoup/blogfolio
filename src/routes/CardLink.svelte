@@ -1,9 +1,12 @@
 <script lang="ts">
   export let href: string;
   export let icon: any;
-  export let date: string | undefined = undefined;
   export let title: string;
   export let classes: string = "";
+  /** blog posts have a date */
+  export let date: string | undefined = undefined;
+  /** projects have a blurb */
+  export let blurb: string | undefined = undefined;
 </script>
 
 <a {href}>
@@ -20,6 +23,9 @@
         <p>{date}</p>
       {/if}
       <h2 class="text-md sm:text-xl md:text-2xl">{title}</h2>
+      {#if blurb}
+        <p>{blurb}</p>
+      {/if}
     </div>
   </div>
 </a>

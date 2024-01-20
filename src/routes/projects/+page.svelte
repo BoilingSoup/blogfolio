@@ -11,7 +11,13 @@
   <p class="my-5 text-center text-xl font-bold text-black transition ease-in-out dark:text-white">Showing 4 of 4 Projects:</p>
   <div class="w-full transition ease-in-out">
     {#each projectList as project}
-      <CardLink classes={"rounded-xl my-5 "} icon={project.icon} title={project.title} href={`/projects/${project.id}`} />
+      <CardLink
+        classes={"rounded-xl my-5 "}
+        icon={project.icon}
+        title={project.title}
+        href={`/projects/${project.id}`}
+        blurb={project.blurb}
+      />
     {/each}
   </div>
 </main>
