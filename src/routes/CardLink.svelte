@@ -24,7 +24,7 @@
       {/if}
       <h2 class="text-md font-bold sm:text-xl md:text-2xl">{title}</h2>
       {#if blurb}
-        <p class="text-xs xs:text-sm">{blurb}</p>
+        <p class="text-xs xs:text-sm md:text-base">{blurb}</p>
       {/if}
     </div>
   </div>

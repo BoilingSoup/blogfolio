@@ -96,7 +96,7 @@ export const projectData: ProjectData = {
     video: DemoVideo,
     title: "Tier List Maker",
     url: "https://tierlist.fun",
-    blurb: "Create, save, share, and export tier list diagrams.",
+    blurb: "Create, save, export, and share custom tier list diagrams.",
     description: "...",
     techStack: {
       category: "fullstack",
