@@ -136,7 +136,7 @@ Dockfiles is a repository of Docker Compose setups for some commonly used tech s
     video: DemoVideo,
     title: "Flow Toolz",
     url: "https://flowtoolz.xyz",
-    blurb: "Real-time charting that plots buying and selling volume side-by-side.",
+    blurb: "Real-time charting that plots buying vs. selling volume side-by-side.",
     description: `
 Flowtoolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
 <br/>
