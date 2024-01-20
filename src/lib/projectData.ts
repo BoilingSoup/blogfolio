@@ -12,9 +12,6 @@ import Tierlist1 from "$lib/assets/projects/tierlistlol/1.png";
 
 import RepobulletinIcon from "$lib/assets/projects/repobulletin/thumbnail.png";
 
-// export const PICTURE = "p";
-// export const VIDEO = "v";
-
 const TIERLIST = "tierlist";
 const FLOWTOOLZ = "flowtoolz";
 const DOCKFILES = "dockfiles";
@@ -40,7 +37,6 @@ type ProjectData = {
   [id in (typeof IDs)[number]]: {
     id: (typeof IDs)[number];
     icon: string;
-    // carousel: Array<{ type: typeof PICTURE | typeof VIDEO; src: string; width: number; height: number; alt: string }>;
     video: string;
     title: string;
     url: string;
@@ -97,7 +93,6 @@ export const projectData: ProjectData = {
   [TIERLIST]: {
     id: "tierlist",
     icon: TierlistIcon,
-    // carousel: [{ type: PICTURE, src: Tierlist1, width: 1920, height: 980, alt: "" }],
     video: DemoVideo,
     title: "Tier List Maker",
     url: "https://tierlist.fun",
@@ -112,7 +107,6 @@ export const projectData: ProjectData = {
   [DOCKFILES]: {
     id: "dockfiles",
     icon: DockfilesIcon,
-    // carousel: [{ type: PICTURE, src: Dockfiles1, width: 1920, height: 980, alt: "" }],
     video: DemoVideo,
     title: "Dock Files",
     url: "https://dockfiles.tech",
@@ -129,14 +123,10 @@ Dockfiles is a repository of Docker Compose setups for some commonly used tech s
   [FLOWTOOLZ]: {
     id: "flowtoolz",
     icon: FlowtoolzIcon,
-    // carousel: [
-    //   { type: PICTURE, src: Flowtoolz1, width: 1920, height: 980, alt: "" },
-    //   { type: PICTURE, src: Flowtoolz2, width: 1920, height: 980, alt: "" }
-    // ],
     video: DemoVideo,
     title: "Flow Toolz",
     url: "https://flowtoolz.xyz",
-    blurb: "Real-time charting that plots buying vs. selling volume side-by-side.",
+    blurb: "Real-time charting that plots buyer vs. seller volume side-by-side.",
     description: `
 Flowtoolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
 <br/>
@@ -161,7 +151,6 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     url: "https://repobullet.in",
     icon: RepobulletinIcon,
     title: "Repo Bulletin",
-    // carousel: [],
     video: DemoVideo,
     blurb: "Create a personalized page to display your public GitHub repositories.",
     description: "efeffefefe",
