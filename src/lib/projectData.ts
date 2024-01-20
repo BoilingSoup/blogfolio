@@ -163,7 +163,7 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     title: "Repo Bulletin",
     // carousel: [],
     video: DemoVideo,
-    blurb: "Create a personalized page to show off your public GitHub repositories.",
+    blurb: "Create a personalized page to display your public GitHub repositories.",
     description: "efeffefefe",
     techStack: {
       category: "fullstack",
