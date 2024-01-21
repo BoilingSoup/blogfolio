@@ -2,11 +2,8 @@
   export let href: string;
   export let icon: any;
   export let title: string;
+  export let subtitle: string;
   export let classes: string = "";
-  /** blog posts have a date */
-  export let date: string | undefined = undefined;
-  /** projects have a blurb */
-  export let blurb: string | undefined = undefined;
 </script>
 
 <a {href}>
@@ -19,12 +16,9 @@
       <img class="m-auto w-[50%] animate-fade-in-up rounded-xl" src={icon} width="80" height="80" alt="blog thumbnail" />
     </div>
     <div class="flex w-full animate-fade-in-up flex-col justify-center">
-      {#if date}
-        <p>{date}</p>
-      {/if}
       <h2 class="text-md font-bold sm:text-xl md:text-2xl">{title}</h2>
-      {#if blurb}
-        <p class="text-xs xs:text-sm md:text-base">{blurb}</p>
+      {#if subtitle}
+        <p class="text-xs xs:text-sm md:text-base">{subtitle}</p>
       {/if}
     </div>
   </div>

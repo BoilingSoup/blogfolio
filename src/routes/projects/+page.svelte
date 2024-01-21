@@ -16,7 +16,7 @@
         icon={project.icon}
         title={project.title}
         href={`/projects/${project.id}`}
-        blurb={project.blurb}
+        subtitle={project.blurb}
       />
     {/each}
   </div>
