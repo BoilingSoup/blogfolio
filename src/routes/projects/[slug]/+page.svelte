@@ -28,14 +28,22 @@
           <Badge color={framework.color}>{framework.name}</Badge>
         {/each}
       </h2>
+      <h2 class="text-xl text-black transition ease-in-out dark:text-white">
+        Source Code:
+        {#if data.source.public}
+          {#each data.source.urls as link}
+            <a target="_blank" href={link.href}>{link.text}</a>
+          {/each}
+        {/if}
+      </h2>
     </div>
   </div>
-  <div class="flex">
+  <div class="flex w-full px-8 py-5">
+    <p class="w-1/2 whitespace-pre-wrap bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">
+      {JSON.stringify(data)}
+    </p>
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-full max-w-4xl" src={data.video} title="demo" autoplay loop controls />
-    <!-- <p class="whitespace-pre-wrap bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"> -->
-    <!--   {JSON.stringify(data)} -->
-    <!-- </p> -->
+    <video class="w-1/2 max-w-4xl" src={data.video} title="demo" loop controls />
   </div>
 </main>
 

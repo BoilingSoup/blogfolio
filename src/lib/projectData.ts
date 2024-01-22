@@ -49,6 +49,18 @@ type ProjectData = {
       languages: Array<TechInfo>;
       frameworks: Array<TechInfo>;
     };
+    source:
+      | {
+          public: true;
+          urls: Array<{
+            /** text to display in <a> tag */
+            text: string;
+            href: string;
+          }>;
+        }
+      | {
+          public: false;
+        };
   };
 };
 
@@ -102,6 +114,13 @@ export const projectData: ProjectData = {
       category: "fullstack",
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
+    },
+    source: {
+      public: true,
+      urls: [
+        { text: "frontend", href: "https://github.com/BoilingSoup/tierlist-maker-frontend" },
+        { text: "backend", href: "https://github.com/BoilingSoup/tierlist-maker-backend" }
+      ]
     }
   },
   [DOCKFILES]: {
@@ -118,6 +137,10 @@ Dockfiles is a repository of Docker Compose setups for some commonly used tech s
       category: "fullstack",
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
+    },
+    source: {
+      public: true,
+      urls: [{ text: "repo", href: "https://github.com/BoilingSoup/dockfiles.tech" }]
     }
   },
   [FLOWTOOLZ]: {
@@ -144,6 +167,9 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
       category: "frontend",
       languages: [LANGUAGES.typescript],
       frameworks: [FRAMEWORKS.none]
+    },
+    source: {
+      public: false
     }
   },
   [REPOBULLETIN]: {
@@ -158,6 +184,9 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
       category: "fullstack",
       frameworks: [FRAMEWORKS.nextjs],
       languages: [LANGUAGES.typescript, LANGUAGES.golang]
+    },
+    source: {
+      public: false
     }
   },
   order: IDs
