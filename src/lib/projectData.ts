@@ -45,18 +45,13 @@ type ProjectData = {
     /** longer about section to display on project details page */
     description: string;
     techStack: {
-      category: "fullstack" | "frontend" | "backend";
       languages: Array<TechInfo>;
       frameworks: Array<TechInfo>;
     };
     source:
       | {
           public: true;
-          urls: Array<{
-            /** text to display in <a> tag */
-            text: string;
-            href: string;
-          }>;
+          urls: Array<string>;
         }
       | {
           public: false;
@@ -111,16 +106,12 @@ export const projectData: ProjectData = {
     blurb: "Create, save, export, and share custom tier list diagrams.",
     description: "...",
     techStack: {
-      category: "fullstack",
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
     source: {
       public: true,
-      urls: [
-        { text: "frontend", href: "https://github.com/BoilingSoup/tierlist-maker-frontend" },
-        { text: "backend", href: "https://github.com/BoilingSoup/tierlist-maker-backend" }
-      ]
+      urls: ["https://github.com/BoilingSoup/tierlist-maker-frontend", "https://github.com/BoilingSoup/tierlist-maker-backend"]
     }
   },
   [DOCKFILES]: {
@@ -134,13 +125,12 @@ export const projectData: ProjectData = {
 Dockfiles is a repository of Docker Compose setups for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users.
 `,
     techStack: {
-      category: "fullstack",
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
     source: {
       public: true,
-      urls: [{ text: "repo", href: "https://github.com/BoilingSoup/dockfiles.tech" }]
+      urls: ["https://github.com/BoilingSoup/dockfiles.tech"]
     }
   },
   [FLOWTOOLZ]: {
@@ -164,7 +154,6 @@ Web Workers were used for multi-threading. This allows users to subscribe and ag
 The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a low-level wrapper around the WebGL API.
 `,
     techStack: {
-      category: "frontend",
       languages: [LANGUAGES.typescript],
       frameworks: [FRAMEWORKS.none]
     },
@@ -174,14 +163,13 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
   },
   [REPOBULLETIN]: {
     id: "repobulletin",
-    url: "https://repobullet.in",
+    url: "https://repobullet.in/boilingsoup",
     icon: RepobulletinIcon,
     title: "Repo Bulletin",
     video: DemoVideo,
     blurb: "Create a personalized page to display your public GitHub repositories.",
     description: "efeffefefe",
     techStack: {
-      category: "fullstack",
       frameworks: [FRAMEWORKS.nextjs],
       languages: [LANGUAGES.typescript, LANGUAGES.golang]
     },
