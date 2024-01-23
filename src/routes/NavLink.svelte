@@ -19,7 +19,7 @@
 
 <a
   {href}
-  class={"relative mx-5 flex h-full flex-wrap place-content-center px-0 text-lg font-bold before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:content-[''] hover:before:h-[4px] hover:before:opacity-100 focus:before:h-[4px] focus:before:opacity-100 before:dark:bg-slate-50 md:text-xl lg:text-2xl xl:mx-10" +
+  class={"relative mx-10 flex h-full flex-wrap place-content-center px-0 text-lg font-bold before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:content-[''] hover:before:h-[4px] hover:before:opacity-100 focus:before:h-[4px] focus:before:opacity-100 before:dark:bg-slate-50 md:text-xl lg:text-2xl" +
     activeRouteStyle}
 >
   {text}
