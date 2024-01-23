@@ -17,11 +17,11 @@
       class="rounded-lg bg-slate-300 py-6 text-center text-4xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
     >
       {data.title}
-      <a class="text-blue-700 underline transition ease-in-out dark:text-blue-400" href={data.url} target="_blank"
-        >{data.url}<span><NewTabIcon size={48} /></span></a
+      <a class="text-blue-700 underline transition ease-in-out dark:text-blue-400" href={data.link.url} target="_blank"
+        >{data.link.text ?? data.link.url}<span><NewTabIcon size={48} /></span></a
       >
       <!-- <a -->
-      <!--   href={data.url} -->
+      <!--   href={data.link.url} -->
       <!--   class="visit-site-link absolute right-0 rounded-md border border-black px-6 py-4 text-2xl font-bold text-black transition ease-in-out dark:border-white dark:text-white" -->
       <!--   target="_blank">Visit Site</a -->
       <!-- > -->

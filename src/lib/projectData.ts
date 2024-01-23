@@ -39,7 +39,10 @@ type ProjectData = {
     icon: string;
     video: string;
     title: string;
-    url: string;
+    link: {
+      url: string;
+      text?: string;
+    };
     /** short descriptive blurb to display on projects index page */
     blurb: string;
     /** longer about section to display on project details page */
@@ -102,7 +105,9 @@ export const projectData: ProjectData = {
     icon: TierlistIcon,
     video: DemoVideo,
     title: "Tier List Maker",
-    url: "https://tierlist.fun",
+    link: {
+      url: "https://tierlist.fun"
+    },
     blurb: "Create, save, export, and share custom tier list diagrams.",
     description: `
 This web app allows users to create tier list diagrams.<br>Users can save their tier lists to the cloud, export tier lists as a PNG image, and toggle its public visibility. Public tier lists can be copied and then edited by other users.
@@ -121,7 +126,9 @@ This web app allows users to create tier list diagrams.<br>Users can save their 
     icon: DockfilesIcon,
     video: DemoVideo,
     title: "Dock Files",
-    url: "https://dockfiles.tech",
+    link: {
+      url: "https://dockfiles.tech"
+    },
     blurb: "A collection of downloadable Dockerfiles with a like, bookmark, comment, and notification system.",
     description: `
 Dockfiles is a repository of Docker Compose configurations for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users. The server is polled for notifications, notifying the user if they have received a reply.
@@ -140,7 +147,9 @@ Dockfiles is a repository of Docker Compose configurations for some commonly use
     icon: FlowtoolzIcon,
     video: DemoVideo,
     title: "Flow Toolz",
-    url: "https://flowtoolz.xyz",
+    link: {
+      url: "https://flowtoolz.xyz"
+    },
     blurb: "Real-time charting that plots buyer vs. seller volume side-by-side.",
     description: `
 Flowtoolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
@@ -161,7 +170,10 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
   },
   [REPOBULLETIN]: {
     id: "repobulletin",
-    url: "https://repobullet.in/BoilingSoup",
+    link: {
+      url: "https://repobullet.in/BoilingSoup",
+      text: "https://repobullet.in"
+    },
     icon: RepobulletinIcon,
     title: "Repo Bulletin",
     video: DemoVideo,
