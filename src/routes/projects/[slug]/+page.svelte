@@ -64,12 +64,7 @@
     <div class="lg:w-1/2">
       <h2 class="text-3xl text-black transition ease-in-out dark:text-white">About</h2>
       <p class="whitespace-pre-wrap bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In est
-        ante in nibh. Dictum varius duis at consectetur. Dolor sit amet consectetur adipiscing elit pellentesque. Sed viverra tellus in hac
-        habitasse platea dictumst vestibulum rhoncus. Mauris vitae ultricies leo integer malesuada. Venenatis a condimentum vitae sapien
-        pellentesque habitant morbi. Ut tristique et egestas quis ipsum suspendisse ultrices gravida. Purus viverra accumsan in nisl nisi
-        scelerisque eu ultrices vitae. Egestas dui id ornare arcu. Penatibus et magnis dis parturient montes nascetur ridiculus. Nunc sed
-        velit dignissim sodales ut."
+        {@html data.description}
       </p>
     </div>
     <div class="lg:w-1/2">

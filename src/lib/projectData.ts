@@ -104,7 +104,9 @@ export const projectData: ProjectData = {
     title: "Tier List Maker",
     url: "https://tierlist.fun",
     blurb: "Create, save, export, and share custom tier list diagrams.",
-    description: "...",
+    description: `
+This web app allows users to create tier list diagrams.<br>Users can save their tier lists to the cloud, export tier lists as a PNG image, and toggle its public visibility. Public tier lists can be copied and then edited by other users.
+`,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
@@ -122,7 +124,7 @@ export const projectData: ProjectData = {
     url: "https://dockfiles.tech",
     blurb: "A collection of downloadable Dockerfiles with a like, bookmark, comment, and notification system.",
     description: `
-Dockfiles is a repository of Docker Compose setups for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users.
+Dockfiles is a repository of Docker Compose configurations for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users. The server is polled for notifications, notifying the user if they have received a reply.
 `,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],
@@ -142,14 +144,10 @@ Dockfiles is a repository of Docker Compose setups for some commonly used tech s
     blurb: "Real-time charting that plots buyer vs. seller volume side-by-side.",
     description: `
 Flowtoolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
-<br/>
-<br/>
 The data is sourced from public crypto WebSocket APIs.
 Charts can be aggregated by both X-axis (time) and Y-axis (price).
 <br/>
-<br/>
 Web Workers were used for multi-threading. This allows users to subscribe and aggregate multiple WebSocket feeds at the same time.
-<br/>
 <br/>
 The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a low-level wrapper around the WebGL API.
 `,
@@ -168,7 +166,8 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     title: "Repo Bulletin",
     video: DemoVideo,
     blurb: "Create a personalized page to display your public GitHub repositories.",
-    description: "efeffefefe",
+    description:
+      "Users are authenticated through GitHub OAuth2. After creating an account, users can create a page to group and categorize their public GitHub repositories.",
     techStack: {
       frameworks: [FRAMEWORKS.nextjs],
       languages: [LANGUAGES.typescript, LANGUAGES.golang]
