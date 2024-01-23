@@ -163,7 +163,7 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
   },
   [REPOBULLETIN]: {
     id: "repobulletin",
-    url: "https://repobullet.in/boilingsoup",
+    url: "https://repobullet.in/BoilingSoup",
     icon: RepobulletinIcon,
     title: "Repo Bulletin",
     video: DemoVideo,

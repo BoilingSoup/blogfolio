@@ -35,6 +35,6 @@
 
 <style>
   path {
-    transition: fill 650ms ease-in-out;
+    transition: fill 550ms ease-in-out;
   }
 </style>

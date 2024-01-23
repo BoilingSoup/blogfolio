@@ -1,5 +1,6 @@
 <script lang="ts">
   import Badge from "../Badge.svelte";
+  import NewTabIcon from "./NewTabIcon.svelte";
 
   export let data;
 </script>
@@ -13,12 +14,19 @@
   <!-- <h1 class="text-4xl text-black dark:text-white">{data.id}</h1> -->
   <div class="px-8 py-5">
     <h1
-      class="relative rounded-lg bg-slate-300 py-3 text-center text-4xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
+      class="rounded-lg bg-slate-300 py-6 text-center text-4xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
     >
       {data.title}
-      <a href={data.url} class="absolute right-0 border px-6 py-4 text-base" target="_blank">Visit Site</a>
+      <a class="text-blue-700 underline transition ease-in-out dark:text-blue-400" href={data.url} target="_blank"
+        >{data.url}<span><NewTabIcon size={48} /></span></a
+      >
+      <!-- <a -->
+      <!--   href={data.url} -->
+      <!--   class="visit-site-link absolute right-0 rounded-md border border-black px-6 py-4 text-2xl font-bold text-black transition ease-in-out dark:border-white dark:text-white" -->
+      <!--   target="_blank">Visit Site</a -->
+      <!-- > -->
     </h1>
-    <div class="flex flex-col justify-center gap-4 py-3 lg:flex-row lg:gap-10">
+    <div class="flex flex-col justify-center gap-4 py-6 lg:flex-row lg:gap-10">
       <h2 class="text-black transition ease-in-out dark:text-white lg:text-xl">
         Languages: {#each data.techStack.languages as language}
           <Badge color={language.color}>{language.name}</Badge>
@@ -34,7 +42,11 @@
         {#if data.source.public}
           <ul class="list-none">
             {#each data.source.urls as link}
-              <li><a class="text-blue-700 underline transition ease-in-out dark:text-blue-400" target="_blank" href={link}>{link}</a></li>
+              <li>
+                <a class="text-blue-700 underline transition ease-in-out dark:text-blue-400" target="_blank" href={link}
+                  >{link}<span><NewTabIcon size={20} /></span></a
+                >
+              </li>
             {/each}
           </ul>
         {:else}
@@ -48,12 +60,22 @@
       <!-- </h2> -->
     </div>
   </div>
-  <div class="flex w-full px-8 py-8">
-    <p class="w-1/2 whitespace-pre-wrap bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">
-      {JSON.stringify(data)}
-    </p>
-    <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-1/2 max-w-4xl" src={data.video} title="demo" loop controls />
+  <div class="flex w-full flex-wrap px-8 py-8">
+    <div class="lg:w-1/2">
+      <h2 class="text-3xl text-black transition ease-in-out dark:text-white">About</h2>
+      <p class="whitespace-pre-wrap bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In est
+        ante in nibh. Dictum varius duis at consectetur. Dolor sit amet consectetur adipiscing elit pellentesque. Sed viverra tellus in hac
+        habitasse platea dictumst vestibulum rhoncus. Mauris vitae ultricies leo integer malesuada. Venenatis a condimentum vitae sapien
+        pellentesque habitant morbi. Ut tristique et egestas quis ipsum suspendisse ultrices gravida. Purus viverra accumsan in nisl nisi
+        scelerisque eu ultrices vitae. Egestas dui id ornare arcu. Penatibus et magnis dis parturient montes nascetur ridiculus. Nunc sed
+        velit dignissim sodales ut."
+      </p>
+    </div>
+    <div class="lg:w-1/2">
+      <!-- svelte-ignore a11y-media-has-caption -->
+      <video class="w-full max-w-4xl" src={data.video} title="demo" loop controls />
+    </div>
   </div>
 </main>
 
@@ -65,4 +87,24 @@
   video::-webkit-media-controls-mute-button {
     display: none;
   }
+
+  /* .visit-site-link { */
+  /*   color: rgba(255, 255, 255, 0.9); */
+  /*   background: linear-gradient(-45deg, #ffa63d, #ff3d77, #338aff, #3cf0c5); */
+  /*   background-size: 600%; */
+  /*   animation: animateLinkButton 16s linear infinite; */
+  /*   filter: blur(30px) */
+  /* } */
+
+  /* @keyframes animateLinkButton { */
+  /*   0% { */
+  /*     background-position: 0% 50%; */
+  /*   } */
+  /*   50% { */
+  /*     background-position: 100% 50%; */
+  /*   } */
+  /*   100% { */
+  /*     background-position: 0% 50%; */
+  /*   } */
+  /* } */
 </style>
