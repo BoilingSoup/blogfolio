@@ -110,7 +110,7 @@ export const projectData: ProjectData = {
     },
     blurb: "Create, save, export, and share custom tier list diagrams.",
     description: `
-This web app allows users to create tier list diagrams.<br>Users can save their tier lists to the cloud, export tier lists as a PNG image, and toggle its public visibility. Public tier lists can be copied and then edited by other users.
+Tier List Maker allows users to create tier list diagrams.<br>Users can save their tier lists to the cloud, export tier lists as a PNG image, and toggle their public visibility. Public tier lists can be copied and then edited by other users.
 `,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],
@@ -152,7 +152,7 @@ Dockfiles is a repository of Docker Compose configurations for some commonly use
     },
     blurb: "Real-time charting that plots buyer vs. seller volume side-by-side.",
     description: `
-Flowtoolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
+Flow Toolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
 The data is sourced from public crypto WebSocket APIs.
 Charts can be aggregated by both X-axis (time) and Y-axis (price).
 <br/>

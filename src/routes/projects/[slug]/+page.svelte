@@ -38,7 +38,12 @@
         {/each}
       </h2>
       <div class="flex gap-2">
-        <h2 class="text-black transition ease-in-out dark:text-white lg:text-xl">Source Code:</h2>
+        <h2 class="text-black transition ease-in-out dark:text-white lg:text-xl">
+          Source Code:
+          {#if !data.source.public}
+            <Badge color="bg-gray-700">Private</Badge>
+          {/if}
+        </h2>
         {#if data.source.public}
           <ul class="list-none">
             {#each data.source.urls as link}
@@ -49,8 +54,6 @@
               </li>
             {/each}
           </ul>
-        {:else}
-          <Badge color="bg-gray-700">Private</Badge>
         {/if}
       </div>
       <!-- <h2 class="text-xl text-black transition ease-in-out dark:text-white"> -->
