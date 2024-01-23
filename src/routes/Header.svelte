@@ -3,6 +3,7 @@
   import DarkModeButton from "./DarkModeButton.svelte";
   import FroggyIcon from "./FroggyIcon.svelte";
   import { page } from "$app/stores";
+  import NewTabIcon from "./NewTabIcon.svelte";
 
   let showLinks = false;
 
@@ -37,9 +38,20 @@
   <div class="z-10 flex h-full items-center">
     {#if showLinks}
       <div class="mr-2 hidden h-full dark:text-white lg:flex">
-        <NavLink href="/" pathName="/" text="Home" />
         <NavLink href="/projects" pathName="projects" text="Projects" />
         <NavLink href="/blog" pathName="blog" text="Blog" />
+        <div class="flex items-center">
+          <NavLink
+            href="https://github.com/boilingsoup"
+            pathName="/"
+            text="GitHub"
+            margin="ml-10"
+            textColor="text-gray-700 dark:text-gray-400"
+            hoverColor="before:bg-gray-700 before:dark:bg-gray-400"
+            target="_blank"
+          />
+          <NewTabIcon size={30} color={{ dark: "#9ca3af", light: "#374151" }} />
+        </div>
       </div>
     {/if}
     <DarkModeButton />

@@ -1,12 +1,13 @@
 <script lang="ts">
   import { darkModeStore } from "$lib";
 
-  export let size: number;
-
   const blue400 = "#60A5FA";
   const blue700 = "#1D4ED8";
 
-  $: fill = $darkModeStore ? blue400 : blue700;
+  export let size: number;
+  export let color: { dark: string; light: string } = { dark: blue400, light: blue700 };
+
+  $: fill = $darkModeStore ? color.dark : color.light;
 </script>
 
 <svg class="inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width="{size}px" height="{size}px"

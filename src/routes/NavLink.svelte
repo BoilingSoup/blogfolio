@@ -4,6 +4,10 @@
   export let href: string;
   export let pathName: string;
   export let text: string;
+  export let margin: string = "mx-10";
+  export let textColor: string = "";
+  export let hoverColor: string = "before:bg-gray-900 before:dark:bg-slate-50";
+  export let target: "_blank" | "_self" | "_parent" | "_top" | "framename" | undefined = undefined;
 
   let activeRouteStyle = "";
 
@@ -15,12 +19,22 @@
       activeRouteStyle = "";
     }
   }
+
+  $: marginStyles = ` ${margin}`;
+
+  $: textColorStyles = ` ${textColor}`;
+
+  $: underlineColor = ` ${hoverColor}`;
 </script>
 
 <a
   {href}
-  class={"relative mx-10 flex h-full flex-wrap place-content-center px-0 text-lg font-bold before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:bg-gray-900 before:opacity-75 before:content-[''] hover:before:h-[4px] hover:before:opacity-100 focus:before:h-[4px] focus:before:opacity-100 before:dark:bg-slate-50 md:text-xl lg:text-2xl" +
-    activeRouteStyle}
+  class={"relative flex h-full flex-wrap place-content-center px-0 text-lg font-bold before:absolute before:bottom-0 before:h-[0px] before:w-[100%] before:rounded before:opacity-75 before:content-[''] hover:before:h-[4px] hover:before:opacity-100 focus:before:h-[4px] focus:before:opacity-100 lg:text-2xl" +
+    activeRouteStyle +
+    marginStyles +
+    textColorStyles +
+    underlineColor}
+  {target}
 >
   {text}
 </a>

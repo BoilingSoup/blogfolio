@@ -1,6 +1,6 @@
 <script lang="ts">
+  import NewTabIcon from "../../NewTabIcon.svelte";
   import Badge from "../Badge.svelte";
-  import NewTabIcon from "./NewTabIcon.svelte";
 
   export let data;
 </script>
