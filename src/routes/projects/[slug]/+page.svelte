@@ -52,11 +52,13 @@
           <Badge color="bg-gray-700">Private</Badge>
         {/if}
         {#if data.source.public}
-          <ul class="list-none">
+          <ul class="list-none overflow-hidden text-ellipsis whitespace-nowrap">
             {#each data.source.urls as link}
               <li>
-                <a class="break-all text-xs text-blue-700 underline transition ease-in-out dark:text-blue-400" target="_blank" href={link}
-                  >{link}<span><NewTabIcon --size="20px" /></span></a
+                <a
+                  class="break-all text-xs text-blue-700 underline transition ease-in-out dark:text-blue-400 xl:text-sm"
+                  target="_blank"
+                  href={link}>{link}<span><NewTabIcon --size="20px" /></span></a
                 >
               </li>
             {/each}
