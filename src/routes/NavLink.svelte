@@ -2,29 +2,32 @@
   import { page } from "$app/stores";
 
   export let href: string;
-  export let pathName: string;
+  export let pathName: string | undefined = undefined;
   export let text: string;
   export let margin: string = "mx-10";
   export let textColor: string = "";
   export let hoverColor: string = "before:bg-gray-900 before:dark:bg-slate-50";
   export let target: "_blank" | "_self" | "_parent" | "_top" | "framename" | undefined = undefined;
 
-  let activeRouteStyle = "";
+  let marginStyles: string, textColorStyles: string, underlineColor: string, activeRouteStyle: string;
 
-  $: if ($page.url.pathname.split("/").length >= 2) {
-    const subPath = $page.url.pathname.split("/")[1];
-    if (subPath.toLowerCase() === pathName.toLowerCase() || (subPath === "" && pathName === "/")) {
+  $: if (pathName !== undefined && $page.url.pathname.split("/").length >= 2) {
+    const currSubPath = $page.url.pathname.split("/")[1];
+
+    const isActiveRoute = currSubPath.toLowerCase() === pathName.toLowerCase();
+
+    if (isActiveRoute) {
       activeRouteStyle = " before:h-[4px] before:!opacity-100";
     } else {
       activeRouteStyle = "";
     }
   }
 
-  $: marginStyles = ` ${margin}`;
-
-  $: textColorStyles = ` ${textColor}`;
-
-  $: underlineColor = ` ${hoverColor}`;
+  $: {
+    marginStyles = ` ${margin}`;
+    textColorStyles = ` ${textColor}`;
+    underlineColor = ` ${hoverColor}`;
+  }
 </script>
 
 <a

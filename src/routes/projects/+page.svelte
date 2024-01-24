@@ -1,10 +1,11 @@
 <script lang="ts">
   import { projectList } from "$lib/projectData";
   import CardLink from "../CardLink.svelte";
+  import { DOMAIN } from "../constants";
 </script>
 
 <svelte:head>
-  <title>BoilingSoup | Projects</title>
+  <title>{DOMAIN} | Projects</title>
 </svelte:head>
 
 <main class="mx-auto w-[90%] max-w-4xl transition ease-in-out dark:text-white dark:ease-in-out">

@@ -1,12 +1,13 @@
 <script lang="ts">
   import { blogData } from "$lib/blogData";
   import CardLink from "../CardLink.svelte";
+  import { DOMAIN } from "../constants";
 
   const recentBlogPosts = (JSON.parse(JSON.stringify(blogData)) as typeof blogData).reverse();
 </script>
 
 <svelte:head>
-  <title>BoilingSoup | Blog</title>
+  <title>{DOMAIN} | Blog</title>
 </svelte:head>
 
 <main class="mx-auto w-[90%] max-w-4xl transition ease-in-out dark:text-white dark:ease-in-out">

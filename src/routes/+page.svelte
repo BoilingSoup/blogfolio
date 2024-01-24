@@ -2,12 +2,13 @@
   import { darkModeStore } from "$lib";
   import BSoupFrog from "./BSoupFrog.svelte";
   import PrettyLink from "./PrettyLink.svelte";
+  import { DOMAIN } from "./constants";
 
   $: frogColor = $darkModeStore ? "#f1f5f9" : "#27272a";
 </script>
 
 <svelte:head>
-  <title>BoilingSoup | Home</title>
+  <title>{DOMAIN} | Home</title>
 </svelte:head>
 
 <main class="h-[calc(100%_-_theme(space.14))]">

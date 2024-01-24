@@ -1,12 +1,13 @@
 <script lang="ts">
   import NewTabIcon from "../../NewTabIcon.svelte";
+  import { DOMAIN } from "../../constants";
   import Badge from "../Badge.svelte";
 
   export let data;
 </script>
 
 <svelte:head>
-  <title>BoilingSoup | {data.title}</title>
+  <title>{DOMAIN} | {data.title}</title>
 </svelte:head>
 
 <main class="mx-auto mt-8 rounded bg-slate-300 transition ease-in-out lg:container dark:bg-zinc-900">
