@@ -15,11 +15,11 @@
   <!-- <h1 class="text-4xl text-black dark:text-white">{data.id}</h1> -->
   <div class="px-8 py-5">
     <h1
-      class="rounded-lg bg-slate-300 py-6 text-center text-4xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white"
+      class="rounded-lg bg-slate-300 py-6 text-center text-2xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white lg:text-4xl"
     >
       {data.title}
       <a class="text-blue-700 underline transition ease-in-out dark:text-blue-400" href={data.link.url} target="_blank"
-        >{data.link.text ?? data.link.url}<span><NewTabIcon size={48} /></span></a
+        >{data.link.text ?? data.link.url}<span class="h-[30px] w-[30px]"><NewTabIcon --size="30px" /></span></a
       >
       <!-- <a -->
       <!--   href={data.link.url} -->
@@ -50,7 +50,7 @@
             {#each data.source.urls as link}
               <li>
                 <a class="text-blue-700 underline transition ease-in-out dark:text-blue-400" target="_blank" href={link}
-                  >{link}<span><NewTabIcon size={20} /></span></a
+                  >{link}<span><NewTabIcon --size="20px" /></span></a
                 >
               </li>
             {/each}
