@@ -50,7 +50,7 @@
             hoverColor="before:bg-gray-700 before:dark:bg-gray-400"
             target="_blank"
           />
-          <NewTabIcon size={30} color={{ dark: "#9ca3af", light: "#374151" }} />
+          <NewTabIcon --size="30px" color={{ dark: "#9ca3af", light: "#374151" }} />
         </div>
       </div>
     {/if}

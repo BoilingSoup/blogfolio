@@ -21,7 +21,7 @@
   on:blur={removeHoverEffect}
 >
   <div
-    class="absolute left-1 top-1 lg:left-1 [&>svg]:mt-2 [&>svg]:hidden [&>svg]:h-[30px] [&>svg]:w-[30px] [&>svg]:animate-fade-in-up [&>svg]:transition [&>svg]:ease-in-out [&>svg]:2xs:mx-2 [&>svg]:2xs:inline [&>svg]:lg:ml-8"
+    class="absolute left-1 top-1 mx-1 lg:left-1 [&>svg]:mt-2 [&>svg]:h-[30px] [&>svg]:w-[30px] [&>svg]:animate-fade-in-up [&>svg]:transition [&>svg]:ease-in-out [&>svg]:2xs:mx-2 [&>svg]:2xs:inline [&>svg]:lg:ml-8"
   >
     <BSoupFrog />
   </div>
