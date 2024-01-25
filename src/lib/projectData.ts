@@ -110,7 +110,9 @@ export const projectData: ProjectData = {
     },
     blurb: "Create, save, export, and share custom tier list diagrams.",
     description: `
-Tier List Maker allows users to create tier list diagrams.<br>Users can save their tier lists to the cloud, export tier lists as a PNG image, and toggle their public visibility. Public tier lists can be copied and then edited by other users.
+Create your own tier list diagrams. Users can save tier lists to the cloud, export PNG, and make their tier lists public/private for other users to clone and edit.
+
+I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Postgres) to store data.
 `,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],
@@ -131,7 +133,9 @@ Tier List Maker allows users to create tier list diagrams.<br>Users can save the
     },
     blurb: "A collection of downloadable Dockerfiles with a like, bookmark, comment, and notification system.",
     description: `
-Dockfiles is a repository of Docker Compose configurations for some commonly used tech stacks and utilities. Users can comment on resources and reply to other users. The server is polled for notifications, notifying the user if they have received a reply.
+Dock Files is a repository of Docker Compose setups for some common tech stacks and utilities. Each setup provides a README description and source to download the repository.
+
+Users can search, filter, like and bookmark the setups; they can also leave comments and reply to each other. When logged in, the server is polled for notifications (every 30 seconds) and notifies the user if they have received a new reply.
 `,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],
@@ -152,8 +156,7 @@ Dockfiles is a repository of Docker Compose configurations for some commonly use
     },
     blurb: "Real-time charting that plots buyer vs. seller volume side-by-side.",
     description: `
-Flow Toolz is a chart visualizer that displays live buy/sell data as <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
-The data is sourced from public crypto WebSocket APIs.
+Flow Toolz is a charting app that listens to live cryptocurrency market data and plots the transaction sizes (volume) of buyers in comparison to the volume of sellers. <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
 Charts can be aggregated by both X-axis (time) and Y-axis (price).
 <br/>
 Web Workers were used for multi-threading. This allows users to subscribe and aggregate multiple WebSocket feeds at the same time.
