@@ -2,6 +2,8 @@
   import NewTabIcon from "../../NewTabIcon.svelte";
   import { DOMAIN } from "../../constants";
   import Badge from "../Badge.svelte";
+  import Framework from "./Framework.svelte";
+  import Language from "./Language.svelte";
   import ProjectLabel from "./ProjectLabel.svelte";
 
   export let data;
@@ -23,34 +25,26 @@
         target="_blank">{data.link.text ?? data.link.url}<span class="h-[30px] w-[30px]"><NewTabIcon --size="30px" /></span></a
       >
     </h1>
-    <div class="flex flex-col justify-center gap-4 py-6 xl:flex-row xl:gap-10">
-      <div class="flex gap-2">
-        <div class="w-[14ch] text-right xl:w-auto">
-          <ProjectLabel>Languages:</ProjectLabel>
-        </div>
-        <div class="flex h-min gap-1">
-          {#each data.techStack.languages as language}
-            <Badge color={language.color}>{language.name}</Badge>
-          {/each}
-        </div>
+    <div class="flex flex-col justify-center gap-4 py-6 md:flex-row xl:gap-10">
+      <div class="flex flex-col gap-4 lg:hidden">
+        <Language {data} />
+        <Framework {data} />
       </div>
-      <div class="flex gap-2">
-        <div class="w-[14ch] text-right xl:w-auto">
-          <ProjectLabel>Frameworks:</ProjectLabel>
-        </div>
-        <div class="flex h-min gap-1">
-          {#each data.techStack.frameworks as framework}
-            <Badge color={framework.color}>{framework.name}</Badge>
-          {/each}
-        </div>
+      <div class="hidden lg:block">
+        <Language {data} />
+      </div>
+      <div class="hidden lg:block">
+        <Framework {data} />
       </div>
       <div class="flex gap-2">
         <div class="w-[14ch] text-right xl:w-auto">
           <ProjectLabel>Source Code:</ProjectLabel>
         </div>
-        {#if !data.source.public}
-          <Badge color="bg-gray-700">Private</Badge>
-        {/if}
+        <div class="h-min">
+          {#if !data.source.public}
+            <Badge color="bg-gray-700">Private</Badge>
+          {/if}
+        </div>
         {#if data.source.public}
           <ul class="list-none overflow-hidden text-ellipsis whitespace-nowrap">
             {#each data.source.urls as link}
