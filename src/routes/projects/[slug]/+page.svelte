@@ -40,11 +40,11 @@
         <div class="w-[14ch] text-right xl:w-auto">
           <ProjectLabel>Source Code:</ProjectLabel>
         </div>
-        <div class="h-min">
-          {#if !data.source.public}
+        {#if !data.source.public}
+          <div class="h-min">
             <Badge color="bg-gray-700">Private</Badge>
-          {/if}
-        </div>
+          </div>
+        {/if}
         {#if data.source.public}
           <ul class="list-none overflow-hidden text-ellipsis whitespace-nowrap">
             {#each data.source.urls as link}
