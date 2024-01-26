@@ -37,7 +37,7 @@
         <Framework {data} />
       </div>
       <div class="flex gap-2">
-        <div class="w-[14ch] text-right xl:w-auto">
+        <div class="w-[14ch] text-right">
           <ProjectLabel>Source Code:</ProjectLabel>
         </div>
         {#if !data.source.public}

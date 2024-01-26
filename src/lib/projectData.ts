@@ -156,12 +156,13 @@ Users can search, filter, like and bookmark the setups; they can also leave comm
     },
     blurb: "Real-time charting that plots buyer vs. seller volume side-by-side.",
     description: `
-Flow Toolz is a charting app that listens to live cryptocurrency market data and plots the transaction sizes (volume) of buyers in comparison to the volume of sellers. <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint candles</a>.
-Charts can be aggregated by both X-axis (time) and Y-axis (price).
-<br/>
-Web Workers were used for multi-threading. This allows users to subscribe and aggregate multiple WebSocket feeds at the same time.
-<br/>
-The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a low-level wrapper around the WebGL API.
+Flow Toolz is a charting app that connects to live cryptocurrency data and plots the transaction sizes (volume) of buyers in comparison to the volume of sellers. Also known as a <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint chart</a>.
+
+Charts can be aggregated by both X-axis (time) and Y-axis (price). 
+
+Web Workers are used to connect and store data from multiple WebSocket sources simultaneously. This allows users to connect to multiple data feeds and switch between their charts.
+
+The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a 2D graphics library.
 `,
     techStack: {
       languages: [LANGUAGES.typescript],
