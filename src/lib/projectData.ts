@@ -113,6 +113,8 @@ export const projectData: ProjectData = {
 Create your own tier list diagrams. Users can save tier lists to the cloud, export PNG, and make their tier lists public/private for other users to clone and edit.
 
 I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Postgres) to store data.
+
+"S tier project" &#8212 <a href="https://twitter.com/CockroachDB/status/1711783125007675617" target="_blank" class="underline link-light-dark">@CockroachDB on Twitter</a> 😁
 `,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],
@@ -156,13 +158,13 @@ Users can search, filter, like and bookmark the setups; they can also leave comm
     },
     blurb: "Real-time charting that plots buyer vs. seller volume side-by-side.",
     description: `
-Flow Toolz is a charting app that connects to live cryptocurrency data and plots the transaction sizes (volume) of buyers in comparison to the volume of sellers. Also known as a <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline">footprint chart</a>.
+Flow Toolz is a charting app that connects to live cryptocurrency data and plots the transaction sizes (volume) of buyers in comparison to the volume of sellers. Also known as a <a href="https://en.wikipedia.org/wiki/Order_flow_trading#Reading_Footprint_candles" target="_blank" class="underline link-light-dark">footprint chart</a>.
 
 Charts can be aggregated by both X-axis (time) and Y-axis (price). 
 
 Web Workers are used for multi-threading. This allows users to connect to multiple data sources in the background and switch between their charts.
 
-The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a 2D graphics library.
+The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline link-light-dark">PixiJS</a> <code>&#8212;</code> a 2D graphics library.
 `,
     techStack: {
       languages: [LANGUAGES.typescript],
@@ -188,7 +190,7 @@ Users are authenticated through GitHub's OAuth2 flow. After registering, users c
 When a repository is pinned to a page it will display the following:
 
 <ul class="[&>li]:ml-8"><li>a link to the repository</li><li>the programming language most used in the repository</li><li>its GitHub star count</li></ul>
-The user's personalized page will have a URL path that matches their GitHub username (<a href="https://repobullet.in/BoilingSoup" target="_blank" class="underline">https://repobullet.in/BoilingSoup</a>).
+The user's personalized page will have a URL path that matches their GitHub username (<a href="https://repobullet.in/BoilingSoup" target="_blank" class="underline link-light-dark">https://repobullet.in/BoilingSoup</a>).
 `,
     techStack: {
       frameworks: [FRAMEWORKS.nextjs],

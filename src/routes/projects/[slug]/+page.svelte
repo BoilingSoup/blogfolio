@@ -19,10 +19,8 @@
       class="rounded-lg bg-slate-300 text-center text-2xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white xs:text-3xl lg:text-4xl"
     >
       {data.title}
-      <a
-        class="whitespace-nowrap text-xl text-blue-700 underline transition ease-in-out dark:text-blue-400 xs:text-2xl lg:text-3xl"
-        href={data.link.url}
-        target="_blank">{data.link.text ?? data.link.url}<span class="h-[30px] w-[30px]"><NewTabIcon --size="30px" /></span></a
+      <a class="link-light-dark whitespace-nowrap text-xl underline xs:text-2xl lg:text-3xl" href={data.link.url} target="_blank"
+        >{data.link.text ?? data.link.url}<span class="h-[30px] w-[30px]"><NewTabIcon --size="30px" /></span></a
       >
     </h1>
     <div class="flex flex-col justify-center gap-4 py-6 md:flex-row xl:gap-10">
@@ -49,10 +47,8 @@
           <ul class="list-none overflow-hidden text-ellipsis whitespace-nowrap">
             {#each data.source.urls as link}
               <li>
-                <a
-                  class="break-all text-xs text-blue-700 underline transition ease-in-out dark:text-blue-400 xl:text-sm"
-                  target="_blank"
-                  href={link}>{link}<span><NewTabIcon --size="20px" /></span></a
+                <a class="link-light-dark break-all text-xs underline transition ease-in-out xl:text-sm" target="_blank" href={link}
+                  >{link}<span><NewTabIcon --size="20px" /></span></a
                 >
               </li>
             {/each}

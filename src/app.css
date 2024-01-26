@@ -9,6 +9,12 @@
   }
 }
 
+@layer components {
+  .link-light-dark {
+    @apply text-blue-700 transition ease-in-out dark:text-blue-400;
+  }
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 400ms;
