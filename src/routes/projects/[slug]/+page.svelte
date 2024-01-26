@@ -13,7 +13,7 @@
   <title>{DOMAIN} | {data.title}</title>
 </svelte:head>
 
-<div class="flex h-[calc(100%-theme(space.14))] w-full flex-wrap place-items-center">
+<div class="lg:grid lg:h-[calc(100%-theme(space.14))] lg:place-items-center">
   <main class="mx-auto rounded bg-slate-300 py-12 transition ease-in-out lg:container dark:bg-zinc-900">
     <div class="px-8">
       <h1
@@ -24,7 +24,7 @@
           >{data.link.text ?? data.link.url}<span class="h-[30px] w-[30px]"><NewTabIcon --size="30px" /></span></a
         >
       </h1>
-      <div class="flex flex-col justify-center gap-4 overflow-hidden py-8 md:py-20 xl:flex-row xl:gap-10">
+      <div class="flex flex-col justify-center gap-4 overflow-hidden py-12 md:py-20 md:text-lg xl:flex-row xl:gap-10">
         <div class="flex flex-col gap-4 lg:hidden">
           <Language {data} />
           <Framework {data} />
@@ -58,16 +58,16 @@
         </div>
       </div>
     </div>
-    <div class="flex w-full flex-wrap-reverse gap-8 px-8 md:flex-wrap">
-      <div class="xl:w-[calc(50%-theme(space.4))]">
-        <h2 class="text-xl font-bold text-black transition ease-in-out dark:text-white">About</h2>
+    <div class="flex w-full flex-wrap-reverse gap-12 px-8 md:flex-wrap md:gap-20">
+      <div class="xl:w-[calc(50%-theme(space.10))]">
+        <h2 class="text-xl font-bold text-black transition ease-in-out dark:text-white md:text-2xl">About</h2>
         <p class="whitespace-pre-wrap bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">
           {@html data.description}
         </p>
       </div>
-      <div class="xl:w-[calc(50%-theme(space.4))]">
+      <div class="xl:w-[calc(50%-theme(space.10))]">
         <!-- svelte-ignore a11y-media-has-caption -->
-        <video class="w-full max-w-4xl" src={data.video} title="demo" loop controls />
+        <video class="max-w-4x w-full" width={400} height={100} src={data.video} title="demo" loop controls />
       </div>
     </div>
   </main>
