@@ -160,7 +160,7 @@ Flow Toolz is a charting app that connects to live cryptocurrency data and plots
 
 Charts can be aggregated by both X-axis (time) and Y-axis (price). 
 
-Web Workers are used to connect and store data from multiple WebSocket sources simultaneously. This allows users to connect to multiple data feeds and switch between their charts.
+Web Workers are used for multi-threading. This allows users to connect to multiple data sources in the background and switch between their charts.
 
 The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was made with <a href="https://pixijs.com/" target="_blank" class="underline">PixiJS</a> <code>&#8212;</code> a 2D graphics library.
 `,
@@ -187,9 +187,9 @@ Users are authenticated through GitHub's OAuth2 flow. After registering, users c
 
 When a repository is pinned to a page it will display the following:
 
-<ul class="[&>li]:ml-8"><li>link to the repository</li><li>the programming language most used in the repository</li><li>GitHub star count</li></ul>
+<ul class="[&>li]:ml-8"><li>a link to the repository</li><li>the programming language most used in the repository</li><li>its GitHub star count</li></ul>
 The user's personalized page will have a URL path that matches their GitHub username (<a href="https://repobullet.in/BoilingSoup" target="_blank" class="underline">https://repobullet.in/BoilingSoup</a>).
-    `,
+`,
     techStack: {
       frameworks: [FRAMEWORKS.nextjs],
       languages: [LANGUAGES.typescript, LANGUAGES.golang]
