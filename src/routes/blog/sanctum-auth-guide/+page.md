@@ -212,10 +212,10 @@ Additionally, we'll show an error message if the log in information is incorrect
 <br />
 So we will need 3 states to describe our UI:
 <br/>
-<ol class="inline-block ml-12 leading-relaxed">
-<li class="bg-gray-400 font-mono dark:bg-slate-700">isLoading</li>
-<li class="bg-gray-400 font-mono dark:bg-slate-700">isAuthenticated</li>
-<li class="bg-gray-400 font-mono dark:bg-slate-700">isWrong</li>
+<ol class="inline-block ml-12 leading-relaxed [&>li]:my-2 [&>li]:first:mt-0 [&>li]:last:mb-0">
+<li class="bg-gray-400 font-mono dark:bg-slate-700 px-2 py-1">isLoading</li>
+<li class="bg-gray-400 font-mono dark:bg-slate-700 px-2 py-1">isAuthenticated</li>
+<li class="bg-gray-400 font-mono dark:bg-slate-700 px-2 py-1">isWrong</li>
 </ol>
 <br/>
 <br/>
