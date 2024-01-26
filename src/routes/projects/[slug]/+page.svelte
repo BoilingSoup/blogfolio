@@ -13,10 +13,10 @@
   <title>{DOMAIN} | {data.title}</title>
 </svelte:head>
 
-<main class="mx-auto mt-8 rounded bg-slate-300 transition ease-in-out lg:container dark:bg-zinc-900">
-  <div class="px-8 py-5">
+<main class="mx-auto mt-8 rounded bg-slate-300 py-12 transition ease-in-out lg:container dark:bg-zinc-900">
+  <div class="px-8">
     <h1
-      class="rounded-lg bg-slate-300 py-6 text-center text-2xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white xs:text-3xl lg:text-4xl"
+      class="rounded-lg bg-slate-300 text-center text-2xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white xs:text-3xl lg:text-4xl"
     >
       {data.title}
       <a
@@ -61,14 +61,14 @@
       </div>
     </div>
   </div>
-  <div class="flex w-full flex-wrap px-8 py-8">
-    <div class="lg:w-1/2">
+  <div class="flex w-full flex-wrap-reverse gap-8 px-8 md:flex-wrap">
+    <div class="xl:w-[calc(50%-theme(space.4))]">
       <h2 class="text-3xl text-black transition ease-in-out dark:text-white">About</h2>
       <p class="whitespace-pre-wrap bg-slate-300 text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">
         {@html data.description}
       </p>
     </div>
-    <div class="lg:w-1/2">
+    <div class="xl:w-[calc(50%-theme(space.4))]">
       <!-- svelte-ignore a11y-media-has-caption -->
       <video class="w-full max-w-4xl" src={data.video} title="demo" loop controls />
     </div>

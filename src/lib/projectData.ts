@@ -182,8 +182,14 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     title: "Repo Bulletin",
     video: DemoVideo,
     blurb: "Create a personalized page to display your public GitHub repositories.",
-    description:
-      "Users are authenticated through GitHub OAuth2. After creating an account, users can create a page to group and categorize their public GitHub repositories.",
+    description: `
+Users are authenticated through GitHub's OAuth2 flow. After registering, users can create a page to display their public GitHub repositories.
+
+When a repository is pinned to a page it will display the following:
+
+<ul class="[&>li]:ml-8"><li>link to the repository</li><li>the programming language most used in the repository</li><li>GitHub star count</li></ul>
+The user's personalized page will have a URL path that matches their GitHub username (<a href="https://repobullet.in/BoilingSoup" target="_blank" class="underline">https://repobullet.in/BoilingSoup</a>).
+    `,
     techStack: {
       frameworks: [FRAMEWORKS.nextjs],
       languages: [LANGUAGES.typescript, LANGUAGES.golang]
