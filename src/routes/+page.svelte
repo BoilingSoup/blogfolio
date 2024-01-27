@@ -11,9 +11,9 @@
   <title>{DOMAIN} | Home</title>
 </svelte:head>
 
-<main class="h-[calc(100%_-_theme(space.14))]">
-  <div class={"flex h-full items-center justify-center"}>
-    <div class="mx-4 animate-fade-in-up py-4 text-center transition ease-in-out lg:mx-0">
+<main class="grid min-h-[calc(100%-theme(space.14))] place-items-center">
+  <div class={"grid h-full place-items-center"}>
+    <div class="mx-4 animate-fade-in-up py-4 pb-[theme(space.14)] text-center transition ease-in-out lg:mx-0">
       <p class="text-left text-2xl text-zinc-800 transition ease-in-out dark:text-slate-200 2xs:text-3xl xs:text-4xl lg:text-7xl">
         Hi, I'm BoilingSoup.
       </p>
