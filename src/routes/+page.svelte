@@ -1,6 +1,7 @@
 <script>
   import { darkModeStore } from "$lib";
   import BSoupFrog from "./BSoupFrog.svelte";
+  import NewTabIcon from "./NewTabIcon.svelte";
   import PrettyLink from "./PrettyLink.svelte";
   import { DOMAIN } from "./constants";
 
@@ -31,7 +32,9 @@
           </p>
           <PrettyLink href="/projects" text="Projects" />
           <PrettyLink href="/blog" text="Blog" />
-          <PrettyLink href="https://github.com/boilingsoup" text="GitHub" targetBlank={true} />
+          <PrettyLink href="https://github.com/boilingsoup" text="GitHub" target="_blank"
+            ><NewTabIcon color={{ dark: "#cccccc", light: "#444444" }} --size="30px" /></PrettyLink
+          >
         </div>
       </div>
     </div>
