@@ -110,7 +110,7 @@ export const projectData: ProjectData = {
     },
     blurb: "Create, save, export, and share custom tier list diagrams.",
     description: `
-Create your own tier list diagrams. Users can save tier lists to the cloud, export PNG, and make their tier lists public/private for other users to clone and edit.
+Create your own tier list diagrams. Users can save tier lists to the cloud, export PNG, and make their tier lists public/private for other users to copy and edit.
 
 I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Postgres) to store data.
 

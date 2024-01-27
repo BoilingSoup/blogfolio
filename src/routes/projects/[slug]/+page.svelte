@@ -14,7 +14,7 @@
 </svelte:head>
 
 <div class="lg:grid lg:h-[calc(100%-theme(space.14))] lg:place-items-center">
-  <main class="mx-auto rounded bg-slate-300 py-12 transition ease-in-out lg:container dark:bg-zinc-900 lg:py-20">
+  <main class="mx-auto rounded-md bg-slate-300 py-12 transition ease-in-out lg:container dark:bg-zinc-900 lg:py-20">
     <div class="px-16">
       <h1
         class="rounded-lg bg-slate-300 text-center text-2xl font-bold text-black transition ease-in-out dark:bg-zinc-900 dark:text-white xs:text-3xl lg:text-4xl"
