@@ -51,14 +51,11 @@ type ProjectData = {
       languages: Array<TechInfo>;
       frameworks: Array<TechInfo>;
     };
-    source:
-      | {
-          public: true;
-          urls: Array<string>;
-        }
-      | {
-          public: false;
-        };
+    testAccount?: {
+      email: string;
+      password: string;
+    };
+    source?: Array<string>;
   };
 };
 
@@ -120,10 +117,7 @@ I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Pos
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
-    source: {
-      public: true,
-      urls: ["https://github.com/BoilingSoup/tierlist-maker-frontend", "https://github.com/BoilingSoup/tierlist-maker-backend"]
-    }
+    source: ["https://github.com/BoilingSoup/tierlist-maker-frontend", "https://github.com/BoilingSoup/tierlist-maker-backend"]
   },
   [DOCKFILES]: {
     id: "dockfiles",
@@ -143,10 +137,7 @@ Users can search, filter, like and bookmark the repositories; they can also leav
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
-    source: {
-      public: true,
-      urls: ["https://github.com/BoilingSoup/dockfiles.tech"]
-    }
+    source: ["https://github.com/BoilingSoup/dockfiles.tech"]
   },
   [FLOWTOOLZ]: {
     id: "flowtoolz",
@@ -169,9 +160,6 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     techStack: {
       languages: [LANGUAGES.typescript],
       frameworks: [FRAMEWORKS.none]
-    },
-    source: {
-      public: false
     }
   },
   [REPOBULLETIN]: {
@@ -195,9 +183,6 @@ The user's personalized page will have a URL path that matches their GitHub user
     techStack: {
       frameworks: [FRAMEWORKS.nextjs],
       languages: [LANGUAGES.typescript, LANGUAGES.golang]
-    },
-    source: {
-      public: false
     }
   },
   order: IDs

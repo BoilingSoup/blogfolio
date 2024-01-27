@@ -39,14 +39,13 @@
           <div class="w-[14ch] text-right">
             <ProjectLabel>Source Code:</ProjectLabel>
           </div>
-          {#if !data.source.public}
+          {#if data.source === undefined}
             <div class="h-min">
               <Badge color="bg-gray-700">Private</Badge>
             </div>
-          {/if}
-          {#if data.source.public}
+          {:else}
             <ul class="list-none overflow-hidden text-ellipsis whitespace-nowrap">
-              {#each data.source.urls as link}
+              {#each data.source as link}
                 <li>
                   <a class="link-light-dark break-all text-xs underline transition ease-in-out md:text-sm" target="_blank" href={link}
                     >{link}<span><NewTabIcon --size="20px" /></span></a
@@ -56,6 +55,15 @@
             </ul>
           {/if}
         </div>
+        {#if data.testAccount !== undefined}
+          <div class="rounded-md bg-green-500/40 py-2 text-black dark:text-white">
+            <h2 class="mb-2 text-center font-bold">Dummy Account</h2>
+            <ul class="[&>li]:my-2 [&>li]:first:mt-0">
+              <li class="w-[14ch] text-right font-bold">Email:</li>
+              <li class="w-[14ch] text-right font-bold">Password:</li>
+            </ul>
+          </div>
+        {/if}
       </div>
     </div>
     <div class="flex w-full flex-wrap-reverse gap-12 px-8 md:flex-wrap md:gap-20 lg:px-16">
