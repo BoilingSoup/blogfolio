@@ -135,9 +135,9 @@ I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Pos
     },
     blurb: "A collection of downloadable Dockerfiles with a like, bookmark, comment, and notification system.",
     description: `
-Dock Files is a repository of Docker Compose setups for some common tech stacks and utilities. Each setup provides a README description and source to download the repository.
+Dock Files is a collection of Docker Compose repositories for common tech stacks and utilities. Each repository provides a README description and several download methods.
 
-Users can search, filter, like and bookmark the setups; they can also leave comments and reply to each other. When logged in, the server is polled for notifications (every 30 seconds) and notifies the user if they have received a new reply.
+Users can search, filter, like and bookmark the repositories; they can also leave comments and reply to each other. When logged in, the server is polled for notifications (every 30 seconds) and notifies the user if they have received a new reply.
 `,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],
