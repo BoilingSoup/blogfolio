@@ -17,7 +17,7 @@
 
 <main class="dark:text-white">
   <div
-    class="mx-auto mt-8 rounded-md bg-slate-300 text-xl leading-10 tracking-wide text-black transition ease-in-out lg:container dark:bg-zinc-900 dark:text-white md:text-2xl md:tracking-wider"
+    class="mx-auto rounded-md bg-slate-300 text-xl leading-10 tracking-wide text-black transition ease-in-out lg:container dark:bg-zinc-900 dark:text-white md:text-2xl md:tracking-wider"
   >
     <article
       class="container mx-auto px-0 py-4 text-black transition ease-in-out dark:text-white sm:px-8 lg:px-20 lg:py-10 [&>code]:bg-gray-400 [&>code]:dark:bg-slate-700"
