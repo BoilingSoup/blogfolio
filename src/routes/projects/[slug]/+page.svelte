@@ -56,7 +56,7 @@
             <Framework {data} />
           </div>
           <div class="flex gap-2">
-            <div class="w-[14ch]">
+            <div class="w-[14ch] xl:w-auto">
               <ProjectLabel>Source Code:</ProjectLabel>
             </div>
             {#if data.source === undefined}
