@@ -1,14 +1,9 @@
-import DemoVideo from "$lib/assets/projects/tierlistlol/demo.mp4";
-
 import FlowtoolzIcon from "$lib/assets/projects/flowtoolz/thumbnail.png";
-import Flowtoolz1 from "$lib/assets/projects/flowtoolz/1.png";
-import Flowtoolz2 from "$lib/assets/projects/flowtoolz/2.png";
 
 import DockfilesIcon from "$lib/assets/projects/dockfiles/thumbnail.png";
-import Dockfiles1 from "$lib/assets/projects/dockfiles/1.png";
 
 import TierlistIcon from "$lib/assets/projects/tierlistlol/thumbnail.png";
-import Tierlist1 from "$lib/assets/projects/tierlistlol/1.png";
+import DemoVideo from "$lib/assets/projects/tierlistlol/demo.mp4";
 
 import RepobulletinIcon from "$lib/assets/projects/repobulletin/thumbnail.png";
 
@@ -96,16 +91,21 @@ const FRAMEWORKS = {
   }
 } as const;
 
+const DEFAULT_TEST_ACCOUNT = {
+  email: "test@test.com",
+  password: "testing123"
+} as const;
+
 export const projectData: ProjectData = {
   [TIERLIST]: {
     id: "tierlist",
     icon: TierlistIcon,
     video: DemoVideo,
-    title: "Tier List Maker",
+    title: "Tier List Builder",
     link: {
       url: "https://tierlist.fun"
     },
-    blurb: "Create, save, export, and share custom tier list diagrams.",
+    blurb: "Create, save, share, and export custom tier list diagrams.",
     description: `
 Create your own tier list diagrams. Users can save tier lists to the cloud, export PNG, and make their tier lists public/private for other users to copy and edit.
 
@@ -118,10 +118,7 @@ I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Pos
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
     source: ["https://github.com/BoilingSoup/tierlist-maker-frontend", "https://github.com/BoilingSoup/tierlist-maker-backend"],
-    testAccount: {
-      email: "test@test.com",
-      password: "testing123"
-    }
+    testAccount: DEFAULT_TEST_ACCOUNT
   },
   [DOCKFILES]: {
     id: "dockfiles",
@@ -142,10 +139,7 @@ Users can search, filter, like and bookmark the repositories; they can also leav
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
     source: ["https://github.com/BoilingSoup/dockfiles.tech"],
-    testAccount: {
-      email: "test@test.com",
-      password: "testing123"
-    }
+    testAccount: DEFAULT_TEST_ACCOUNT
   },
   [FLOWTOOLZ]: {
     id: "flowtoolz",
