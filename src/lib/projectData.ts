@@ -117,7 +117,11 @@ I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Pos
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
-    source: ["https://github.com/BoilingSoup/tierlist-maker-frontend", "https://github.com/BoilingSoup/tierlist-maker-backend"]
+    source: ["https://github.com/BoilingSoup/tierlist-maker-frontend", "https://github.com/BoilingSoup/tierlist-maker-backend"],
+    testAccount: {
+      email: "test@test.com",
+      password: "testing123"
+    }
   },
   [DOCKFILES]: {
     id: "dockfiles",
@@ -137,7 +141,11 @@ Users can search, filter, like and bookmark the repositories; they can also leav
       languages: [LANGUAGES.typescript, LANGUAGES.php],
       frameworks: [FRAMEWORKS.nextjs, FRAMEWORKS.laravel]
     },
-    source: ["https://github.com/BoilingSoup/dockfiles.tech"]
+    source: ["https://github.com/BoilingSoup/dockfiles.tech"],
+    testAccount: {
+      email: "test@test.com",
+      password: "testing123"
+    }
   },
   [FLOWTOOLZ]: {
     id: "flowtoolz",

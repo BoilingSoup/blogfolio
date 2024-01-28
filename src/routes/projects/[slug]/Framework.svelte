@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex gap-2">
-  <div class="w-[14ch] text-right">
+  <div class="w-[14ch]">
     <ProjectLabel>Frameworks:</ProjectLabel>
   </div>
   <div class="flex h-min gap-1">

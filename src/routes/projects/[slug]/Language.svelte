@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex gap-2">
-  <div class="w-[14ch] text-right xl:w-auto">
+  <div class="w-[14ch] xl:w-auto">
     <ProjectLabel>Languages:</ProjectLabel>
   </div>
   <div class="flex h-min gap-1">

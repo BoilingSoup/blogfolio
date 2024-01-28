@@ -5,8 +5,22 @@
   import Framework from "./Framework.svelte";
   import Language from "./Language.svelte";
   import ProjectLabel from "./ProjectLabel.svelte";
+  import TestAccount from "./TestAccount.svelte";
 
   export let data;
+
+  let md_w: string;
+  let my: string;
+
+  $: {
+    if (data.testAccount !== undefined) {
+      md_w = "md:w-1/2";
+      my = "my-8";
+    } else {
+      md_w = "";
+      my = "my-8";
+    }
+  }
 </script>
 
 <svelte:head>
@@ -24,44 +38,45 @@
           >{data.link.text ?? data.link.url}<span class="h-[30px] w-[30px]"><NewTabIcon --size="30px" /></span></a
         >
       </h1>
-      <div class="flex flex-col justify-center gap-4 overflow-hidden py-12 md:py-20 md:text-lg xl:flex-row xl:gap-10">
-        <div class="flex flex-col gap-4 lg:hidden">
-          <Language {data} />
-          <Framework {data} />
-        </div>
-        <div class="hidden lg:block">
-          <Language {data} />
-        </div>
-        <div class="hidden lg:block">
-          <Framework {data} />
-        </div>
-        <div class="flex gap-2">
-          <div class="w-[14ch] text-right">
-            <ProjectLabel>Source Code:</ProjectLabel>
+      {#if data.testAccount !== undefined}
+        <TestAccount testAccount={data.testAccount} classes={"mx-auto md:hidden mt-10 lg:mt-20"} />
+      {/if}
+      <div class="mx-4 flex items-center justify-between gap-12 py-12">
+        <div class="flex flex-col justify-center gap-4 overflow-hidden {md_w} md:text-lg xl:mx-auto xl:w-auto xl:flex-row xl:gap-10">
+          <div class="flex flex-col gap-4 lg:hidden">
+            <Language {data} />
+            <Framework {data} />
           </div>
-          {#if data.source === undefined}
-            <div class="h-min">
-              <Badge color="bg-gray-700">Private</Badge>
+          <div class="hidden lg:block">
+            <Language {data} />
+          </div>
+          <div class="hidden lg:block">
+            <Framework {data} />
+          </div>
+          <div class="flex gap-2">
+            <div class="w-[14ch]">
+              <ProjectLabel>Source Code:</ProjectLabel>
             </div>
-          {:else}
-            <ul class="list-none overflow-hidden text-ellipsis whitespace-nowrap">
-              {#each data.source as link}
-                <li>
-                  <a class="link-light-dark break-all text-xs underline transition ease-in-out md:text-sm" target="_blank" href={link}
-                    >{link}<span><NewTabIcon --size="20px" /></span></a
-                  >
-                </li>
-              {/each}
-            </ul>
-          {/if}
+            {#if data.source === undefined}
+              <div class="flex h-min">
+                <Badge color="bg-gray-700">Private</Badge>
+              </div>
+            {:else}
+              <ul class="list-none overflow-hidden text-ellipsis whitespace-nowrap">
+                {#each data.source as link}
+                  <li>
+                    <a class="link-light-dark break-all text-xs underline transition ease-in-out md:text-sm" target="_blank" href={link}
+                      >{link}<span><NewTabIcon --size="20px" /></span></a
+                    >
+                  </li>
+                {/each}
+              </ul>
+            {/if}
+          </div>
         </div>
         {#if data.testAccount !== undefined}
-          <div class="rounded-md bg-green-500/40 py-2 text-black dark:text-white">
-            <h2 class="mb-2 text-center font-bold">Dummy Account</h2>
-            <ul class="[&>li]:my-2 [&>li]:first:mt-0">
-              <li class="w-[14ch] text-right font-bold">Email:</li>
-              <li class="w-[14ch] text-right font-bold">Password:</li>
-            </ul>
+          <div class="hidden text-black transition ease-in-out dark:text-white md:block {md_w} xl:w-auto">
+            <TestAccount testAccount={data.testAccount} />
           </div>
         {/if}
       </div>
