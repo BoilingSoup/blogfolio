@@ -10,6 +10,7 @@
 
 <svelte:head>
   <title>{DOMAIN} | Home</title>
+  <meta name="description" content="BoilingSoup portfolio and blog site. Check out my projects, blog, GitHub." />
 </svelte:head>
 
 <main class="grid min-h-[calc(100%-theme(space.14))] place-items-center">

@@ -6,6 +6,7 @@
 
 <svelte:head>
   <title>{DOMAIN} | Projects</title>
+  <meta name="description" content="Some of my public projects. Click to view a project's details." />
 </svelte:head>
 
 <main class="mx-auto w-[90%] max-w-4xl transition ease-in-out dark:text-white dark:ease-in-out">
