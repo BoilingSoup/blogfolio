@@ -12,6 +12,7 @@
 
 <svelte:head>
   <title>{DOMAIN} | {data.title}</title>
+  <meta name="description" content={data.description} />
 </svelte:head>
 
 <div class="lg:grid lg:h-[calc(100%-theme(space.14))] lg:place-items-center">
