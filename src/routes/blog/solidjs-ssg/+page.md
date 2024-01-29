@@ -2,6 +2,7 @@
 layout: blog-default
 title: How to Static Site Generation (SSG) with SolidJS
 date: Mar 16, 2023
+description: Use SolidJS static adapter to statically generate HTML at build time.
 ---
 
 <script>

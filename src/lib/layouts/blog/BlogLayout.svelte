@@ -7,12 +7,14 @@
 
   export let title;
   export let date;
+  export let description;
 
   $: giscusTheme = $darkModeStore ? "dark_high_contrast" : "light_high_contrast";
 </script>
 
 <svelte:head>
   <title>{title}</title>
+  <meta name="description" content={description} />
 </svelte:head>
 
 <main class="dark:text-white">

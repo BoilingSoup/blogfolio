@@ -2,6 +2,7 @@
 layout: blog-default
 title: Master Cookie Authentication with Laravel Sanctum
 date: Oct 30, 2023
+description: Learn how to use Laravel Sanctum's cookie authentication with any SPA framework step by step.
 ---
 
 <script>
