@@ -32,8 +32,8 @@
           </p>
           <PrettyLink href="/projects" text="Projects" />
           <PrettyLink href="/blog" text="Blog" />
-          <PrettyLink href="https://github.com/boilingsoup" text="GitHub" target="_blank"
-            ><NewTabIcon color={{ dark: "#cccccc", light: "#444444" }} --size="30px" /></PrettyLink
+          <PrettyLink href="https://github.com/boilingsoup" textColor="text-[#666666] dark:text-[#aaaaaa]" text="GitHub" target="_blank"
+            ><NewTabIcon color={{ dark: "#aaaaaa", light: "#666666" }} --size="30px" /></PrettyLink
           >
         </div>
       </div>
