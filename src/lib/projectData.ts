@@ -83,7 +83,7 @@ const FRAMEWORKS = {
   },
   laravel: {
     name: "Laravel",
-    color: "bg-red-500"
+    color: "bg-red-600"
   },
   none: {
     name: "None",

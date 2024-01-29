@@ -18,7 +18,7 @@
     <div class="flex w-full animate-fade-in-up flex-col justify-center">
       <h2 class="text-md font-bold sm:text-xl md:text-2xl">{title}</h2>
       {#if subtitle}
-        <p class="text-xs xs:text-sm md:text-base">{subtitle}</p>
+        <p class="text-xs text-gray-800 transition ease-in-out dark:text-stone-200/80 xs:text-sm md:text-base">{subtitle}</p>
       {/if}
     </div>
   </div>
