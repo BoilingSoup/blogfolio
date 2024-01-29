@@ -8,19 +8,6 @@
   import TestAccount from "./TestAccount.svelte";
 
   export let data;
-
-  let md_w: string;
-  let my: string;
-
-  $: {
-    if (data.testAccount !== undefined) {
-      md_w = "md:w-1/2";
-      my = "my-8";
-    } else {
-      md_w = "";
-      my = "my-8";
-    }
-  }
 </script>
 
 <svelte:head>
@@ -41,10 +28,8 @@
       {#if data.testAccount !== undefined}
         <TestAccount testAccount={data.testAccount} classes={"mx-auto md:hidden mt-10 lg:mt-20"} />
       {/if}
-      <div class="mx-4 flex items-center justify-between gap-12 py-12">
-        <div
-          class="flex flex-col justify-center gap-4 overflow-hidden {md_w} md:text-lg xl:mx-auto xl:w-auto xl:flex-row xl:flex-wrap xl:gap-10"
-        >
+      <div class="mx-4 flex items-center justify-between gap-12 py-12 md:my-8">
+        <div class="flex flex-col justify-center gap-4 overflow-hidden md:text-lg xl:mx-auto xl:w-auto xl:flex-row xl:flex-wrap xl:gap-10">
           <div class="flex flex-col gap-4 lg:hidden">
             <Language {data} />
             <Framework {data} />
@@ -77,7 +62,7 @@
           </div>
         </div>
         {#if data.testAccount !== undefined}
-          <div class="hidden text-black transition ease-in-out dark:text-white md:block {md_w}">
+          <div class="hidden text-black transition ease-in-out dark:text-white md:block md:w-1/2">
             <TestAccount testAccount={data.testAccount} />
           </div>
         {/if}
