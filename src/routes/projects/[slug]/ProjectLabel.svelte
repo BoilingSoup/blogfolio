@@ -1,1 +1,1 @@
-<h2 class="font-bold text-black transition ease-in-out dark:text-white lg:text-xl"><slot /></h2>
+<h2 class="font-bold text-gray-800 transition ease-in-out dark:text-gray-300 lg:text-xl"><slot /></h2>

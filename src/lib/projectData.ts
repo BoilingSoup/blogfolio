@@ -111,7 +111,7 @@ Create your own tier list diagrams. Users can save tier lists to the cloud, expo
 
 I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Postgres) to store data.
 
-"S tier project" &#8212 <a href="https://twitter.com/CockroachDB/status/1711783125007675617" target="_blank" class="underline link-light-dark">@CockroachDB on Twitter</a> 😁
+<span class="font-bold text-gray-700 transition ease-in-out dark:text-gray-300">"S tier project" &#8212</span> <a href="https://twitter.com/CockroachDB/status/1711783125007675617" target="_blank" class="underline link-light-dark">@CockroachDB on Twitter</a> 😁
 `,
     techStack: {
       languages: [LANGUAGES.typescript, LANGUAGES.php],

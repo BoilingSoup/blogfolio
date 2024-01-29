@@ -70,8 +70,8 @@
     </div>
     <div class="flex w-full flex-wrap-reverse gap-12 px-8 md:flex-wrap md:gap-20 lg:px-16">
       <div class="xl:w-[calc(50%-theme(space.10))]">
-        <h2 class="text-xl font-bold text-black transition ease-in-out dark:text-white md:text-2xl">About</h2>
-        <p class="whitespace-pre-wrap bg-slate-300 text-lg text-black transition ease-in-out dark:bg-zinc-900 dark:text-white">
+        <h2 class="text-xl font-bold text-gray-800 transition ease-in-out dark:text-gray-300 md:text-2xl">About</h2>
+        <p class="whitespace-pre-wrap bg-slate-300 text-lg text-gray-700 transition ease-in-out dark:bg-zinc-900 dark:text-gray-400">
           {@html data.description}
         </p>
       </div>
