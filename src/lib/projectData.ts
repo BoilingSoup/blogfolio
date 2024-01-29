@@ -175,7 +175,7 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     video: DemoVideo,
     blurb: "Create a personalized page to display your public GitHub repositories.",
     description: `
-Users can authenticate through GitHub's OAuth flow. After registering, users can create a page to display their public GitHub repositories.
+Users can authenticate with GitHub's OAuth flow. After registering, users can create a page to display their public GitHub repositories.
 
 When a repository is pinned to a page it will display the following:
 
