@@ -381,7 +381,7 @@ Let's try logging in <EmDash /> in the next section.
 <br />
 <br />
 <br />
-<SectionTitle hash="logging-in" title="Making Login Request" />
+<SectionTitle hash="logging-in" title="Making Login Requests" />
 <br />
 I hope you wrote down the dummy User's email address from <a href="#make-dummy-user" class="underline">section 4</a>!
 <br />
