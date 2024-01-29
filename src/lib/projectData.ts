@@ -71,8 +71,8 @@ const LANGUAGES = {
     color: "bg-violet-700"
   },
   golang: {
-    name: "GoLang",
-    color: "bg-blue-400"
+    name: "Golang",
+    color: "bg-sky-700"
   }
 } as const;
 
