@@ -68,7 +68,7 @@ const LANGUAGES = {
   },
   php: {
     name: "PHP",
-    color: "bg-purple-800"
+    color: "bg-violet-700"
   },
   golang: {
     name: "GoLang",
