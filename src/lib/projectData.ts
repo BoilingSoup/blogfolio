@@ -3,7 +3,8 @@ import FlowtoolzIcon from "$lib/assets/projects/flowtoolz/thumbnail.png";
 import DockfilesIcon from "$lib/assets/projects/dockfiles/thumbnail.png";
 
 import TierlistIcon from "$lib/assets/projects/tierlistlol/thumbnail.png";
-import DemoVideo from "$lib/assets/projects/tierlistlol/demo.mp4";
+import TierListDemo from "$lib/assets/projects/tierlistlol/demo.mp4";
+import Demo2 from "$lib/assets/projects/tierlistlol/demo2.mp4";
 
 import RepobulletinIcon from "$lib/assets/projects/repobulletin/thumbnail.png";
 
@@ -100,7 +101,7 @@ export const projectData: ProjectData = {
   [TIERLIST]: {
     id: "tierlist",
     icon: TierlistIcon,
-    video: DemoVideo,
+    video: TierListDemo,
     title: "Tier List Builder",
     link: {
       url: "https://tierlist.fun"
@@ -123,7 +124,7 @@ I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Pos
   [DOCKFILES]: {
     id: "dockfiles",
     icon: DockfilesIcon,
-    video: DemoVideo,
+    video: Demo2,
     title: "Dock Files",
     link: {
       url: "https://dockfiles.tech"
@@ -144,7 +145,7 @@ Users can search, filter, like and bookmark the repositories; they can also leav
   [FLOWTOOLZ]: {
     id: "flowtoolz",
     icon: FlowtoolzIcon,
-    video: DemoVideo,
+    video: Demo2,
     title: "Flow Toolz",
     link: {
       url: "https://flowtoolz.xyz"
@@ -172,7 +173,7 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     },
     icon: RepobulletinIcon,
     title: "Repo Bulletin",
-    video: DemoVideo,
+    video: Demo2,
     blurb: "Create a personalized page to display your public GitHub repositories.",
     description: `
 Users can authenticate with GitHub's OAuth flow. After registering, users can create a page to display their public GitHub repositories.
