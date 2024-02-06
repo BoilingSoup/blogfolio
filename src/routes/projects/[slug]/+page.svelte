@@ -78,7 +78,7 @@
       </div>
       <div class="xl:w-[calc(50%-theme(space.10))]">
         <!-- svelte-ignore a11y-media-has-caption -->
-        <video class="max-w-4x w-full" width={400} height={100} src={data.video} title="demo" loop controls />
+        <video class="max-w-4x w-full" autoplay src={data.video} title="demo" loop controls />
       </div>
     </div>
   </main>
