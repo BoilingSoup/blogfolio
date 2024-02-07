@@ -572,7 +572,7 @@ need to be explicitly configured.
 <br />
 It's simpler if I show you, so open up Postman and create a new Collection for our API.
 <br />
-I also created 3 new requests for demonstration later: <InlineCode>login</InlineCode>, <InlineCode>user</InlineCode>,<InlineCode>logout</InlineCode>.
+I also created 3 new requests for demonstration later: <InlineCode>login</InlineCode>, <InlineCode>user</InlineCode>, <InlineCode>logout</InlineCode>.
 <br />
 <br />
 <img loading="lazy" class="mx-auto rounded-lg" alt="creating new collection in Postman" src={NewCollectionImage} height="362" width="258" />
