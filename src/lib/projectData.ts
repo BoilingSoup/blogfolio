@@ -7,6 +7,7 @@ import TierListDemo from "$lib/assets/projects/tierlistlol/demo.mp4";
 import Demo2 from "$lib/assets/projects/tierlistlol/demo2.mp4";
 
 import RepobulletinIcon from "$lib/assets/projects/repobulletin/thumbnail.png";
+import RepobulletinDemo from "$lib/assets/projects/repobulletin/demo.mp4";
 
 const TIERLIST = "tierlist";
 const FLOWTOOLZ = "flowtoolz";
@@ -173,7 +174,7 @@ The UI elements were made with vanilla HTML/CSS/TypeScript, and the chart was ma
     },
     icon: RepobulletinIcon,
     title: "Repo Bulletin",
-    video: Demo2,
+    video: RepobulletinDemo,
     blurb: "Create a personalized page to display your public GitHub repositories.",
     description: `
 Users can authenticate with GitHub's OAuth flow. After registering, users can create a page to display their public GitHub repositories.
