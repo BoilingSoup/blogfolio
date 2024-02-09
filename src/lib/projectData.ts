@@ -1,6 +1,7 @@
 import FlowtoolzIcon from "$lib/assets/projects/flowtoolz/thumbnail.png";
 
 import DockfilesIcon from "$lib/assets/projects/dockfiles/thumbnail.png";
+import DockfilesDemo from "$lib/assets/projects/dockfiles/demo.mp4";
 
 import TierlistIcon from "$lib/assets/projects/tierlistlol/thumbnail.png";
 import TierListDemo from "$lib/assets/projects/tierlistlol/demo.mp4";
@@ -125,7 +126,7 @@ I used Cloudinary to store the uploaded images, and CockroachDB (a flavor of Pos
   [DOCKFILES]: {
     id: "dockfiles",
     icon: DockfilesIcon,
-    video: Demo2,
+    video: DockfilesDemo,
     title: "Dock Files",
     link: {
       url: "https://dockfiles.tech"
