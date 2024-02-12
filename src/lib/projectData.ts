@@ -1,11 +1,11 @@
-import FlowtoolzIcon from "$lib/assets/projects/flowtoolz/thumbnail.png";
+import TierlistIcon from "$lib/assets/projects/tierlistlol/thumbnail.png";
+import TierListDemo from "$lib/assets/projects/tierlistlol/demo.mp4";
 
 import DockfilesIcon from "$lib/assets/projects/dockfiles/thumbnail.png";
 import DockfilesDemo from "$lib/assets/projects/dockfiles/demo.mp4";
 
-import TierlistIcon from "$lib/assets/projects/tierlistlol/thumbnail.png";
-import TierListDemo from "$lib/assets/projects/tierlistlol/demo.mp4";
-import Demo2 from "$lib/assets/projects/tierlistlol/demo2.mp4";
+import FlowtoolzIcon from "$lib/assets/projects/flowtoolz/thumbnail.png";
+import FlowtoolzDemo from "$lib/assets/projects/flowtoolz/demo.mp4";
 
 import RepobulletinIcon from "$lib/assets/projects/repobulletin/thumbnail.png";
 import RepobulletinDemo from "$lib/assets/projects/repobulletin/demo.mp4";
@@ -147,7 +147,7 @@ Users can search, filter, like and bookmark the repositories; they can also leav
   [FLOWTOOLZ]: {
     id: "flowtoolz",
     icon: FlowtoolzIcon,
-    video: Demo2,
+    video: FlowtoolzDemo,
     title: "Flow Toolz",
     link: {
       url: "https://flowtoolz.xyz"
