@@ -76,9 +76,9 @@
           {@html data.description}
         </p>
       </div>
-      <div class="xl:w-[calc(50%-theme(space.10))]">
+      <div class="rounded border border-zinc-700 transition ease-in-out dark:border-white/10 xl:w-[calc(50%-theme(space.10))]">
         <!-- svelte-ignore a11y-media-has-caption -->
-        <video class="max-w-4x w-full" autoplay src={data.video} title="demo" loop controls />
+        <video class="w-full" autoplay src={data.video} title="demo" loop controls />
       </div>
     </div>
   </main>
