@@ -68,7 +68,7 @@ async function fetchWithXsrfToken(url, opts) {
         xsrfToken = cookies["XSRF-TOKEN"];
     }
 
-    if (opts === undefined) {
+    if (typeof opts !== "object") {
       opts = {};
     }
 
