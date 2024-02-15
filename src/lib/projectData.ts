@@ -188,7 +188,8 @@ The user's personalized page will have a URL path that matches their GitHub user
     techStack: {
       frameworks: [FRAMEWORKS.nextjs],
       languages: [LANGUAGES.typescript, LANGUAGES.golang]
-    }
+    },
+    source: ["https://github.com/BoilingSoup/repo-bulletin"]
   },
   order: IDs
 };
